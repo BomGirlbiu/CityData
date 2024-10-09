@@ -1,0 +1,119 @@
+Date : 2023-11-02 16:07:14
+Directory : d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master
+Total : 57 files,  34284 codes, 123 comments, 370 blanks, all 34777 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |     26,387 |          0 |          2 |     26,389 |
+| XML        |          1 |      2,671 |          0 |          1 |      2,672 |
+| CSS        |          3 |      2,442 |         25 |         27 |      2,494 |
+| vue        |         26 |      2,085 |         20 |        164 |      2,269 |
+| JavaScript |         22 |        565 |         77 |         83 |        725 |
+| Markdown   |          1 |        117 |          0 |         92 |        209 |
+| HTML       |          1 |         16 |          1 |          1 |         18 |
+| Properties |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                                            | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                                               |         57 |     34,284 |        123 |        370 |     34,777 |
+| . (Files)                                                                                                                                                       |          5 |     26,510 |          0 |         95 |     26,605 |
+| public                                                                                                                                                          |          1 |         16 |          1 |          1 |         18 |
+| src                                                                                                                                                             |         51 |      7,758 |        122 |        274 |      8,154 |
+| src (Files)                                                                                                                                                     |          4 |        110 |         13 |         25 |        148 |
+| src\api                                                                                                                                                         |         10 |        176 |         16 |         29 |        221 |
+| src\api (Files)                                                                                                                                                 |          9 |        150 |         12 |         27 |        189 |
+| src\api\auth                                                                                                                                                    |          1 |         26 |          4 |          2 |         32 |
+| src\assets                                                                                                                                                      |          4 |      5,113 |         25 |         28 |      5,166 |
+| src\assets (Files)                                                                                                                                              |          1 |        114 |         12 |         25 |        151 |
+| src\assets\plugins                                                                                                                                              |          3 |      4,999 |         13 |          3 |      5,015 |
+| src\assets\plugins\font-awesome-4.7.0                                                                                                                           |          3 |      4,999 |         13 |          3 |      5,015 |
+| src\assets\plugins\font-awesome-4.7.0\css                                                                                                                       |          2 |      2,328 |         13 |          2 |      2,343 |
+| src\assets\plugins\font-awesome-4.7.0\fonts                                                                                                                     |          1 |      2,671 |          0 |          1 |      2,672 |
+| src\components                                                                                                                                                  |          7 |        499 |          1 |         37 |        537 |
+| src\components\Backtop                                                                                                                                          |          1 |         25 |          0 |          3 |         28 |
+| src\components\Comment                                                                                                                                          |          3 |        150 |          0 |         12 |        162 |
+| src\components\Layout                                                                                                                                           |          2 |        225 |          1 |         17 |        243 |
+| src\components\Pagination                                                                                                                                       |          1 |         99 |          0 |          5 |        104 |
+| src\router                                                                                                                                                      |          1 |         86 |          7 |          6 |         99 |
+| src\store                                                                                                                                                       |          3 |         90 |          3 |          8 |        101 |
+| src\store (Files)                                                                                                                                               |          2 |         17 |          0 |          3 |         20 |
+| src\store\modules                                                                                                                                               |          1 |         73 |          3 |          5 |         81 |
+| src\utils                                                                                                                                                       |          4 |        124 |         38 |         20 |        182 |
+| src\views                                                                                                                                                       |         18 |      1,560 |         19 |        121 |      1,700 |
+| src\views (Files)                                                                                                                                               |          2 |        135 |          2 |         12 |        149 |
+| src\views\auth                                                                                                                                                  |          2 |        253 |          0 |         13 |        266 |
+| src\views\card                                                                                                                                                  |          4 |        120 |          3 |         20 |        143 |
+| src\views\error                                                                                                                                                 |          1 |         38 |          0 |          2 |         40 |
+| src\views\post                                                                                                                                                  |          6 |        677 |         11 |         47 |        735 |
+| src\views\tag                                                                                                                                                   |          1 |        100 |          0 |         10 |        110 |
+| src\views\user                                                                                                                                                  |          2 |        237 |          3 |         17 |        257 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                                        | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\.env                                                                | Properties |          1 |          0 |          0 |          1 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\README.md                                                           | Markdown   |        117 |          0 |         92 |        209 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\babel.config.js                                                     | JavaScript |          5 |          0 |          1 |          6 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\package-lock.json                                                   | JSON       |     26,356 |          0 |          1 |     26,357 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\package.json                                                        | JSON       |         31 |          0 |          1 |         32 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\public\index.html                                                   | HTML       |         16 |          1 |          1 |         18 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\App.vue                                                         | vue        |         26 |          0 |          6 |         32 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\auth\auth.js                                                | JavaScript |         26 |          4 |          2 |         32 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\billboard.js                                                | JavaScript |          7 |          0 |          1 |          8 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\comment.js                                                  | JavaScript |         17 |          0 |          4 |         21 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\follow.js                                                   | JavaScript |         19 |          3 |          4 |         26 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\post.js                                                     | JavaScript |         46 |          4 |          7 |         57 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\promote.js                                                  | JavaScript |          7 |          1 |          2 |         10 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\search.js                                                   | JavaScript |         12 |          1 |          2 |         15 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\tag.js                                                      | JavaScript |         11 |          0 |          2 |         13 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\tip.js                                                      | JavaScript |          7 |          0 |          1 |          8 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\api\user.js                                                     | JavaScript |         24 |          3 |          4 |         31 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\assets\app.css                                                  | CSS        |        114 |         12 |         25 |        151 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\assets\plugins\font-awesome-4.7.0\css\font-awesome.css          | CSS        |      2,327 |         10 |          1 |      2,338 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\assets\plugins\font-awesome-4.7.0\css\font-awesome.min.css      | CSS        |          1 |          3 |          1 |          5 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg | XML        |      2,671 |          0 |          1 |      2,672 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Backtop\BackTop.vue                                  | vue        |         25 |          0 |          3 |         28 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Comment\Comments.vue                                 | vue        |         54 |          0 |          4 |         58 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Comment\CommentsForm.vue                             | vue        |         68 |          0 |          3 |         71 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Comment\CommentsItem.vue                             | vue        |         28 |          0 |          5 |         33 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Layout\Footer.vue                                    | vue        |         53 |          1 |          7 |         61 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Layout\Header.vue                                    | vue        |        172 |          0 |         10 |        182 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\components\Pagination\index.vue                                 | vue        |         99 |          0 |          5 |        104 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\main.js                                                         | JavaScript |         30 |          4 |          9 |         43 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\permission.js                                                   | JavaScript |         30 |          6 |          6 |         42 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\router\index.js                                                 | JavaScript |         86 |          7 |          6 |         99 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\store\getters.js                                                | JavaScript |          5 |          0 |          0 |          5 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\store\index.js                                                  | JavaScript |         12 |          0 |          3 |         15 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\store\modules\user.js                                           | JavaScript |         73 |          3 |          5 |         81 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\user.js                                                         | JavaScript |         24 |          3 |          4 |         31 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\utils\auth.js                                                   | JavaScript |         21 |          3 |          8 |         32 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\utils\get-page-title.js                                         | JavaScript |          7 |          0 |          2 |          9 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\utils\request.js                                                | JavaScript |         57 |         20 |          5 |         82 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\utils\scroll-to.js                                              | JavaScript |         39 |         15 |          5 |         59 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\Home.vue                                                  | vue        |         40 |          0 |          3 |         43 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\Search.vue                                                | vue        |         95 |          2 |          9 |        106 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\auth\Login.vue                                            | vue        |        110 |          0 |          6 |        116 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\auth\Register.vue                                         | vue        |        143 |          0 |          7 |        150 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\card\CardBar.vue                                          | vue        |         18 |          3 |          6 |         27 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\card\LoginWelcome.vue                                     | vue        |         27 |          0 |          5 |         32 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\card\Promotion.vue                                        | vue        |         36 |          0 |          4 |         40 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\card\Tip.vue                                              | vue        |         39 |          0 |          5 |         44 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\error\404.vue                                             | vue        |         38 |          0 |          2 |         40 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Author.vue                                           | vue        |         99 |          0 |          5 |        104 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Create.vue                                           | vue        |        146 |          1 |          8 |        155 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Detail.vue                                           | vue        |        138 |          6 |         10 |        154 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Edit.vue                                             | vue        |        101 |          1 |          7 |        109 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Index.vue                                            | vue        |        143 |          3 |         12 |        158 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\post\Recommend.vue                                        | vue        |         50 |          0 |          5 |         55 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\tag\Tag.vue                                               | vue        |        100 |          0 |         10 |        110 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\user\Profile.vue                                          | vue        |        123 |          3 |         10 |        136 |
+| d:\code_position\study\class\project\poemAPP\Poem\code\Web\doubao_community_frontend-master\src\views\user\Setting.vue                                          | vue        |        114 |          0 |          7 |        121 |
+| Total                                                                                                                                                           |            |     34,284 |        123 |        370 |     34,777 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
