@@ -50,4 +50,44 @@ public class CityNews {
      */
     @TableField("imagesURL")
     private String imagesURL;
+
+    public Integer getNewsID() {
+        return newsID;
+    }
+
+    public void setNewsID(Integer newsID) {
+        this.newsID = newsID;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImagesURL() {
+        return imagesURL;
+    }
+
+    public void setImagesURL(String imagesURL) {
+        this.imagesURL = imagesURL;
+    }
 }

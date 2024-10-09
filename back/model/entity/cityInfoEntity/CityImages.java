@@ -41,4 +41,36 @@ public class CityImages {
      */
     @TableField("imagesURL")
     private String imagesURL;
+
+    public Integer getImagesID() {
+        return imagesID;
+    }
+
+    public void setImagesID(Integer imagesID) {
+        this.imagesID = imagesID;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getImagesURL() {
+        return imagesURL;
+    }
+
+    public void setImagesURL(String imagesURL) {
+        this.imagesURL = imagesURL;
+    }
 }
