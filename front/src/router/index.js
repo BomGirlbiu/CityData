@@ -44,14 +44,36 @@ const routes = [
     //定义图标npm
     component: () => import('@/otherViews/CityInfo/CityNews')
 },
+
+// 个人中心
+{
+  //一级路由
+  path: '/HomePage',
+  name: '个人中心',
+  //定义图标npm
+  component: () => import('@/otherViews/Home/HomePage'),
+  children: [
+      {
+          path: '/HomePage/PageMain',
+          component: () => import('@/otherViews/Home/PageMain')
+      },
+      {
+          path: '/HomePage/withdrawal',
+          component: () => import('@/otherViews/Home/UserWithdrawal')
+      },
+
+  ]
+},
+
+// 社区
   {
-    path: "/CommunityLayout",
-    name: "Home",
-    redirect:'/CommunityLayout/Home',
+    path: "/Community",
+    name: "城市频道",
+    redirect:'/Community/Home',
     component: () => import("@/views/CommunityLayout"),
     children: [
       {
-          path: '/CommunityLayout/Home',
+          path: '/Community/Home',
           component: () => import('@/views/Home')
       },
   ]

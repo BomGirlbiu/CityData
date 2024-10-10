@@ -1,13 +1,13 @@
 <template>
-  <div class="card-wrap"
+  <div class="NavCard-wrap"
     @mousemove="handleMouseMove"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
-    ref="card">
-    <div class="card"
+    ref="NavCard">
+    <div class="NavCard"
       :style="cardStyle">
-      <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
-      <div class="card-info">
+      <div class="NavCard-bg" :style="[cardBgTransform, cardBgImage]"></div>
+      <div class="NavCard-info">
         <slot name="header"></slot>
         <slot name="content"></slot>
       </div>
@@ -29,8 +29,8 @@ export default {
     }
   },
   mounted() {
-    this.width = this.$refs.card.offsetWidth;
-    this.height = this.$refs.card.offsetHeight;
+    this.width = this.$refs.NavCard.offsetWidth;
+    this.height = this.$refs.NavCard.offsetHeight;
   },
   computed: {
     mousePX() {
@@ -61,8 +61,8 @@ export default {
   },
   methods: {
     handleMouseMove(e) {
-      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width/2;
-      this.mouseY = (e.pageY - this.$refs.card.offsetTop - this.height/2)/2;
+      this.mouseX = e.pageX - this.$refs.NavCard.offsetLeft - this.width/2;
+      this.mouseY = (e.pageY - this.$refs.NavCard.offsetTop - this.height/2)/2;
     },
     handleMouseEnter() {
       clearTimeout(this.mouseLeaveDelay);
@@ -80,7 +80,7 @@ export default {
 <style lang="scss" scope>
 $hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
 $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-.card-wrap {
+.NavCard-wrap {
   margin: 20px;
   transform: perspective(800px);
   transform-style: preserve-3d;
@@ -88,27 +88,27 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   // background-color: #fff;
   
   &:hover {
-    .card-info {
+    .NavCard-info {
       transform: translateY(0);
     }
-    .card-info p {
+    .NavCard-info p {
       opacity: 1;
     }
-    .card-info, .card-info p {
+    .NavCard-info, .NavCard-info p {
       transition: 0.6s $hoverEasing;
     }
-    .card-info:after {
+    .NavCard-info:after {
       transition: 5s $hoverEasing;
       opacity: 1;
       transform: translateY(0);
     }
-    .card-bg {
+    .NavCard-bg {
       transition: 
         0.6s $hoverEasing,
         opacity 5s $hoverEasing;
       opacity: 0.8;
     }
-    .card {
+    .NavCard {
       transition:
         0.6s $hoverEasing,
         box-shadow 2s $hoverEasing;
@@ -122,7 +122,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
 }
 
-.card {
+.NavCard {
   position: relative;
   flex: 0 0 240px;
   width: 250px;
@@ -137,7 +137,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transition: 1s $returnEasing;
 }
 
-.card-bg {
+.NavCard-bg {
   opacity: 0.5;
   position: absolute;
   top: -5px; left: 9px;
@@ -153,7 +153,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   pointer-events: none;
 }
 
-.card-info {
+.NavCard-info {
   padding: 20px;
   position: absolute;
   bottom: 0;
@@ -187,7 +187,7 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
 }
 
-.card-info h1 {
+.NavCard-info h1 {
   font-family: "Playfair Display";
   font-size: 30px;
   font-weight: 700;

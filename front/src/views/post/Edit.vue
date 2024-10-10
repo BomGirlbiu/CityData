@@ -101,7 +101,7 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
 .vditor-reset pre > code {
   font-size: 100%;
 }

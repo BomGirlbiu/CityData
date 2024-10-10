@@ -146,7 +146,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 #preview {
   min-height: 300px;
 }

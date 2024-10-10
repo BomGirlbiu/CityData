@@ -7,10 +7,10 @@
         </div>
         <nav class="Header-nav" data-nav>
           <div class="Header-nav-item" data-nav-item="1">
-            <router-link to="/">首页</router-link>
+            <router-link :to="{ name: '首页' }">首页</router-link>
           </div>
           <div class="Header-nav-item" data-nav-item="2">
-            <router-link to="/CityInfo">城市信息</router-link>
+            <router-link :to="{ name: '城市信息' }">城市信息</router-link>
           </div>
           <div class="Header-nav-item" data-nav-item="3">
             <router-link to="/">城市分析</router-link>
@@ -19,10 +19,12 @@
             <router-link to="/">数据对比</router-link>
           </div>
           <div class="Header-nav-item" data-nav-item="5">
-            <router-link to="/">城市频道</router-link>
+            <router-link :to="{ name: '城市频道' }">城市频道</router-link>
           </div>
-          <div class="Header-nav-item" data-nav-item="5" @click="goToHome">
-            <el-avatar :size="50"> user </el-avatar>
+          <div class="Header-nav-item" data-nav-item="6">
+            <router-link :to="{ name: '个人中心' }"
+              ><el-avatar :size="50"> user </el-avatar></router-link
+            >
           </div>
         </nav>
       </div>
@@ -34,9 +36,6 @@
 export default {
   name: "NavItem",
   methods: {
-    goToHome() {
-      this.$router.push("HomePage");
-    },
   },
 };
 </script>
@@ -56,7 +55,7 @@ $header-transition: 0.4s ease;
   top: 0;
   width: 97%;
   z-index: 10;
-  margin-left:20px ;
+  margin-left: 20px;
 
   &.has-mobile-button {
     .MobileNav-trigger {

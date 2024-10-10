@@ -279,7 +279,7 @@ export default {
         console.log( "http://localhost:8081/CityNews/" + this.currentCity);
 
         this.items = response.data.cityNewsList; // 假设后端返回的对象中有一个items数组
-        this.videos = response.data.cityVideolist; // 假设后端返回的对象中有一个items数组
+        this.videos = response.data.cityVideoList; // 假设后端返回的对象中有一个items数组
         this.imagesItems = response.data.citySliderList;
         console.log(this.imagesItems);
         this.total = response.data.cityNewsListTotal;
