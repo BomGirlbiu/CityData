@@ -23,20 +23,20 @@ const routes = [
     //定义图标npm
     component: () => import('@/otherViews/CityInfo/CityInfo')
 },
-// {
-//     //一级路由
-//     path: '/CityFood',
-//     name: '美食天地',
-//     //定义图标npm
-//     component: () => import('@/otherViews/CityInfo/CityFood')
-// },
-// {
-//     //一级路由
-//     path: '/CityTravel',
-//     name: '旅游空间',
-//     //定义图标npm
-//     component: () => import('@/otherViews/CityInfo/CityTravel')
-// },
+{
+    //一级路由
+    path: '/CityFood',
+    name: '美食天地',
+    //定义图标npm
+    component: () => import('@/otherViews/CityInfo/CityFood')
+},
+{
+    //一级路由
+    path: '/CityTravel',
+    name: '旅游空间',
+    //定义图标npm
+    component: () => import('@/otherViews/CityInfo/CityTravel')
+},
 {
     //一级路由
     path: '/CityNews',

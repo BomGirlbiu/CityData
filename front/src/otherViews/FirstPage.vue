@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+
     <div class="first-container">
       <section id="img-one" class="img">
         <h1 class="index-title">中国城市国际传播大数据智能分析平台</h1>
@@ -123,18 +124,20 @@
           </div>
         </div>
       </section>
-
+<Footer/>
       <!-- <section class="index-footer">FOOTER</section> -->
     </div>
   </div>
 </template>
 
 <script>
-import NavCard from "./NavCard.vue";
+import NavCard from "../components/Layout/NavCard.vue";
+import Footer from '../components/Layout/Footer.vue'
 export default {
   name: "FirstPage",
   components: {
     NavCard,
+    Footer,
   },
   data() {
     return {};

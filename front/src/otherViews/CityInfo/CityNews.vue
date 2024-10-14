@@ -3,7 +3,7 @@
     <!-- 新页面的内容 -->
     <div class="news-header">
       <div class="bar">
-        <nav-item />
+        <NavItem />
       </div>
       <div class="channel">
         <el-button
@@ -243,7 +243,7 @@
 
 <script>
 import axios from "axios";
-import NavItem from "../NavItem.vue";
+import NavItem from "../../components/Layout/NavItem.vue";
 export default {
   name: "CityNews",
   components: {

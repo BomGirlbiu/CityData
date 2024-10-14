@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="nav">
-      <nav-item />
+      <NavItem />
     </div>
     <div class="container-user">
       <div class="left">
@@ -24,7 +24,7 @@
 import UserInfo from "./UserInfo.vue";
 import UserMenu from "./UserMenu.vue";
 import UserContent from "./UserContent.vue";
-import NavItem from "../NavItem.vue";
+import NavItem from "../../components/Layout/NavItem.vue";
 
 export default {
   name: "HomePage",

@@ -14,8 +14,16 @@ import format from 'date-fns/format'
 import '@/permission'
 import relativeTime from 'dayjs/plugin/relativeTime';
 // import CSSDoodle from 'css-doodle';
-
+import PrimeVue from 'primevue/config';
+import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'; 
+import 'primevue/resources/primevue.min.css';
+import 'primeicons/primeicons.css';
 // Vue.component('Dialog', Dialog);
+
+
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+Vue.prototype.$video = Video 
 // 国际化
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');
@@ -31,7 +39,7 @@ Vue.prototype.dayjs = dayjs;//可以全局使用dayjs
 Vue.filter('date', (date) => {
   return format(new Date(date), 'yyyy-MM-dd')
 })
-
+Vue.use(PrimeVue);
 Vue.use(Buefy)
 Vue.use(ElementUI);
 Vue.config.devtools = true;

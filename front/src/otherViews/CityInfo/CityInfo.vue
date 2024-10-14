@@ -55,7 +55,7 @@
         </button>
       </div>
       <div class="pagination-container">
-        <h1 class="introduce">{{this.introduce[this.currentSlide]}}</h1>
+        <h1 class="introduce">{{ this.introduce[this.currentSlide] }}</h1>
         <span
           class="pagination-item"
           v-for="(slide, index) in slides"
@@ -63,10 +63,17 @@
           v-bind:class="{ active: index === currentSlide }"
           v-on:click="updateSlide(index)"
         ></span>
-        <a class="slide-content-cta" @click="showChose('北京')">北京</a>
-        <a class="slide-content-cta" @click="showChose('上海')">上海</a>
-        <a class="slide-content-cta" @click="showChose('广州')">广州</a>
-        <a class="slide-content-cta" @click="showChose('湖南')">湖南</a>
+        <div class="province-button">
+          <!-- 使用 v-for 遍历城市数组 -->
+          <a
+            v-for="province in provinceButton"
+            :key="province"
+            class="slide-content-cta"
+            @click="showChose(province)"
+          >
+            {{ province }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -74,18 +81,26 @@
 
 <script>
 import router from "@/router";
+import axios from "axios";
 export default {
   name: "CityInfo",
   data() {
     return {
       showContent: false,
       currentSlide: 0,
+      provinceButton:[],
+      currentModule:[
+        "CityNews",
+        "CityTravel",
+        "CityFood",
+      ],
       isPreviousSlide: false,
       isFirstLoad: true,
-      introduce:[
-        "这是关于旅游模块的介绍",
-        "这是关于美食模块的介绍",
-        "这是关于时讯模块的介绍"
+      provinces:[],
+      introduce: [
+        "海阔天空，点击选择您感兴趣的省份",
+        "美食天地，点击选择您感兴趣的省份",
+        "新闻资讯，点击选择您感兴趣的省份",
       ],
       slides: [
         {
@@ -117,7 +132,7 @@ export default {
       ],
     };
   },
-  mounted(){
+  mounted() {
     var productRotatorSlide = document.getElementById("app");
     var startX = 0;
     var endX = 0;
@@ -145,9 +160,25 @@ export default {
         }
       }.bind(this)
     );
-
+  },
+  created(){
+    this.loadButtons()
   },
   methods: {
+    async loadButtons() {
+      try {
+        const response = await axios.get(
+          "http://localhost:8081/CityInfo/"+this.currentModule[this.currentSlide]
+        );
+        console.log("http://localhost:8081/CityInfo/"+this.currentModule[this.currentSlide])
+        this.provinceButton = response.data;
+        console.log(this.provinceButton)
+      } catch (error) {
+        console.error("Error loading data:", error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
     updateSlide(index) {
       index < this.currentSlide
         ? (this.isPreviousSlide = true)
@@ -163,7 +194,7 @@ export default {
       // 选择跳转模块(currentSlide)
       if (this.currentSlide === 0) {
         router.push("CityTravel");
-        }
+      }
       if (this.currentSlide === 1) {
         router.push("CityFood");
       }
@@ -176,7 +207,6 @@ export default {
 </script>
 
 <style lang="scss" scope>
-
 body {
   cursor: default;
   ::selection {
@@ -237,8 +267,6 @@ $rect-border-width-small: 5vh;
 [v-cloak] {
   opacity: 0;
 }
-
-
 
 .wrapper {
   // height: calc(100vh - #{$whitespace-height});
@@ -507,7 +535,22 @@ $rect-border-width-small: 5vh;
     }
   }
 }
+// ------------- .province-button ------------- //
+.province-button {
+  display: flex;
+  flex-wrap: wrap; /* 允许项目换行 */
+  justify-content: space-between; /* 项目之间的间距均匀分布 */
+}
 
+.province-button a {
+  flex-basis: calc(33.333% - 10px); /* 每个项目占据三分之一的宽度减去间距 */
+  margin-left: 5px;
+    margin-top: 15px; /* 为项目添加一些外边距 */
+  text-align: center; /* 文本居中 */
+}
+.province-button{
+width: 30%;
+}
 // ------------- PAGINATION ------------- //
 .pagination {
   &-container {
@@ -797,6 +840,10 @@ $text-cut-up: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
   }
+  .slide-content-cta{
+    padding: 0.05rem 2.2rem;
+    height: 20px;
+  }
   .slide-wrapper.active .slide-content-text > p {
     animation-name: fadeIn;
     animation-delay: $text-cut-up;
@@ -807,22 +854,21 @@ $text-cut-up: 0.5s;
 .city-info {
   height: 100vh;
 }
-.introduce{
-    font-size: 50px;
-        // height: 100vh;
-    position: relative;
-    color: white;
-    font-size: 4vh;
-    /* 设置字体 */
-    font-family: 'modern_no._20regular',
-        serif;
-    /* 文字阴影 */
-    text-shadow: 7px 4px black;
-    /* 弹性布局 */
-    display: flex;
-    /* 水平居中 */
-    justify-content: center;
-    /* 垂直居中 */
-    align-items: center;
+.introduce {
+  font-size: 50px;
+  // height: 100vh;
+  position: relative;
+  color: white;
+  font-size: 4vh;
+  /* 设置字体 */
+  font-family: "modern_no._20regular", serif;
+  /* 文字阴影 */
+  text-shadow: 7px 4px black;
+  /* 弹性布局 */
+  display: flex;
+  /* 水平居中 */
+  justify-content: center;
+  /* 垂直居中 */
+  align-items: center;
 }
 </style>
