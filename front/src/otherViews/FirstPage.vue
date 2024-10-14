@@ -1,6 +1,5 @@
 <template>
   <div class="index">
-
     <div class="first-container">
       <section id="img-one" class="img">
         <h1 class="index-title">中国城市国际传播大数据智能分析平台</h1>
@@ -124,7 +123,7 @@
           </div>
         </div>
       </section>
-<Footer/>
+      <Footer />
       <!-- <section class="index-footer">FOOTER</section> -->
     </div>
   </div>
@@ -132,7 +131,7 @@
 
 <script>
 import NavCard from "../components/Layout/NavCard.vue";
-import Footer from '../components/Layout/Footer.vue'
+import Footer from "../components/Layout/Footer.vue";
 export default {
   name: "FirstPage",
   components: {
@@ -148,7 +147,7 @@ export default {
         this.$router.push({ name: "城市信息" });
       }
       if (value === 2) {
-        this.$router.push("CityInfo");
+        this.$router.push({ name: "数据跟踪" });
       }
       if (value === 3) {
         this.$router.push("CityInfo");
@@ -197,161 +196,152 @@ p + p {
   justify-content: center;
 }
 
-
 // css样式
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .container {
-    width: 100vw;
-    height: auto;
+  width: 100vw;
+  height: auto;
 }
 
 .img,
 #img-one,
-#img-two ,
+#img-two,
 .content-one,
 .content-two,
 .content-three,
 .content-four,
 .content-five,
-.content-six{
-        height: 100vh;
-    position: relative;
-    color: rgb(255 255 255);
-    font-size: 10vh;
-    /* 设置字体 */
-    font-family: 'modern_no._20regular',
-        serif;
-    /* 文字阴影 */
-    text-shadow: 7px 4px rgb(0 0 0);
-    /* 弹性布局 */
-    display: flex;
-    /* 水平居中 */
-    justify-content: center;
-    /* 垂直居中 */
-    align-items: center;
-
+.content-six {
+  height: 100vh;
+  position: relative;
+  color: rgb(255 255 255);
+  font-size: 10vh;
+  /* 设置字体 */
+  font-family: "modern_no._20regular", serif;
+  /* 文字阴影 */
+  text-shadow: 7px 4px rgb(0 0 0);
+  /* 弹性布局 */
+  display: flex;
+  /* 水平居中 */
+  justify-content: center;
+  /* 垂直居中 */
+  align-items: center;
 }
 
 .img {
-    overflow: hidden;
-    /* 背景图片不重复 */
-    background-repeat: no-repeat;
-    /* 背景图片位置：居中 */
-    background-position: center;
-    /* 背景图片固定 */
-    background-attachment: fixed;
-    background-size: cover;
-    /* 禁止用户误选中 */
-    user-select: none;
-
+  overflow: hidden;
+  /* 背景图片不重复 */
+  background-repeat: no-repeat;
+  /* 背景图片位置：居中 */
+  background-position: center;
+  /* 背景图片固定 */
+  background-attachment: fixed;
+  background-size: cover;
+  /* 禁止用户误选中 */
+  user-select: none;
 }
 
-
 #img-one {
-    background-image: url("../assets/img/img1.jpg");
-    background-size: cover;
+  background-image: url("../assets/img/img1.jpg");
+  background-size: cover;
 }
 
 #img-two {
-    background-image: url("../assets/img/img2.jpg");
+  background-image: url("../assets/img/img2.jpg");
 }
 
 .content-one {
-    /* background: #000 no-repeat fixed center; */
-    background: url("../assets/img/img3.jpg") no-repeat fixed center;
-    background-size: cover;
+  /* background: #000 no-repeat fixed center; */
+  background: url("../assets/img/img3.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 
 .content-two {
-    background: url("../assets/img/img2.jpg") no-repeat fixed center;
-    background-size: cover;
+  background: url("../assets/img/img2.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 
 .content-three {
-    background: url("../assets/img/img3.jpg") no-repeat fixed center;
-    background-size: cover;
+  background: url("../assets/img/img3.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 .content-four {
-    background: url("../assets/img/img4.jpg") no-repeat fixed center;
-    background-size: cover;
+  background: url("../assets/img/img4.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 .content-five {
-    background: url("../assets/img/img5.jpg") no-repeat fixed center;
-    background-size: cover;
+  background: url("../assets/img/img5.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 .content-six {
-    background: url("../assets/img/img6.jpg") no-repeat fixed center;
-    background-size: cover;
+  background: url("../assets/img/img6.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 .text-box {
-    width: 100%;
-    height: 50%;
-    /* 绝对定位 */
-    position: absolute;
-    bottom: 25%;
-    /* 文字居中 */
-    text-align: center;
-    background-color: rgba(0, 0, 0, .3);
-    /* 旋转中心 */
-    transform-origin: center bottom;
-    /* 扭曲斜切 */
-    transform: skew(0, -8deg);
-
+  width: 100%;
+  height: 50%;
+  /* 绝对定位 */
+  position: absolute;
+  bottom: 25%;
+  /* 文字居中 */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* 旋转中心 */
+  transform-origin: center bottom;
+  /* 扭曲斜切 */
+  transform: skew(0, -8deg);
 }
 
 .text-box .cnt {
-    display: inline-block;
-    text-align: right;
-    margin: 40px 0 10px;
-    width: 90%;
-    max-width: 990px;
-    transform-origin: right bottom;
-    transform: skew(0, 8deg);
+  display: inline-block;
+  text-align: right;
+  margin: 40px 0 10px;
+  width: 90%;
+  max-width: 990px;
+  transform-origin: right bottom;
+  transform: skew(0, 8deg);
 }
 
 .cnt h2 {
-    margin-top: 100px;
-    font-size: 36px;
-    font-family: 'modern_no._20regular',
-        serif;
-    text-shadow: 1px 0px 0px #323232;
-    letter-spacing: 0.3em;
-    /* 大写字母 */
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 5px;
+  margin-top: 100px;
+  font-size: 36px;
+  font-family: "modern_no._20regular", serif;
+  text-shadow: 1px 0px 0px #323232;
+  letter-spacing: 0.3em;
+  /* 大写字母 */
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 .cnt p {
-    font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 10px;
-    color: #fff;
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .cnt a.btn {
-    font-size: 90%;
-    font-family: 'modern_no._20regular',
-        serif;
-    letter-spacing: 0.3em;
-    text-shadow: 1px 0px 0px black;
-    line-height: 2.8;
-    display: inline-block;
-    background-color: #eaeaea;
-    color: #000;
-    border: 3px solid #000;
-    white-space: nowrap;
-    text-decoration: none;
-    padding: 0 20px;
-
+  font-size: 90%;
+  font-family: "modern_no._20regular", serif;
+  letter-spacing: 0.3em;
+  text-shadow: 1px 0px 0px black;
+  line-height: 2.8;
+  display: inline-block;
+  background-color: #eaeaea;
+  color: #000;
+  border: 3px solid #000;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0 20px;
 }
 </style>

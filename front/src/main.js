@@ -1,52 +1,53 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import * as echarts from "echarts";
+
 // Buefy
-import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
+import Buefy from "buefy";
+import "buefy/dist/buefy.css";
 // ElementUI
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import '@/assets/app.css'
-import './assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css'
-import format from 'date-fns/format'
-import '@/permission'
-import relativeTime from 'dayjs/plugin/relativeTime';
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import "@/assets/app.css";
+import "./assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css";
+import format from "date-fns/format";
+import "@/permission";
+import relativeTime from "dayjs/plugin/relativeTime";
 // import CSSDoodle from 'css-doodle';
-import PrimeVue from 'primevue/config';
-import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'; 
-import 'primevue/resources/primevue.min.css';
-import 'primeicons/primeicons.css';
+import PrimeVue from "primevue/config";
+import "primevue/resources/themes/bootstrap4-light-blue/theme.css";
+import "primevue/resources/primevue.min.css";
+import "primeicons/primeicons.css";
 // Vue.component('Dialog', Dialog);
 
-
-import Video from 'video.js'
-import 'video.js/dist/video-js.css'
-Vue.prototype.$video = Video 
+import Video from "video.js";
+import "video.js/dist/video-js.css";
+Vue.prototype.$video = Video;
 // 国际化
-import 'dayjs/locale/zh-cn'
-const dayjs = require('dayjs');
+import "dayjs/locale/zh-cn";
+const dayjs = require("dayjs");
 
 // 相对时间插件
-dayjs.extend(relativeTime)
+dayjs.extend(relativeTime);
 
-dayjs.locale('zh-cn') // use locale globally
-dayjs().locale('zh-cn').format() // use locale in a specific instance
+dayjs.locale("zh-cn"); // use locale globally
+dayjs().locale("zh-cn").format(); // use locale in a specific instance
 
-Vue.prototype.dayjs = dayjs;//可以全局使用dayjs
+Vue.prototype.dayjs = dayjs; //可以全局使用dayjs
 
-Vue.filter('date', (date) => {
-  return format(new Date(date), 'yyyy-MM-dd')
-})
+Vue.filter("date", (date) => {
+  return format(new Date(date), "yyyy-MM-dd");
+});
 Vue.use(PrimeVue);
-Vue.use(Buefy)
+Vue.use(Buefy);
 Vue.use(ElementUI);
 Vue.config.devtools = true;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");
