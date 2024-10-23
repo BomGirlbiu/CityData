@@ -23,6 +23,7 @@ export default {
     this.goHome();
   },
   methods: {
+    // 定时器，倒计时结束跳转到首页
     goHome: function () {
       this.timer = setInterval(() => {
         this.times--

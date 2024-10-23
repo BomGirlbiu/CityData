@@ -118,16 +118,20 @@ export default {
           headlineSecondLine: "食",
           sublineFirstLine: "Nihil sub sole",
           sublineSecondLine: "novum",
-          bgImg: "https://i.postimg.cc/44MWF4Fx/food.jpg",
-          rectImg: "https://i.postimg.cc/QxQn9G0N/food2.jpg",
+          // bgImg: "https://i.postimg.cc/44MWF4Fx/food.jpg",
+          // rectImg: "https://i.postimg.cc/QxQn9G0N/food2.jpg",
+                    bgImg: "https://i.postimg.cc/Qx34VNXM/slide1.jpg",
+          rectImg: "https://i.postimg.cc/ryWZ8R2b/slide-rect1.jpg",
         },
         {
           headlineFirstLine: "时",
           headlineSecondLine: "讯",
           sublineFirstLine: "Τίποτα καινούργιο κάτω από",
           sublineSecondLine: "τον ήλιο",
-          bgImg: "https://i.postimg.cc/qvZcg1VM/news.jpg",
-          rectImg: "https://i.postimg.cc/GmJwCTZQ/news2.jpg",
+          // bgImg: "https://i.postimg.cc/qvZcg1VM/news.jpg",
+          // rectImg: "https://i.postimg.cc/GmJwCTZQ/news2.jpg",
+                    bgImg: "https://i.postimg.cc/Qx34VNXM/slide1.jpg",
+          rectImg: "https://i.postimg.cc/ryWZ8R2b/slide-rect1.jpg",
         },
       ],
     };
@@ -168,9 +172,9 @@ export default {
     async loadButtons() {
       try {
         const response = await axios.get(
-          "http://localhost:8081/CityInfo/"+this.currentModule[this.currentSlide]
+          "http://localhost:82/CityInfo/"+this.currentModule[this.currentSlide]
         );
-        console.log("http://localhost:8081/CityInfo/"+this.currentModule[this.currentSlide])
+        console.log("http://localhost:82/CityInfo/"+this.currentModule[this.currentSlide])
         this.provinceButton = response.data;
         console.log(this.provinceButton)
       } catch (error) {

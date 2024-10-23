@@ -85,6 +85,7 @@ export default {
           this.loading = true;
           this.$store
             .dispatch("user/login", this.ruleForm)
+            // 指定模块名+函数名
             .then(() => {
               this.$message({
                 message: "恭喜你，登录成功",
@@ -94,7 +95,7 @@ export default {
 
               setTimeout(() => {
                 this.loading = false;
-                this.$router.push({ path: this.redirect || "/" });
+                this.$router.push({ path: this.redirect || "/Community" });
               }, 0.1 * 1000);
             })
             .catch(() => {

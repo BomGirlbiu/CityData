@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Data
 @Builder
 @Accessors(chain = true)
-@TableName("cityimages")
+@TableName("city_images")
 @NoArgsConstructor
 @AllArgsConstructor
 public class CityImages {

@@ -15,6 +15,6 @@ public interface CityInfoMapper extends BaseMapper<CityNews> {
     /**
      *获得所有省份
      */
-    @Select("select DISTINCT province from CityNews")
+    @Select("select DISTINCT province from city_news")
     List<String> getProvince();
 }

@@ -21,11 +21,15 @@
           <div class="Header-nav-item" data-nav-item="5">
             <router-link :to="{ name: '城市频道' }">城市频道</router-link>
           </div>
-          <div class="Header-nav-item" data-nav-item="6">
-            <router-link :to="{ name: '个人中心' }"
+          <!-- <div class="Header-nav-item" data-nav-item="6">
+            <router-link :to="{ name: '用户登录' }"
               ><el-avatar :size="50"> user </el-avatar></router-link
             >
-          </div>
+                        <router-link :to="{ path: `/member/${user.username}/setting` }"
+              ><el-avatar :size="50"> user </el-avatar></router-link
+            >
+            
+          </div> -->
         </nav>
       </div>
     </header>

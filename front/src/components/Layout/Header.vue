@@ -14,7 +14,7 @@
           tag="router-link"
           :to="{ path: '/' }"
         >
-          主页
+          首页
         </b-navbar-item>
       </template>
       <template slot="start">
@@ -22,7 +22,7 @@
           tag="router-link"
           :to="{ path: '/' }"
         >
-          🌐 主页
+          🌐 首页
         </b-navbar-item>
       </template>
 
@@ -74,7 +74,7 @@
             <b-button
               class="is-light"
               tag="router-link"
-              :to="{ path: '/login' }"
+             :to="{ name: '登录' }"
             >
               登录
             </b-button>
@@ -153,7 +153,7 @@ export default {
       this.$store.dispatch('user/logout').then(() => {
         this.$message.info('退出登录成功')
         setTimeout(() => {
-          this.$router.push({ path: this.redirect || '/' })
+          this.$router.push({ path: this.redirect || '/Community' })
         }, 500)
       })
     },

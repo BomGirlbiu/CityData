@@ -55,7 +55,10 @@
             <li>
               <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
             </li>
-            <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+            <li>
+              <!-- <router-link :to="{ name: '管理员登录' }">管理员登录</router-link> -->
+               <a href="http://localhost:8082/login" target="_blank">管理员登录</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -10,7 +10,7 @@ const service = axios.create({
 
   // baseURL: 'https://api.example.com',
   // baseURL: 'http://192.168.1.119:8000',
-  baseURL: 'http://localhost:8081',
+  baseURL: 'http://localhost:82',
   // 超时时间 单位是ms，这里设置了5s的超时时间
   timeout: 5 * 1000
 })

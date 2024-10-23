@@ -91,6 +91,47 @@ const routes = [
       },
     ],
   },
+// 管理员
+{
+  path: '/managerLogin',
+  name: '管理员登录',
+  //定义图标
+  component: () => import('@/otherViews/Manager/Login/Login'),
+},
+{
+  //一级路由
+  path: '/ManagerHome',
+  name: '后台管理',
+  //定义图标
+  redirect: '/ManagerHome/CityData',//默认显示城市数据模块
+  component: () => import('@/otherViews/Manager/Layout/ManagerHome'),
+  children: [
+      {
+          path: '/ManagerHome/CityData',
+          name: '城市信息',
+          redirect:'/ManagerHome/CityData/food',
+          component: () => import('@/otherViews/Manager/CityData/CityData'),
+          children:[
+              {
+                  path: '/ManagerHome/CityData/food',
+                  name: '城市信息-美食',
+                  component: () => import('@/otherViews/Manager/CityData/food'),
+              },
+              {
+                  path: '/ManagerHome/CityData/travel',
+                  name: '城市信息-旅游',
+                  component: () => import('@/otherViews/Manager/CityData/travel'),
+              },
+              {
+                  path: '/ManagerHome/CityData/news',
+                  name: '城市信息-新闻',
+                  component: () => import('@/otherViews/Manager/CityData/news'),
+              }
+
+          ]
+      },
+    ]
+  },
   {
     path: "/register",
     name: "register",
@@ -99,7 +140,7 @@ const routes = [
   },
   // 登录
   {
-    name: "login",
+    name: "登录",
     path: "/login",
     component: () => import("@/views/auth/Login"),
     meta: { title: "登录" },
@@ -167,6 +208,7 @@ const routes = [
     hidden: true,
   },
 ];
+
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
