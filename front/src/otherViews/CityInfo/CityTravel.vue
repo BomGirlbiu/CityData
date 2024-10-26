@@ -1,8 +1,8 @@
 <template>
   <div class="city-travel">
-    <NavItem />
+    <Header />
     <header id="travel-header">
-<CityNav/>
+      <CityNav />
       <Slider />
     </header>
 
@@ -23,7 +23,7 @@
       </aside>
 
       <article>
-       <Videos/>
+        <Videos />
 
         <p>
           Attack your ankles puking chase the red dot lay down in your way,
@@ -42,20 +42,20 @@
 </template>
 
 <script>
-import CityNav from '../../components/CityInfo/CityNav.vue'
+import CityNav from "../../components/CityInfo/CityNav.vue";
 import InfoCards from "../../components/CityInfo/InfoCards.vue";
 import ViewsCard from "../../components/CityInfo/ViewsCard.vue";
-import NavItem from "../../components/Layout/NavItem.vue";
+// import NavItem from "../../components/Layout/NavItem.vue";
 import Slider from "../../components/CityInfo/Slider.vue";
 import ArticleCards from "../../components/CityInfo/ArticleCards.vue";
 import Footer from "../../components/Layout/Footer.vue";
 import Header from "@/components/Layout/Header.vue";
+
 import RankTable from "../../components/CityInfo/RankTable.vue";
-import Videos from '../../components/CityInfo/Videos.vue'
+import Videos from "../../components/CityInfo/Videos.vue";
 export default {
   name: "CityFood",
   components: {
-    NavItem,
     Slider,
     InfoCards,
     ArticleCards,
@@ -65,7 +65,7 @@ export default {
     InfoCards,
     RankTable,
     Videos,
-    CityNav
+    CityNav,
   },
   data() {
     return {
@@ -219,7 +219,7 @@ p {
 
 #travel-header {
   background: #633;
-  margin-top: 120px;
+  margin-top: 80px;
   height: 100%;
 }
 #travel-views {

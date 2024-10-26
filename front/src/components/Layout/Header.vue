@@ -1,181 +1,226 @@
 <template>
-  <header class="header has-background-white has-text-black">
-    <b-navbar
-      class="container is-white"
-      :fixed-top="true"
+  <div class="et-hero-tabs-container1">
+    <router-link class="et-hero-tab" :to="{ name: '首页' }">首页</router-link>
+    <router-link class="et-hero-tab" :to="{ name: '城市信息' }"
+      >城市信息</router-link
     >
-      <template slot="brand">
-        <b-navbar-item tag="div">
-          <img :src="logoImg" alt="logo">
-        </b-navbar-item>
+    <router-link class="et-hero-tab" :to="{ name: '数据跟踪' }"
+      >数据跟踪</router-link
+    >
+    <router-link class="et-hero-tab" :to="{ name: '首页' }"
+      >城市对比</router-link
+    >
+    <router-link class="et-hero-tab" :to="{ name: '城市频道' }"
+      >城市频道</router-link
+    >
+    <router-link class="et-hero-tab" :to="{ name: '首页' }"
+      >联想空间</router-link
+    >
 
-        <b-navbar-item
-          class="is-hidden-desktop"
-          tag="router-link"
-          :to="{ path: '/' }"
-        >
-          首页
-        </b-navbar-item>
-      </template>
-      <template slot="start">
-        <b-navbar-item
-          tag="router-link"
-          :to="{ path: '/' }"
-        >
-          🌐 首页
-        </b-navbar-item>
-      </template>
-
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <b-field position="is-centered">
-            <b-input
-              v-model="searchKey"
-              class="s_input"
-              width="80%"
-              placeholder="搜索帖子、标签和用户"
-              rounded
-              clearable
-              @keyup.enter.native="search()"
-            />
-
-            <p class="control">
-              <b-button
-                class="is-info"
-                @click="search()"
-              >检索
-              </b-button>
-            </p>
-          </b-field>
-        </b-navbar-item>
-
-        <b-navbar-item tag="div">
-          <b-switch
-            v-model="darkMode"
-            passive-type="is-warning"
-            type="is-dark"
-          >
-            {{ darkMode ? "夜" : "日" }}
-          </b-switch>
-        </b-navbar-item>
-
-        <b-navbar-item
-          v-if="token == null || token === ''"
-          tag="div"
-        >
-          <div class="buttons">
-            <b-button
-              class="is-light"
-              tag="router-link"
-              :to="{ path: '/register' }"
-            >
-              注册
-            </b-button>
-            <b-button
-              class="is-light"
-              tag="router-link"
-             :to="{ name: '登录' }"
-            >
-              登录
-            </b-button>
-          </div>
-        </b-navbar-item>
-
-        <b-navbar-dropdown
-          v-else
-          :label="user.alias"
-        >
-          <b-navbar-item
-            tag="router-link"
-            :to="{ path: `/member/${user.username}/home` }"
-          >
-            🧘 个人中心
-          </b-navbar-item>
-          <hr class="dropdown-divider">
-          <b-navbar-item
-            tag="router-link"
-            :to="{ path: `/member/${user.username}/setting` }"
-          >
-            ⚙ 设置中心
-          </b-navbar-item>
-          <hr class="dropdown-divider">
-          <b-navbar-item
-            tag="a"
-            @click="logout"
-          > 👋 退出登录
-          </b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-    </b-navbar>
-  </header>
+    <!-- <a class="et-hero-tab" href="#tab-es6">首页</a> -->
+    <!-- <a class="et-hero-tab" href="#tab-flexbox">城市信息</a>
+        <a class="et-hero-tab" href="#tab-react">城市分析</a>
+        <a class="et-hero-tab" href="#tab-angular">数据对比</a>
+        <a class="et-hero-tab" href="#tab-other">城市频道</a>
+        <a class="et-hero-tab" href="#tab-magic">联想空间</a> -->
+    <span class="et-hero-tab-slider"></span>
+  </div>
 </template>
 
 <script>
-import { disable as disableDarkMode, enable as enableDarkMode } from 'darkreader'
-import { getDarkMode, setDarkMode } from '@/utils/auth'
-import { mapGetters } from 'vuex'
-
+// import TweenMax from "gsap";
 export default {
-  name: 'Header',
+  // props: {
+  //   CurrentModule:{
+  //     type:Object,
+  //     default:() => ({})
+  //   },
+  //   CurrentID:{
+  //     type:String,
+  //     default:""
+  //   }
+  // },
   data() {
     return {
-      logoUrl: require('@/assets/logo.png'),
-      logoImg: require('@/assets/image/Logo.png'),
-      searchKey: '',
-      darkMode: false
-    }
-  },
-  computed: {
-    ...mapGetters(['token', 'user'])
-  },
-  watch: {
-    // 监听Theme模式
-    darkMode(val) {
-      if (val) {
-        enableDarkMode({})
-      } else {
-        disableDarkMode()
-      }
-      setDarkMode(this.darkMode)
-    }
+      currentId: null,
+      currentTab: null,
+      tabContainerHeight: 70,
+    };
   },
   created() {
-    // 获取cookie中的夜间还是白天模式
-    this.darkMode = getDarkMode()
-    if (this.darkMode) {
-      enableDarkMode({})
-    } else {
-      disableDarkMode()
-    }
+    this.newCurrentId = this.CurrentID;
+    this.newCurrentTab = this.CurrentModule;
+    console.log("CurrentID", this.CurrentID);
+    console.log("CurrentModule", this.CurrentModule);
+  },
+  mounted() {
+    this.initStickyNavigation();
+    window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("resize", this.onResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
-    async logout() {
-      this.$store.dispatch('user/logout').then(() => {
-        this.$message.info('退出登录成功')
-        setTimeout(() => {
-          this.$router.push({ path: this.redirect || '/Community' })
-        }, 500)
-      })
+    initStickyNavigation() {
+      this.$nextTick(() => {
+        document.querySelectorAll(".et-hero-tab").forEach((tab) => {
+          tab.addEventListener("click", (event) => {
+            event.preventDefault();
+            const scrollTop =
+              document.querySelector(event.target.getAttribute("href"))
+                .offsetTop -
+              this.tabContainerHeight +
+              1;
+            window.scrollTo({
+              top: scrollTop,
+              behavior: "smooth",
+            });
+          });
+        });
+      });
     },
-    search() {
-      console.log(this.token)
-      if (this.searchKey.trim() === null || this.searchKey.trim() === '') {
-        this.$message.info({
-          showClose: true,
-          message: '请输入关键字搜索！',
-          type: 'warning'
-        })
-        return false
+    onTabClick(event, element) {
+      event.preventDefault();
+      const scrollTop =
+        document.querySelector(element.getAttribute("href")).offsetTop -
+        this.tabContainerHeight +
+        1;
+      window.scrollTo({
+        top: scrollTop,
+        behavior: "smooth",
+      });
+    },
+    onScroll() {
+      this.checkTabContainerPosition();
+      this.findCurrentTabSelector();
+    },
+    onResize() {
+      if (this.currentId) {
+        this.setSliderCss();
       }
-      this.$router.push({ path: '/search?key=' + this.searchKey })
-    }
-  }
-}
+    },
+    checkTabContainerPosition() {
+      const offset =
+        document.querySelector(".et-hero-tabs").offsetTop +
+        document.querySelector(".et-hero-tabs").offsetHeight -
+        this.tabContainerHeight;
+      if (window.pageYOffset > offset) {
+        document
+          .querySelector(".et-hero-tabs-container1")
+          .classList.add("et-hero-tabs-container1--top");
+      } else {
+        document
+          .querySelector(".et-hero-tabs-container1")
+          .classList.remove("et-hero-tabs-container1--top");
+      }
+    },
+    findCurrentTabSelector() {
+      let newCurrentId = null;
+      let newCurrentTab = null;
+      document.querySelectorAll(".et-hero-tab").forEach((tab) => {
+        const id = tab.getAttribute("href");
+        const offsetTop =
+          document.querySelector(id).offsetTop - this.tabContainerHeight;
+        const offsetBottom =
+          document.querySelector(id).offsetTop +
+          document.querySelector(id).offsetHeight -
+          this.tabContainerHeight;
+        if (
+          window.pageYOffset > offsetTop &&
+          window.pageYOffset < offsetBottom
+        ) {
+          newCurrentId = id;
+          newCurrentTab = tab;
+        }
+      });
+      if (this.currentId !== newCurrentId || this.currentId === null) {
+        this.currentId = newCurrentId;
+        this.currentTab = newCurrentTab;
+        this.setSliderCss();
+      }
+    },
+    setSliderCss() {
+      if (this.currentTab) {
+        const width = this.currentTab.offsetWidth;
+        const left = this.currentTab.offsetLeft;
+        document.querySelector(
+          ".et-hero-tab-slider"
+        ).style.width = `${width}px`;
+        document.querySelector(".et-hero-tab-slider").style.left = `${left}px`;
+      }
+    },
+  },
+};
 </script>
 
-<style scoped>
-input {
-  width: 80%;
-  height: 86%;
+<style lang="scss" scope>
+.et-hero-tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: #eee;
+  text-align: center;
+  padding: 0 2em;
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1rem;
+  }
+  h3 {
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+    opacity: 0.6;
+  }
+}
+.et-hero-tabs-container1 {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 100;
+  &--top {
+    position: fixed;
+    top: 0;
+  }
+}
+.et-hero-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+  &:hover {
+    color: white;
+    background: rgba(102, 177, 241, 0.8);
+    transition: all 0.5s ease;
+  }
+}
+
+.et-hero-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66b1f1;
+  transition: left 0.3s ease;
+}
+
+@media (min-width: 800px) {
+  .et-hero-tabs,
+  .et-hero-tab {
+    font-size: 1rem;
+  }
 }
 </style>

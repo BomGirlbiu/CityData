@@ -54,7 +54,7 @@ const routes = [
   {
     //一级路由
     path: "/BigScreen",
-    name: "可视化大屏",
+    name: "城市对比",
     //定义图标npm
     component: () => import("@/otherViews/BigScreen/BigScreen"),
   },

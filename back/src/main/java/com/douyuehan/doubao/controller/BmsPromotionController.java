@@ -19,10 +19,10 @@ public class BmsPromotionController extends BaseController {
     private IBmsPromotionService bmsPromotionService;
 
     @GetMapping("/all")
-    public String list() {
+    public ApiResult<List<BmsPromotion>> list() {
         List<BmsPromotion> list = bmsPromotionService.list();
-        return "111";
-//        return ApiResult.success(list);
+//        return "111";
+        return ApiResult.success(list);
     }
 
 }

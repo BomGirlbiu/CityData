@@ -21,10 +21,10 @@ public class BmsTip implements Serializable {
     private Integer id;
 
     /**
-     * 内容
+     * 标题
      */
-    @TableField("`content`")
-    private String content;
+    @TableField("`title`")
+    private String title;
 
     /**
      * 作者

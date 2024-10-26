@@ -1,6 +1,6 @@
 <template>
   <div class="city-food">
-    <NavItem />
+    <Header />
     <header id="food-header">
       <CityNav />
       <h1>Responsive Layout using Flexbox</h1>
@@ -78,7 +78,9 @@
 </template>
 
 <script>
-import NavItem from "../../components/Layout/NavItem.vue";
+// import NavItem from "../../components/Layout/NavItem.vue";
+import Header from '../../components/Layout/Header.vue'
+
 import CityNav from "../../components/CityInfo/CityNav.vue";
 import InfoCards from "../../components/CityInfo/InfoCards.vue";
 import ArticleCards from "../../components/CityInfo/ArticleCards.vue";
@@ -86,7 +88,7 @@ import Footer from "../../components/Layout/Footer.vue";
 export default {
   name: "CityFood",
   components: {
-    NavItem,
+    Header,
     InfoCards,
     ArticleCards,
     Footer,

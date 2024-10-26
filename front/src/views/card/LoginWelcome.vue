@@ -1,10 +1,10 @@
 <template>
   <el-card class="box-card" shadow="never">
     <div slot="header">
-      <span>💐 发帖</span>
+      <span>发布作品</span>
     </div>
     <div v-if="token != null && token !== ''" class="has-text-centered">
-      <b-button type="is-danger" tag="router-link" :to="{path:'/post/create'}" outlined>✍ 发表想法</b-button>
+      <b-button type="is-danger" tag="router-link" :to="{path:'/post/create'}" outlined>点击上传</b-button>
     </div>
 
     <div v-else class="has-text-centered">

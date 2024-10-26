@@ -1,5 +1,6 @@
 <template>
   <div class="city-info">
+    <Header/>
     <div
       class="wrapper"
       v-cloak
@@ -82,8 +83,12 @@
 <script>
 import router from "@/router";
 import axios from "axios";
+import Header from '../../components/Layout/Header.vue'
 export default {
   name: "CityInfo",
+  components:{
+    Header
+  },
   data() {
     return {
       showContent: false,

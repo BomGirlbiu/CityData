@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import * as echarts from "echarts";
-
+import VueParticles from 'vue-particles'
 // Buefy
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
@@ -36,6 +36,7 @@ dayjs.locale("zh-cn"); // use locale globally
 dayjs().locale("zh-cn").format(); // use locale in a specific instance
 
 Vue.prototype.dayjs = dayjs; //可以全局使用dayjs
+Vue.use(VueParticles)
 
 Vue.filter("date", (date) => {
   return format(new Date(date), "yyyy-MM-dd");

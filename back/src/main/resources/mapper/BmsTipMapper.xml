@@ -5,6 +5,6 @@
         select *
         from bms_tip
         order by rand()
-        limit 1
+        limit 5
     </select>
 </mapper>
