@@ -73,7 +73,7 @@ export default {
       // console.log("cityname:", cityname);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/social/youtube",
+          url: "http://localhost:82/index/visual/social/youtube",
           method: "post",
           data: params,
         });
@@ -89,7 +89,7 @@ export default {
       //   console.log("params:", params);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/social/fans",
+          url: "http://localhost:82/index/visual/social/fans",
           method: "post",
           data: params,
         });
@@ -216,7 +216,7 @@ export default {
       //   console.log("params:", params);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/social/emotion",
+          url: "http://localhost:82/index/visual/social/emotion",
           method: "post",
           data: params,
         });

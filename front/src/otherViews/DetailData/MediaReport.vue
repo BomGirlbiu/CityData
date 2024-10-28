@@ -54,7 +54,7 @@ export default {
       //   console.log("params:", params);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/media/newyork",
+          url: "http://localhost:82/index/visual/media/newyork",
           method: "post",
           data: params,
         });

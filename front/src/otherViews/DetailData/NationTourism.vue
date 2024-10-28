@@ -56,7 +56,7 @@ export default {
       //   console.log("params:", params);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/nation/tourism",
+          url: "http://localhost:82/index/visual/nation/tourism",
           method: "post",
           data: params,
         });
