@@ -8,8 +8,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: fujia123
-    url: jdbc:mysql://localhost:3306/newone?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=GMT%2B8
+    password: 20020316
+    url: jdbc:mysql://localhost:3306/ry-vue?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=GMT%2B8
     type: com.zaxxer.hikari.HikariDataSource
 
 logging:
