@@ -1,7 +1,9 @@
 import { mergeRecursive } from "@/utils/ruoyi";
 import dictConverter from './DictConverter'
+// 这段代码定义了一个模块，它提供了字典数据的请求、转换和合并选项的功能。以下是代码的主要组成部分和它们的功能：
 
 export const options = {
+  // /一个对象，包含所有字典类型的元数据。在这个例子中，'*' 表示默认的字典元数据，它将被应用到所有字典类型，除非为特定类型提供了更具体的元数据。
   metas: {
     '*': {
       /**

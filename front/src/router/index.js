@@ -54,7 +54,14 @@ const routes = [
   {
     //一级路由
     path: "/BigScreen",
-    name: "城市对比",
+    name: "可视化大屏",
+    //定义图标npm
+    component: () => import("@/otherViews/BigScreen/BigScreen"),
+  },
+  {
+    //一级路由
+    path: "/FirstPage",
+    name: "数据对比",
     //定义图标npm
     component: () => import("@/otherViews/BigScreen/BigScreen"),
   },
@@ -91,46 +98,45 @@ const routes = [
       },
     ],
   },
-// 管理员
-{
-  path: '/managerLogin',
-  name: '管理员登录',
-  //定义图标
-  component: () => import('@/otherViews/Manager/Login/Login'),
-},
-{
-  //一级路由
-  path: '/ManagerHome',
-  name: '后台管理',
-  //定义图标
-  redirect: '/ManagerHome/CityData',//默认显示城市数据模块
-  component: () => import('@/otherViews/Manager/Layout/ManagerHome'),
-  children: [
+  // 管理员
+  {
+    path: "/managerLogin",
+    name: "管理员登录",
+    //定义图标
+    component: () => import("@/otherViews/Manager/Login/Login"),
+  },
+  {
+    //一级路由
+    path: "/ManagerHome",
+    name: "后台管理",
+    //定义图标
+    redirect: "/ManagerHome/CityData", //默认显示城市数据模块
+    component: () => import("@/otherViews/Manager/Layout/ManagerHome"),
+    children: [
       {
-          path: '/ManagerHome/CityData',
-          name: '城市信息',
-          redirect:'/ManagerHome/CityData/food',
-          component: () => import('@/otherViews/Manager/CityData/CityData'),
-          children:[
-              {
-                  path: '/ManagerHome/CityData/food',
-                  name: '城市信息-美食',
-                  component: () => import('@/otherViews/Manager/CityData/food'),
-              },
-              {
-                  path: '/ManagerHome/CityData/travel',
-                  name: '城市信息-旅游',
-                  component: () => import('@/otherViews/Manager/CityData/travel'),
-              },
-              {
-                  path: '/ManagerHome/CityData/news',
-                  name: '城市信息-新闻',
-                  component: () => import('@/otherViews/Manager/CityData/news'),
-              }
-
-          ]
+        path: "/ManagerHome/CityData",
+        name: "城市信息",
+        redirect: "/ManagerHome/CityData/food",
+        component: () => import("@/otherViews/Manager/CityData/CityData"),
+        children: [
+          {
+            path: "/ManagerHome/CityData/food",
+            name: "城市信息-美食",
+            component: () => import("@/otherViews/Manager/CityData/food"),
+          },
+          {
+            path: "/ManagerHome/CityData/travel",
+            name: "城市信息-旅游",
+            component: () => import("@/otherViews/Manager/CityData/travel"),
+          },
+          {
+            path: "/ManagerHome/CityData/news",
+            name: "城市信息-新闻",
+            component: () => import("@/otherViews/Manager/CityData/news"),
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     path: "/register",
@@ -208,7 +214,6 @@ const routes = [
     hidden: true,
   },
 ];
-
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {

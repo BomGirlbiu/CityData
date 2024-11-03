@@ -76,6 +76,6 @@ public class UmsUser implements Serializable {
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     private Date createTime;
 
-    @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE)
-    private Date modifyTime;
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 }

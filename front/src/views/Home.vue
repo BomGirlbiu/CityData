@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">🔔 {{ billboard.content }}</div>
+    <div class="box">🔔 {{ billboard.noticeTitle }}</div>
     <div class="columns">
       <div class="column is-three-quarters">
         <TopicList></TopicList>

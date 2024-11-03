@@ -28,7 +28,7 @@ import com.ruoyi.system.service.ISysPostService;
  * @author ruoyi
  */
 @RestController
-@RequestMapping("/system/post")
+@RequestMapping("/system/post111")
 public class SysPostController extends BaseController
 {
     @Autowired

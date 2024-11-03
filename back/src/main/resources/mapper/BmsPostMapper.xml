@@ -11,7 +11,7 @@
         <result column="top" property="top"/>
         <result column="essence" property="essence"/>
         <result column="create_time" property="createTime"/>
-        <result column="modify_time" property="modifyTime"/>
+        <result column="update_time" property="updateTime"/>
         <result column="username" property="username"/>
         <result column="alias" property="alias"/>
         <result column="avatar" property="avatar"/>
@@ -21,7 +21,7 @@
         SELECT
         t.id,t.title,t.user_id,t.comments,
         t.view,t.collects,t.top,t.essence,
-        t.create_time ,t.modify_time ,
+        t.create_time ,t.update_time ,
         u.username,u.alias, u.avatar
         FROM bms_post t
         LEFT JOIN ums_user u
@@ -58,7 +58,7 @@
         t.top,
         t.essence,
         t.create_time,
-        t.modify_time,
+        t.update_time,
         u.username,
         u.alias,
         u.avatar

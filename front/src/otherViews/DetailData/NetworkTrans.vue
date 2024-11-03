@@ -79,7 +79,7 @@ export default {
       //   console.log("params:", params);
       try {
         const response = await axios({
-          url: "http://localhost:8081/index/visual/network/cloud",
+          url: "http://localhost:82/index/visual/network/cloud",
           method: "post",
           data: params,
         }); // 处理响应数据

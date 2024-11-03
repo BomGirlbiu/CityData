@@ -1,11 +1,7 @@
 package com.douyuehan.doubao.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.douyuehan.doubao.common.api.ApiResult;
-import com.douyuehan.doubao.model.entity.BmsBillboard;
-import com.douyuehan.doubao.model.entity.BmsPromotion;
 import com.douyuehan.doubao.model.entity.BmsTip;
-import com.douyuehan.doubao.service.IBmsBillboardService;
 import com.douyuehan.doubao.service.IBmsTipService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

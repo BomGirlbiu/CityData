@@ -54,6 +54,6 @@ public class BmsComment implements Serializable {
     /**
      * 修改时间
      */
-    @TableField(value = "modify_time", fill = FieldFill.UPDATE)
-    private Date modifyTime;
+    @TableField(value = "update_time", fill = FieldFill.UPDATE)
+    private Date updateTime;
 }

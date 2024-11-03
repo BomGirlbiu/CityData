@@ -68,7 +68,7 @@ CREATE TABLE `bms_post`  (
   `essence` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否加精，1-是，0-否',
   `section_id` int NULL DEFAULT 0 COMMENT '专栏ID',
   `create_time` datetime NOT NULL COMMENT '发布时间',
-  `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   UNIQUE INDEX `title`(`title`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   INDEX `create_time`(`create_time`) USING BTREE
@@ -101,7 +101,7 @@ CREATE TABLE `bms_comment`  (
   `user_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '作者ID',
   `topic_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'topic_id',
   `create_time` datetime NOT NULL COMMENT '发布时间',
-  `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '评论表' ROW_FORMAT = DYNAMIC;
 
@@ -245,7 +245,7 @@ CREATE TABLE `ums_user`  (
   `status` bit(1) NULL DEFAULT b'1' COMMENT '状态，1：使用，0：停用',
   `role_id` int NULL DEFAULT NULL COMMENT '用户角色',
   `create_time` datetime NOT NULL COMMENT '加入时间',
-  `modify_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_name`(`username`) USING BTREE,
   INDEX `user_email`(`email`) USING BTREE,

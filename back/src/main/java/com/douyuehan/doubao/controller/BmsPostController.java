@@ -61,7 +61,7 @@ public class BmsPostController extends BaseController {
     public ApiResult<BmsPost> update(@RequestHeader(value = USER_NAME) String userName, @Valid @RequestBody BmsPost post) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         Assert.isTrue(umsUser.getId().equals(post.getUserId()), "非本人无权修改");
-        post.setModifyTime(new Date());
+        post.setUpdateTime(new Date());
         post.setContent(EmojiParser.parseToAliases(post.getContent()));
         iBmsPostService.updateById(post);
         return ApiResult.success(post);

@@ -1,6 +1,7 @@
 package com.douyuehan.doubao.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.douyuehan.doubao.utils.GenerateUUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +24,13 @@ public class BmsPost implements Serializable {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @TableId(value = "post_id", type = IdType.AUTO)
+    private Integer postId;
+    /**
+     * 作品编号
+     */
+    @GenerateUUID
+    @TableField(fill = FieldFill.INSERT)
     private String id;
     /**
      * 标题
@@ -95,6 +102,6 @@ public class BmsPost implements Serializable {
     /**
      * 修改时间
      */
-    @TableField(value = "modify_time", fill = FieldFill.UPDATE)
-    private Date modifyTime;
+    @TableField(value = "update_time", fill = FieldFill.UPDATE)
+    private Date updateTime;
 }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BmsPostMapper">
+
+	<resultMap type="BmsPost" id="BmsPostResult">
+		<id     property="postId"        column="post_id"       />
+		<result property="id"        column="id"       />
+		<result property="title"      column="title"     />
+		<result property="content"      column="content"     />
+		<result property="userId"      column="user_id"     />
+		<result property="comments"        column="comments"        />
+		<result property="collects"      column="collects"     />
+		<result property="view"    column="view"   />
+		<result property="sectionId"      column="section_id"     />
+		<result property="updateBy"    column="update_by"   />
+		<result property="top"        column="top"        />
+		<result property="essence"        column="essence"        />
+		<result property="createTime"        column="create_time"        />
+		<result property="updateTime"        column="update_time"        />
+	</resultMap>
+	
+	<sql id="selectPostVo">
+		select *
+<!--		select id,title, content, user_id, comments, collects, view,section_id,update_time,top, essence,createTime,modifyTime-->
+		from bms_post
+    </sql>
+	
+	<select id="selectPostList" parameterType="BmsPost" resultMap="BmsPostResult">
+	    <include refid="selectPostVo"/>
+		<where>
+			<if test="postId != null and postId != ''">
+				AND post_id like concat('%', #{postId}, '%')
+			</if>
+			<if test="userId != null and userId != ''">
+<!--				AND user_id = #{userId}-->
+				AND user_id like concat('%', #{userId}, '%')
+
+			</if>
+			<if test="essence != null and essence != ''">
+<!--				AND title like concat('%', #{title}, '%')-->
+				AND title = #{title}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectPostAll" resultMap="BmsPostResult">
+		<include refid="selectPostVo"/>
+	</select>
+	
+	<select id="selectPostById" parameterType="int" resultMap="BmsPostResult">
+		<include refid="selectPostVo"/>
+		where post_id = #{postId}
+	</select>
+	
+	<select id="selectPostListByUserId" parameterType="String" resultType="String">
+		select p.user_id
+        from bms_post p
+	        left join sys_user_post up on up.post_id = p.post_id
+	        left join sys_user u on u.user_id = up.user_id
+	    where u.user_id = #{userId}
+	</select>
+	
+<!--	<select id="selectPostsByUserName" parameterType="String" resultMap="SysPostResult">-->
+<!--		select p.post_id, p.post_name, p.post_code-->
+<!--		from sys_post p-->
+<!--			 left join sys_user_post up on up.post_id = p.post_id-->
+<!--			 left join sys_user u on u.user_id = up.user_id-->
+<!--		where u.user_name = #{userName}-->
+<!--	</select>-->
+	
+<!--	<select id="checkPostNameUnique" parameterType="String" resultMap="SysPostResult">-->
+<!--		<include refid="selectPostVo"/>-->
+<!--		 where post_name=#{postName} limit 1-->
+<!--	</select>-->
+	
+<!--	<select id="checkPostCodeUnique" parameterType="String" resultMap="SysPostResult">-->
+<!--		<include refid="selectPostVo"/>-->
+<!--		 where post_code=#{postCode} limit 1-->
+<!--	</select>-->
+	
+	<update id="updatePost" parameterType="BmsPost">
+ 		update bms_post
+ 		<set>
+ 			<if test="userId != null and userId != ''">user_id = #{userId},</if>
+ 			<if test="title != null and title != ''">title = #{title},</if>
+ 			<if test="content != null">content = #{content},</if>
+			<if test="essence != null">essence = #{essence},</if>
+			comments = #{comments},
+			collects = #{collects},
+ 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			update_time = sysdate()
+ 		</set>
+ 		where post_id = #{postId}
+	</update>
+
+	<insert id="insertPost" parameterType="BmsPost" useGeneratedKeys="true" keyProperty="postId">
+		insert into bms_post(
+		<if test="userId != null and userId != ''">user_id,</if>
+		id,
+		<if test="title != null and title != ''">title,</if>
+<!--		<if test="userId != null and userId != ''">user_id,</if>-->
+		<if test="content != null">content,</if>
+<!--		<if test="comments != null and comments != ''">comments,</if>-->
+<!--		<if test="collects != null and collects != ''">collects,</if>-->
+<!--		<if test="view != null and view != ''">view,</if>-->
+<!--		<if test="top != null and top != ''">top,</if>-->
+		<if test="essence != null and essence != ''">essence,</if>
+		create_time
+		)values(
+		<if test="userId != null and userId != 0">#{userId},</if>
+		#{id},
+		<if test="title != null and title != ''">#{title},</if>
+<!--		<if test="userId != null and userId != ''">#{userId},</if>-->
+		<if test="content != null">#{content},</if>
+<!--		<if test="comments != null and comments != ''">#{comments},</if>-->
+<!--		<if test="collects != null and collects != ''">#{collects},</if>-->
+<!--		<if test="view != null and view != ''">#{view},</if>-->
+<!--		<if test="top != null and top != ''">#{top},</if>-->
+		<if test="essence != null and essence != ''">#{essence},</if>
+		sysdate()
+		)
+	</insert>
+
+<!--	根据作者编号查找作品   -->
+	<select id="selectPostsByUserId" resultType="com.ruoyi.system.domain.BmsPost">
+				select *
+				from sys_post p
+				where u.user_id = #{userId}
+	</select>
+
+		<delete id="deletePostById" parameterType="int">
+		delete from bms_post where post_id = #{postId}
+	</delete>
+
+	<delete id="deletePostByIds" parameterType="int">
+ 		delete from bms_post where post_id in
+ 		<foreach collection="array" item="postIds" open="(" separator="," close=")">
+ 			#{postIds}
+        </foreach>
+ 	</delete>
+
+</mapper> 
