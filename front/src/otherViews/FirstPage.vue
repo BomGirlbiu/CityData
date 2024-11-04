@@ -69,7 +69,7 @@
         <h3>something about react</h3>
       </section>
       <section class="et-slide" id="tab-angular">
-        <h1>城市对比</h1>
+        <router-link :to="{ name: '数据对比' }"><h1>城市对比</h1></router-link>
         <h3>something about angular</h3>
       </section>
       <section class="et-slide" id="tab-other">

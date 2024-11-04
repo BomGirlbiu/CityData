@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.douyuehan.doubao.mapper.BigscreenMapper.CityAttributesMapper">
+
+    <select id="getSelectCities" resultType="com.douyuehan.doubao.model.entity.BigscreenEntity.CityAttributes">
+    </select>
+
+    <select id="selectCitiesByNames" resultType="com.douyuehan.doubao.model.entity.BigscreenEntity.CityAttributes">
+        SELECT * FROM cityattributes WHERE cityName IN
+        <foreach item="cityName" collection="cityNames" open="(" separator="," close=")">
+            #{cityName}
+        </foreach>
+    </select>
+
+    <update id="updateMColumnWithWeights" parameterType="com.douyuehan.doubao.model.entity.Weights">
+            UPDATE cityattributes
+            SET totalrate = (
+            searchin * #{weightList[0]} *0.01 +
+            network * #{weightList[1]} *0.01 +
+            mediatr * #{weightList[2]} *0.01 +
+            tourism * #{weightList[3]} *0.01 +
+            social * #{weightList[4]} *0.01
+            )
+            WHERE 1=1
+            <!-- 如果有需要，可以在这里添加其他WHERE条件 -->
+    </update>
+
+    <select id="selectCitiesByName" resultType="com.douyuehan.doubao.model.entity.BigscreenEntity.CityAttributes">
+        SELECT * FROM cityattributes WHERE cityName = #{cityName}
+    </select>
+
+</mapper>
