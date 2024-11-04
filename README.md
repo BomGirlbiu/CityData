@@ -1,23 +1,23 @@
 # CityData
 中国城市传播指数大数据分析平台
 
-#### manager_front(管理系统前端，端口号81)
+#### manager_front(管理系统前端，端口号8082)
 
 1.npm i
 
 2.npm run dev
 
-#### manager_back(管理系统后台，端口号82)
+#### manager_back(管理系统后台，端口号8081)
 
 
 
-#### front（系统前台前端，端口号8080）
+#### front（系统前台前端，端口号81）
 
 1.npm i
 
 2.npm run serve
 
-#### back(系统前台后端，端口号8081)
+#### back(系统前台后端，端口号82)
 
 
 
