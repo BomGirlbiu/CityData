@@ -3,9 +3,17 @@ import request from '@/utils/request'
 // 查询部门列表
 export function listDept(query) {
   return request({
-    url: '/system/dept/list',
+    url: '/system/city/cityTravel/list',
     method: 'get',
     params: query
+  })
+}
+
+export function fetchCityTravel(){
+  console.log("啥")
+  return request({
+    url: '/system/city/cityTravel/fetch',
+    method: 'get'
   })
 }
 
