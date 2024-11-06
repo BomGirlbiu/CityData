@@ -1,32 +1,32 @@
 @echo off
 setlocal
 
-REM ½ÓÊÜPythonĞéÄâ»·¾³µØÖ·×÷ÎªµÚÒ»¸ö²ÎÊı
+REM æ¥å—Pythonè™šæ‹Ÿç¯å¢ƒåœ°å€ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°
 set VENV_PATH=%1
 
-REM ¼¤»îĞéÄâ»·¾³
+REM æ¿€æ´»è™šæ‹Ÿç¯å¢ƒ
 call %VENV_PATH%\Scripts\activate
 
-REM Ö´ĞĞGet_city_img_url.py
+REM æ‰§è¡ŒGet_city_img_url.py
 python Get_city_img_url.py
 if %errorlevel% neq 0 (
-    echo Get_city_img_url.py Ö´ĞĞÊ§°Ü
+    echo Get_city_img_url.py æ‰§è¡Œå¤±è´¥
     exit /b %errorlevel%
 )
 
-REM Ö´ĞĞCombine_city_img_url.py
+REM æ‰§è¡ŒCombine_city_img_url.py
 python Combine_city_img_url.py
 if %errorlevel% neq 0 (
-    echo Combine_city_img_url.py Ö´ĞĞÊ§°Ü
+    echo Combine_city_img_url.py æ‰§è¡Œå¤±è´¥
     exit /b %errorlevel%
 )
 
-REM Ö´ĞĞÆ´Òô×ªÖĞÎÄ.py
-python Æ´Òô×ªÖĞÎÄ.py
+REM æ‰§è¡Œæ‹¼éŸ³è½¬ä¸­æ–‡.py
+python æ‹¼éŸ³è½¬ä¸­æ–‡.py
 if %errorlevel% neq 0 (
-    echo Æ´Òô×ªÖĞÎÄ.py Ö´ĞĞÊ§°Ü
+    echo æ‹¼éŸ³è½¬ä¸­æ–‡.py æ‰§è¡Œå¤±è´¥
     exit /b %errorlevel%
 )
 
-echo ËùÓĞ½Å±¾Ö´ĞĞ³É¹¦
+echo æ‰€æœ‰è„šæœ¬æ‰§è¡ŒæˆåŠŸ
 endlocal

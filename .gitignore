@@ -1,6 +1,7 @@
 .VSCodeCounter
 .venv
 .idea
+.vscode
 *.xlsx
 *.log
 log

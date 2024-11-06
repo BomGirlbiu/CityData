@@ -8,5 +8,7 @@ python trvl_spider.py [index] [user] [passwd] [database]
 python sfd_spider.py [depth] [user] [passwd] [database]
 # 爬取NewYork新闻相关信息
 python NewYork.py [city_dick.json path]
+# 保存NewYork.py数据至数据库
+python NewYork_save.py databasename username passwd
 ```
     

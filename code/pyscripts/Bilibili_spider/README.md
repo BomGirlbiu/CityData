@@ -9,3 +9,11 @@
     2.run.bat [.venvpath] [1 2...]
      [1 2...] list define which step to skip
     makesure there is a province_city_dict.json file in path
+
+    # set scripts[1]=Get_videos_links.py ./province_city_dict.json
+    # set scripts[2]=combind.py
+    # set scripts[3]=Get_comments.py
+    # set scripts[4]=combind.py 1
+    # set scripts[5]=Sentiment_analysis.py
+    # set scripts[6]=save_comments.py
+    # you can also edit run.bat
