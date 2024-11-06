@@ -122,6 +122,27 @@ service.interceptors.response.use(res => {
   }
 )
 
+// 通用爬取方法
+export function fetch(name) {
+  Message({
+    message: "开始爬取...",
+    duration: 4 * 1000
+  })
+  return service.get(
+    '/system/fetch',
+    name,
+    {
+      transformRequest: [(name) => { return tansParams(name) }],
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    }
+  ).then(response => {
+    Message({
+      message: response.msg,
+      duration: 2 * 1000
+    })
+  })
+}
+
 // 通用下载方法
 export function download(url, params, filename, config) {
   downloadLoadingInstance = Loading.service({ text: "正在下载数据，请稍候", spinner: "el-icon-loading", background: "rgba(0, 0, 0, 0.7)", })
