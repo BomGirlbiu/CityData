@@ -60,10 +60,10 @@ const routes = [
   },
   {
     //一级路由
-    path: "/FirstPage",
+    path: "/Evaluate",
     name: "数据对比",
     //定义图标npm
-    component: () => import("@/otherViews/BigScreen/BigScreen"),
+    component: () => import("@/otherViews/Evaluate/Evaluate"),
   },
 
   // 个人中心

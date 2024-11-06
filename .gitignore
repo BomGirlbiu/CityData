@@ -1,0 +1,7 @@
+.VSCodeCounter
+.venv
+.idea
+*.xlsx
+*.log
+log
+temp

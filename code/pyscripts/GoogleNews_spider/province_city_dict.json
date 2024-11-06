@@ -1,0 +1,20 @@
+{
+  "beijing": ["beijing"],
+  "tianjin": ["tianjin"],
+  "shanghai": ["shanghai"],
+  "chongqing": ["chongqing"],
+  "guangdong": ["guangzhou", "shenzhen"],
+  "zhejiang": ["hangzhou","ningbo"],
+  "hubei": ["wuhan"],
+  "guangxi": ["nanning"],
+  "sichuan": ["chengdu"],
+  "liaoning": ["shenyang", "dalian"],
+  "shandong": ["jinan"],
+  "heilongjiang": ["haerbin"],
+  "jilin": ["changchun"],
+  "fujian": ["fuzhou", "xiamen"],
+  "henan": ["zhengzhou"],
+  "jiangsu": ["wuxi"],
+  "anhui": ["hefei"],
+  "hunan": ["changsha", "zhuzhou", "xiangtan", "hengyang", "shaoyang", "yueyang", "changde", "zhangjiajie", "yiyang", "chengde", "xianzhou", "cengdou"]
+}
