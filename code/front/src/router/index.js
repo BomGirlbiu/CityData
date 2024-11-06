@@ -65,6 +65,13 @@ const routes = [
     //定义图标npm
     component: () => import("@/otherViews/Evaluate/Evaluate"),
   },
+  {
+    //一级路由
+    path: "/ImageHome",
+    name: "联想空间",
+    //定义图标npm
+    component: () => import("@/otherViews/ImageHome/ImageHome"),
+  },
 
   // 个人中心
   {

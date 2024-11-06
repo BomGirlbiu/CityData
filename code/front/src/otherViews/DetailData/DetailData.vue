@@ -140,23 +140,48 @@ export default {
   },
   methods: {
     generateReport() {
-      // 获取googlecity子组件的DOM元素
-      const googleCityElement = this.$refs.googlecityComponent.$el;
+      const sections = [
+        "section1",
+        "section2",
+        "section3",
+        "section4",
+        "section5",
+        "section6",
+      ];
+      const pdf = new jsPDF();
 
-      // 使用html2canvas捕获子组件的内容
-      html2canvas(googleCityElement)
-        .then((canvas) => {
+      sections.forEach((sectionId) => {
+        const sectionElement = document.getElementById(sectionId);
+        if (!sectionElement) {
+          console.error(`Section with id ${sectionId} not found`);
+          return;
+        }
+        // 继续捕获和生成 PDF
+      });
+
+      const sectionPromises = sections.map((sectionId) => {
+        const sectionElement = document.getElementById(sectionId);
+        return html2canvas(sectionElement).then((canvas) => {
+          console.log(`Canvas for ${sectionId} generated`, canvas);
           const contentDataURL = canvas.toDataURL("image/png");
-          const pdf = new jsPDF("portrait", "mm", "a4");
+          const imgWidth = canvas.width;
+          const imgHeight = canvas.height;
 
-          // 将canvas添加到PDF中
-          pdf.addImage(contentDataURL, "PNG", 0, 0);
+          // 创建一个新的页面，大小与当前 section 相同
+          pdf.addPage(imgWidth, imgHeight);
 
+          // 将图片添加到PDF中
+          pdf.addImage(contentDataURL, "PNG", 0, 0, imgWidth, imgHeight);
+        });
+      });
+
+      Promise.all(sectionPromises)
+        .then(() => {
           // 保存PDF文件
-          pdf.save("googlecity-report.pdf");
+          pdf.save("report.pdf");
         })
         .catch((error) => {
-          console.error("Error capturing googlecity component:", error);
+          console.error("Error capturing sections:", error);
         });
     },
     handleCityFromChild(data) {

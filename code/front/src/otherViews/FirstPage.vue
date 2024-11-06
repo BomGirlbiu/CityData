@@ -77,7 +77,7 @@
         <h3>something about other</h3>
       </section>
       <section class="et-slide" id="tab-magic">
-        <h1>联想空间</h1>
+        <router-link :to="{ name: '联想空间' }"><h1>联想空间</h1></router-link>
         <h3>something about other</h3>
       </section>
       <Footer />
@@ -184,10 +184,10 @@ export default {
       if (this.currentId !== newCurrentId || this.currentId === null) {
         this.currentId = newCurrentId;
         this.currentTab = newCurrentTab;
-        console.log("newCurrentId",newCurrentId)
-        console.log("newCurrentTab",newCurrentTab)
-        console.log("newCurrentTab",typeof(newCurrentTab))
-        console.log("newCurrentTab",typeof(newCurrentId))
+        console.log("newCurrentId", newCurrentId);
+        console.log("newCurrentTab", newCurrentTab);
+        console.log("newCurrentTab", typeof newCurrentTab);
+        console.log("newCurrentTab", typeof newCurrentId);
 
         this.setSliderCss();
       }
