@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ruoyi.common.core.controller.BaseController;
@@ -14,14 +15,19 @@ import com.ruoyi.common.core.domain.AjaxResult;
 @RequestMapping("/system/fetch")
 public class FetchController extends BaseController{
     @GetMapping("")
-    protected AjaxResult fetch(String name)
+    protected AjaxResult fetch(@RequestParam(value = "name", required = false) String name)
     {
+        if (name == null || name.isEmpty()) {
+            return error("参数 name 不能为空");
+        }
         System.out.println("开始执行Python爬虫");
-        String virtualEnvPath;
-        String scriptPath;
+        String virtualEnvPath="C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径;
+        String scriptPath= "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";
         String osName = System.getProperty("os.name").toLowerCase();
-        virtualEnvPath = "C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径
-        scriptPath = "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";// 替换为你的Python脚本路径
+        if("travel".equals(name)){
+            virtualEnvPath = "C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径
+            scriptPath = "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";// 替换为你的Python脚本路径
+        }
         String pythonExecutable;
         if (osName.contains("win")) {
             pythonExecutable = virtualEnvPath + "\\Scripts\\python.exe";

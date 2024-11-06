@@ -130,9 +130,8 @@ export function fetch(name) {
   })
   return service.get(
     '/system/fetch',
-    name,
     {
-      transformRequest: [(name) => { return tansParams(name) }],
+      params : { name }, 
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     }
   ).then(response => {
