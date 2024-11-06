@@ -26,7 +26,10 @@
         <SocialMedia :selectedCity="selectedCity"></SocialMedia>
       </div>
       <div class="part">
-        <MediaReport :selectedCity="selectedCity"></MediaReport>
+        <MediaReport
+          :isShowExplain="isShowExplain"
+          :selectedCity="selectedCity"
+        ></MediaReport>
       </div>
       <el-button id="floating-button" @click="anotherPage"
         >查看数据分析</el-button
@@ -55,6 +58,7 @@ export default {
   data() {
     return {
       selectedCity: "北京",
+      isShowExplain: false,
     };
   },
   created() {

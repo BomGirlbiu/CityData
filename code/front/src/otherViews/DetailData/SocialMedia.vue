@@ -7,21 +7,43 @@
         <option v-for="item in influences" :key="item">{{ item }}</option>
       </select>
     </div>
-    <div ref="chartDom" class="echarts" style="width: 100%; height: 100%">
+    <div
+      v-if="isShowExplain"
+      ref="chartDom"
+      class="echarts"
+      style="width: 50%; height: 100%"
+    >
       <img
         class="imgNodata"
         v-show="chart == null"
         src="../../assets/image/暂无数据.png"
       />
     </div>
+    <div
+      v-else
+      ref="chartDom"
+      class="echarts"
+      style="width: 100%; height: 100%"
+    >
+      <img
+        class="imgNodata"
+        v-show="chart == null"
+        src="../../assets/image/暂无数据.png"
+      />
+    </div>
+    <div v-show="isShowExplain" class="explain_detail">
+      <ZhiPu :analyzedata="analyzedata" :Question="Question"></ZhiPu>
+    </div>
   </div>
 </template>
 <script>
 import axios from "axios";
 import * as echarts from "echarts";
+import ZhiPu from "./ZhiPu.vue";
 
 export default {
   name: "SocialMedia",
+  components: { ZhiPu },
   data() {
     return {
       selected: "",
@@ -31,10 +53,15 @@ export default {
         "bilibili网站评论倾向性",
         "YouTube评论倾向性",
       ],
+      Question:
+        "以下数据为" +
+        "的各个社交平台的官方媒体账号粉丝量，单位为万，{该城市政务类账号，该城市文化类账号，该城市新闻类账号，社交平台}，将其理解为大众对该城市各个方面的关注度，分析为什么大众对这些方面感兴趣，最后总结，一共在500字以内，可以在回答中出现已知的数据",
+      analyzedata: null,
     };
   },
   props: {
     selectedCity: String, // 声明selectedCity为String类型的prop
+    isShowExplain: Boolean,
   },
 
   watch: {
@@ -47,18 +74,30 @@ export default {
       } else if (this.selected == "YouTube评论倾向性") {
         this.socialyoutube(newVal);
       }
-      console.log("selectedCity changed:", newVal);
+      // console.log("selectedCity changed:", newVal);
     },
     selected: function (newVal, oldVal) {
       this.chart = null;
       if (newVal == "bilibili网站评论倾向性") {
+        this.Question =
+          "以下数据格式为" +
+          "{城市名，消极评论数，中立评论数，社交平台，积极评论数}，具体解释为在该社交平台上，选取较为热门的帖子，其中的各种情绪的评论数，分析在该平台上对该城市的情感为什么是这种走向，并总结，不超过500字，清晰明了，不要加不确定的词汇";
+
         this.socialemotion(this.selectedCity);
       } else if (newVal == "多平台账号粉丝量") {
+        this.Question =
+          "以下数据为" +
+          "的各个社交平台的官方媒体账号粉丝量，单位为万，{城市id，城市名，该城市政务类账号，该城市文化类账号，该城市新闻类账号，社交平台}，将其理解为大众对该城市各个方面的关注度，分析为什么大众对这些方面感兴趣，最后总结，一共在500字以内，可以在回答中出现已知的数据";
+
         this.socialMediafans(this.selectedCity);
       } else if (this.selected == "YouTube评论倾向性") {
         this.socialyoutube(this.selectedCity);
+        this.Question =
+          "以下数据格式为" +
+          this.selectedCity +
+          "{城市名，消极评论数，中立评论数，社交平台youtube，积极评论数}，具体解释为在该社交平台上，选取较为热门的帖子，其中的各种情绪的评论数，分析在该平台上对该城市的情感为什么是这种走向，并总结，不超过500字，清晰明了，不要加不确定的词汇";
       }
-      console.log("selected changed:", newVal);
+      // console.log("selected changed:", newVal);
     },
   },
   created() {
@@ -77,7 +116,8 @@ export default {
           method: "post",
           data: params,
         });
-        console.log(response.data); // 处理响应数据
+        // console.log(response.data); // 处理响应数据
+        this.analyzedata = response.data;
         this.initChart2(response.data);
       } catch (error) {
         console.error("Error:", error);
@@ -93,7 +133,8 @@ export default {
           method: "post",
           data: params,
         });
-        console.log(response.data); // 处理响应数据
+        // console.log(response.data); // 处理响应数据
+        this.analyzedata = response.data;
         this.initChart(response.data);
       } catch (error) {
         console.error("Error:", error);
@@ -111,7 +152,7 @@ export default {
             datas[i].plat,
           ];
         }
-        console.log(platall);
+        // console.log(platall);
         var plat = ["抖音", "微博"];
         this.chart = echarts.init(this.$refs.chartDom);
         const option = {
@@ -222,6 +263,7 @@ export default {
         });
         // console.log(response.data); // 处理响应数据
         this.initChart2(response.data);
+        this.analyzedata = response.data;
       } catch (error) {
         console.error("Error:", error);
       }
@@ -237,6 +279,7 @@ export default {
         tend[1] = datas[0].negativeNum;
         tend[2] = datas[0].neutralityNum;
         // console.log(tend);
+        this.analyzedata = tend;
         const option2 = {
           tooltip: {
             trigger: "item",
@@ -317,18 +360,15 @@ export default {
     },
   },
   beforeDestroy() {
-    if (!this.chart) {
-      return;
-    }
     this.chart.dispose();
-    this.chart = null;
   },
 };
 </script>
 <style>
 .socialmedia {
   height: 90%;
-  width: 110%;
+  width: 100%;
+  position: relative;
 }
 /* .select-city {
   /* 为下拉框容器设置样式（如果需要的话）
@@ -341,5 +381,12 @@ export default {
   padding: 8px; /* 添加一些内边距以提高可读性 */
   border: 1px solid #ccc; /* 边框样式 */
   border-radius: 4px; /* 边框圆角 */
+}
+.explain_detail {
+  position: absolute; /* 设置为绝对定位 */
+  top: 0; /* 顶部与父元素对齐 */
+  right: 0%; /* 右侧距离父元素右侧0% */
+  width: 40%; /* 子元素的宽度 */
+  height: 100%; /* 子元素的高度 */
 }
 </style>

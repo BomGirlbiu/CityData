@@ -18,7 +18,7 @@
           }}</a>
         </li>
         <li>
-          <el-button type="primary"
+          <el-button type="primary" @click="generateReport"
             >生成城市报告<i class="el-icon-upload el-icon--right"></i
           ></el-button>
         </li>
@@ -37,36 +37,55 @@
     />
     <main class="content">
       <section id="section1" class="section">
-        <div style="height: 320px; width: 38%">
-          <Conclusion :selectedCity="selectedCity"></Conclusion>
+        <div style="height: 400px; width: 100%">
+          <Conclusion
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></Conclusion>
         </div>
-        <div style="height: 320px; flex: 0"></div>
+        <!-- <div style="height: 320px; flex: 0"></div> -->
         <!-- 这里的flex为0表示左对齐，右对齐则为flex:1 -->
-        <FiveInfluence></FiveInfluence>
+        <!-- <FiveInfluence></FiveInfluence> -->
       </section>
       <section id="section2" class="section">
-        <div style="height: 480px; width: 50%">
-          <SearchEngine :selectedCity="selectedCity"></SearchEngine>
+        <div style="height: 480px; width: 100%">
+          <SearchEngine
+            ref="googlecityComponent"
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></SearchEngine>
         </div>
       </section>
       <section id="section3" class="section">
-        <div style="height: 480px; width: 50%">
-          <NationTourism :selectedCity="selectedCity"></NationTourism>
+        <div style="height: 480px; width: 100%">
+          <NationTourism
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></NationTourism>
         </div>
       </section>
       <section id="section4" class="section">
-        <div style="height: 480px; width: 50%">
-          <NetworkTrans :selectedCity="selectedCity"></NetworkTrans>
+        <div style="height: 480px; width: 100%">
+          <NetworkTrans
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></NetworkTrans>
         </div>
       </section>
       <section id="section5" class="section">
-        <div style="height: 480px; width: 50%">
-          <SocialMedia :selectedCity="selectedCity"></SocialMedia>
+        <div style="height: 480px; width: 100%">
+          <SocialMedia
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></SocialMedia>
         </div>
       </section>
       <section id="section6" class="section">
-        <div style="height: 480px; width: 50%">
-          <MediaReport :selectedCity="selectedCity"></MediaReport>
+        <div style="height: 480px; width: 100%">
+          <MediaReport
+            :isShowExplain="isShowExplain"
+            :selectedCity="selectedCity"
+          ></MediaReport>
         </div>
       </section>
     </main>
@@ -81,6 +100,10 @@ import NationTourism from "./NationTourism.vue";
 import Conclusion from "./Conclusion.vue";
 import FiveInfluence from "./FiveInfluence.vue";
 import SelectCity from "./SelectCity.vue";
+import ZhiPu from "./ZhiPu.vue";
+
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default {
   components: {
@@ -92,6 +115,7 @@ export default {
     NetworkTrans,
     FiveInfluence,
     SelectCity,
+    ZhiPu,
   },
   data() {
     return {
@@ -106,6 +130,7 @@ export default {
         // 更多书签
       ],
       activeBookmark: null,
+      isShowExplain: true,
     };
   },
   created() {
@@ -114,6 +139,26 @@ export default {
     }
   },
   methods: {
+    generateReport() {
+      // 获取googlecity子组件的DOM元素
+      const googleCityElement = this.$refs.googlecityComponent.$el;
+
+      // 使用html2canvas捕获子组件的内容
+      html2canvas(googleCityElement)
+        .then((canvas) => {
+          const contentDataURL = canvas.toDataURL("image/png");
+          const pdf = new jsPDF("portrait", "mm", "a4");
+
+          // 将canvas添加到PDF中
+          pdf.addImage(contentDataURL, "PNG", 0, 0);
+
+          // 保存PDF文件
+          pdf.save("googlecity-report.pdf");
+        })
+        .catch((error) => {
+          console.error("Error capturing googlecity component:", error);
+        });
+    },
     handleCityFromChild(data) {
       if (data.slice(-2, -1) == "城" || data.slice(-2, -1) == "郊") {
         this.selectedCity = data.slice(0, -2);

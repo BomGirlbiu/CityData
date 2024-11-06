@@ -7,42 +7,73 @@
         <option v-for="item in influences" :key="item">{{ item }}</option>
       </select>
     </div>
-    <div ref="chartDom" class="echarts" style="width: 100%; height: 100%">
+    <!-- 如果需要展示分析结果的话，就占50%，不展示则为100% -->
+    <div
+      v-if="isShowExplain"
+      ref="chartDom"
+      class="echarts"
+      style="width: 50%; height: 100%"
+    >
       <img
         class="imgNodata"
         v-show="chart == null"
         src="../../assets/image/暂无数据.png"
       />
     </div>
+    <div
+      v-else
+      ref="chartDom"
+      class="echarts"
+      style="width: 100%; height: 100%"
+    >
+      <img
+        class="imgNodata"
+        v-show="chart == null"
+        src="../../assets/image/暂无数据.png"
+      />
+    </div>
+    <div v-show="isShowExplain" class="explain_detail">
+      <ZhiPu :analyzedata="analyzedata" :Question="Question"></ZhiPu>
+    </div>
   </div>
 </template>
 <script>
 import axios from "axios";
 import * as echarts from "echarts";
+import ZhiPu from "./ZhiPu.vue";
 export default {
   name: "MediaReport",
   props: {
     selectedCity: String, // 声明selectedCity为String类型的prop
+    isShowExplain: Boolean,
+  },
+  components: {
+    ZhiPu,
   },
   data() {
     return {
       selected: "",
       chart: null,
+      analyzedata: null,
+      Question:
+        "以下是关于一个城市的纽约时报报道量的相关数据，请结合当地的时讯和经济政治等分析数据发生波动的原因，数据格式为{城市名，时间范围内纽约时报对该城市的报道次数，报道计算开始时间，报道计算终止时间}：直接列出每年波动的原因最后总结即可，不用列出数据里已经提供过的内容，不用分点，直接分成两段，其中总结写为一段，控制在500字以内",
       influences: ["纽约时报报道次数"],
     };
   },
   watch: {
     selectedCity: function (newVal, oldVal) {
       if (this.selected == "纽约时报报道次数") {
+        this.Question =
+          "以下是关于一个城市的纽约时报报道量的相关数据，请结合当地的时讯和经济政治等分析数据发生波动的原因，数据格式为{城市名，时间范围内纽约时报对该城市的报道次数，报道计算开始时间，报道计算终止时间}：直接列出每年波动的原因最后总结即可，不用列出数据里已经提供过的内容，不用分点，直接分成两段，其中总结写为一段，控制在600字以内，不要空行";
         this.newyork(newVal);
       }
-      console.log("selectedCity changed:", newVal);
+      // console.log("selectedCity changed:", newVal);
     },
     selected: function (newVal, oldVal) {
       if (newVal == "纽约时报报道次数") {
         this.newyork(this.selectedCity);
       }
-      console.log("selected changed:", newVal);
+      // console.log("selected changed:", newVal);
     },
   },
   methods: {
@@ -58,8 +89,8 @@ export default {
           method: "post",
           data: params,
         });
-        console.log(response.data); // 处理响应数据
         this.initChart(response.data);
+        this.analyzedata = response.data;
       } catch (error) {
         console.error("Error:", error);
       }
@@ -72,7 +103,6 @@ export default {
           starttime[i] = datas[i].starttime.split("-")[0];
           counts[i] = datas[i].counts;
         }
-        console.log(starttime, counts);
         this.chart = echarts.init(this.$refs.chartDom);
         const option = {
           title: {
@@ -148,6 +178,7 @@ export default {
 <style>
 .mediareport {
   height: 90%;
+  position: relative;
 }
 
 .selectcity {
@@ -169,5 +200,12 @@ export default {
 
   /* 移除左外边距，保持布局整洁 */
   margin-left: 0;
+}
+.explain_detail {
+  position: absolute; /* 设置为绝对定位 */
+  top: 0; /* 顶部与父元素对齐 */
+  right: 0%; /* 右侧距离父元素右侧0% */
+  width: 50%; /* 子元素的宽度 */
+  height: 100%; /* 子元素的高度 */
 }
 </style>

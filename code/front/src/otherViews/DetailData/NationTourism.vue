@@ -7,43 +7,75 @@
         <option v-for="item in influences" :key="item">{{ item }}</option>
       </select>
     </div>
-    <div ref="chartDom" class="echarts" style="width: 100%; height: 100%">
+    <div
+      v-if="isShowExplain"
+      ref="chartDom"
+      class="echarts"
+      style="width: 50%; height: 100%"
+    >
       <img
         class="imgNodata"
         v-show="chart == null"
         src="../../assets/image/暂无数据.png"
       />
     </div>
+    <div
+      v-else
+      ref="chartDom"
+      class="echarts"
+      style="width: 100%; height: 100%"
+    >
+      <img
+        class="imgNodata"
+        v-show="chart == null"
+        src="../../assets/image/暂无数据.png"
+      />
+    </div>
+    <div v-show="isShowExplain" class="explain_detail">
+      <ZhiPu :analyzedata="analyzedata" :Question="Question"></ZhiPu>
+    </div>
   </div>
 </template>
 <script>
 import axios from "axios";
 import * as echarts from "echarts";
+import ZhiPu from "./ZhiPu.vue";
 export default {
   name: "NationTourism",
+  components: {
+    ZhiPu,
+  },
   data() {
     return {
       selected: "",
       chart: null,
+      Question:
+        "以下数据格式为{年份，城市，谷歌搜索量，来访旅游量}，我们不用管谷歌搜索量，针对该城市的每年来访旅游量进行分析，结合该城市的经济情况和时讯政治分析旅游量数据每年发生波动的原因，直接列出每年波动的原因最后总结即可，不用列出数据里已经提供过的内容，不用分点，直接分成两段，其中总结写为一段，控制在500字以内，不要空行",
+      analyzedata: null,
       influences: ["国外入境旅游量时序图"],
     };
   },
   props: {
     selectedCity: String, // 声明selectedCity为String类型的prop
+    isShowExplain: Boolean,
   },
 
   watch: {
     selectedCity: function (newVal, oldVal) {
       if (this.selected == "国外入境旅游量时序图") {
-        this.tourism(newVal);
+        (this.Question =
+          "以下数据格式为{年份，城市，谷歌搜索量，来访旅游量}，我们不用管谷歌搜索量，针对该城市的每年来访旅游量进行分析，结合该城市的经济情况和时讯政治分析旅游量数据每年发生波动的原因，直接列出每年波动的原因最后总结即可，不用列出数据里已经提供过的内容，不用分点，直接分成两段，其中总结写为一段，控制在600字以内，不要空行"),
+          this.tourism(newVal);
       }
-      console.log("selectedCity changed:", newVal);
+      // console.log("selectedCity changed:", newVal);
     },
     selected: function (newVal, oldVal) {
       if (newVal == "国外入境旅游量时序图") {
         this.tourism(this.selectedCity);
+        this.Question =
+          "以下数据格式为{年份，城市，谷歌搜索量，来访旅游量}，我们不用管谷歌搜索量，针对该城市的每年来访旅游量进行分析，结合该城市的经济情况和时讯政治分析旅游量数据每年发生波动的原因，直接列出每年波动的原因最后总结即可，不用列出数据里已经提供过的内容，不用分点，直接分成两段，其中总结写为一段，控制在600字以内，不要空行";
+        // console.log("selected changed:", newVal);
       }
-      console.log("selected changed:", newVal);
     },
   },
   created() {
@@ -60,7 +92,8 @@ export default {
           method: "post",
           data: params,
         });
-        console.log(response.data); // 处理响应数据
+        // console.log(response.data); // 处理响应数据
+        this.analyzedata = response.data;
         this.initChart(response.data);
       } catch (error) {
         console.error("Error:", error);
@@ -147,7 +180,7 @@ export default {
         const zoomSize = 6;
         // 点击消失，但是会报错。。
         this.chart.on("click", function (params) {
-          console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+          // console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
           this.chart.dispatchAction({
             type: "dataZoom",
             startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
@@ -174,7 +207,8 @@ export default {
 <style>
 .nationtourism {
   height: 100%;
-  width: 108%;
+  width: 100%;
+  position: relative;
 }
 
 .selectcity {
@@ -183,5 +217,12 @@ export default {
   padding: 8px; /* 添加一些内边距以提高可读性 */
   border: 1px solid #ccc; /* 边框样式 */
   border-radius: 4px; /* 边框圆角 */
+}
+.explain_detail {
+  position: absolute; /* 设置为绝对定位 */
+  top: 0; /* 顶部与父元素对齐 */
+  right: 0%; /* 右侧距离父元素右侧0% */
+  width: 50%; /* 子元素的宽度 */
+  height: 100%; /* 子元素的高度 */
 }
 </style>

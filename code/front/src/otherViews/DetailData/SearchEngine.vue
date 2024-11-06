@@ -7,30 +7,58 @@
         <option v-for="item in influences" :key="item">{{ item }}</option>
       </select>
     </div>
-    <div ref="chartDom" class="echarts" style="width: 100%; height: 100%">
+    <div
+      v-if="isShowExplain"
+      ref="chartDom"
+      class="echarts"
+      style="width: 50%; height: 100%"
+    >
       <img
         class="imgNodata"
         v-show="chart == null"
         src="../../assets/image/暂无数据.png"
       />
     </div>
+    <div
+      v-else
+      ref="chartDom"
+      class="echarts"
+      style="width: 100%; height: 100%"
+    >
+      <img
+        class="imgNodata"
+        v-show="chart == null"
+        src="../../assets/image/暂无数据.png"
+      />
+    </div>
+    <div v-show="isShowExplain" class="explain_detail">
+      <ZhiPu :analyzedata="analyzedata" :Question="Question"></ZhiPu>
+    </div>
   </div>
 </template>
 <script>
 import axios from "axios";
 import * as echarts from "echarts";
+import ZhiPu from "./ZhiPu.vue";
 // import echarts, { graphic } from "echarts";
 export default {
   name: "SearchEngine",
+  components: {
+    ZhiPu,
+  },
   data() {
     return {
       selected: "",
       chart: null,
       influences: ["搜索量影响力"],
+      Question:
+        "以下数据格式为{城市名，谷歌相对搜索量，时间}，上述时间为该时间开始后的一周内，谷歌相对搜索量的顶值为100，结合该城市各个时间段的时讯和经济情况，分析该城市在google trends上的搜索量发生变化的原因，控制在500字以内，最后加上一段总结，不用重复说明已经有的数据",
+      analyzedata: null,
     };
   },
   props: {
     selectedCity: String, // 声明selectedCity为String类型的prop
+    isShowExplain: Boolean,
   },
 
   watch: {
@@ -38,15 +66,19 @@ export default {
       this.chart = null;
       if (this.selected == "搜索量影响力") {
         this.googleSearch(newVal);
+        this.Question =
+          "以下数据格式为{城市名，谷歌相对搜索量，时间}，上述时间为该时间开始后的一周内，谷歌相对搜索量的顶值为100，结合该城市各个时间段的时讯和经济情况，分析该城市在google trends上的搜索量发生变化的原因，控制在500字以内，最后加上一段总结，不用重复说明已经有的数据";
       }
-      console.log("selectedCity changed:", newVal);
+      // console.log("selectedCity changed:", newVal);
     },
     selected: function (newVal, oldVal) {
       this.chart = null;
       if (newVal == "搜索量影响力") {
         this.googleSearch(this.selectedCity);
+        this.Question =
+          "以下数据格式为{城市名，谷歌相对搜索量，时间}，上述时间为该时间开始后的一周内，谷歌相对搜索量的顶值为100，结合该城市各个时间段的时讯和经济情况，分析该城市在google trends上的搜索量发生变化的原因，控制在500字以内，最后加上一段总结，不用重复说明已经有的数据";
       }
-      console.log("selected changed:", newVal);
+      // console.log("selected changed:", newVal);
     },
   },
   created() {
@@ -65,6 +97,7 @@ export default {
         });
         // console.log(response.data); // 处理响应数据
         this.initChart(response.data);
+        this.analyzedata = response.data;
       } catch (error) {
         console.error("Error:", error);
       }
@@ -219,7 +252,9 @@ export default {
 <style>
 .search {
   height: 90%;
+  width: 100%;
   /* 确保search容器的样式不会干扰内部元素的对齐 */
+  position: relative;
 }
 
 .select-city {
@@ -235,5 +270,12 @@ export default {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+.explain_detail {
+  position: absolute; /* 设置为绝对定位 */
+  top: 0; /* 顶部与父元素对齐 */
+  right: 0%; /* 右侧距离父元素右侧0% */
+  width: 50%; /* 子元素的宽度 */
+  height: 100%; /* 子元素的高度 */
 }
 </style>
