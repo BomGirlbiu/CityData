@@ -87,7 +87,7 @@ def save_infos_to_db(infos, user='root', passwd='123456', db='ry-vue'):
 
 if __name__ == '__main__':
     user = 'root'
-    passwd = '123456'
+    passwd = '20020316'
     db = 'ry-vue'
     try:
         max_page_depth = int(sys.argv[1])

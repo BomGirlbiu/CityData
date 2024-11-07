@@ -58,6 +58,15 @@
           v-hasPermi="['system:travel:export']"
         >导出</el-button>
       </el-col>
+      <el-col :span="1.5">
+        <el-button
+          type="warning"
+          plain
+          icon="el-icon-loading"
+          size="mini"
+          @click="handleFetch"
+        >爬取数据</el-button>
+      </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -275,6 +284,9 @@ export default {
       this.download('system/travel/export', {
         ...this.queryParams
       }, `travel_${new Date().getTime()}.xlsx`)
+    },
+    handleFetch(){
+      this.fetch("travel")
     }
   }
 };

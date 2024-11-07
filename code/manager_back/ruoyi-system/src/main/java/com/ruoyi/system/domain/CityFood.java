@@ -16,6 +16,7 @@ public class CityFood extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 主键 */
+    @Excel(name = "主键")
     private Long id;
 
     /** 名字 */
@@ -23,6 +24,7 @@ public class CityFood extends BaseEntity
     private String name;
 
     /** 总结 */
+    @Excel(name = "总结")
     private String summary;
 
     /** 省份 */
@@ -30,9 +32,11 @@ public class CityFood extends BaseEntity
     private String province;
 
     /** 链接 */
+    @Excel(name = "链接")
     private String src;
 
     /** 图片 */
+    @Excel(name = "图片")
     private String img;
 
     public void setId(Long id) 

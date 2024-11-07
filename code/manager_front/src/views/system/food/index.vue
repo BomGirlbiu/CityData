@@ -66,6 +66,15 @@
           v-hasPermi="['system:food:export']"
         >导出</el-button>
       </el-col>
+      <el-col :span="1.5">
+        <el-button
+          type="warning"
+          plain
+          icon="el-icon-loading"
+          size="mini"
+          @click="handleFetch"
+        >爬取数据</el-button>
+      </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -73,7 +82,14 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="主键" align="center" prop="id" />
       <el-table-column label="名字" align="center" prop="name" />
+      <el-table-column label="总结" align="center" prop="summary" />
       <el-table-column label="省份" align="center" prop="province" />
+      <el-table-column label="链接" align="center" prop="src" />
+      <el-table-column label="图片" align="center" prop="img" width="100">
+        <template slot-scope="scope">
+          <image-preview :src="scope.row.img" :width="50" :height="50"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -278,6 +294,9 @@ export default {
       this.download('system/food/export', {
         ...this.queryParams
       }, `food_${new Date().getTime()}.xlsx`)
+    },
+    handleFetch(){
+      this.fetch("food")
     }
   }
 };

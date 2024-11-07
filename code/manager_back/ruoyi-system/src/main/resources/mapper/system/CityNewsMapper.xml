@@ -19,9 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectCityNewsList" parameterType="CityNews" resultMap="CityNewsResult">
         <include refid="selectCityNewsVo"/>
         <where>  
-            <if test="city != null  and city != ''"> and city = #{city}</if>
-            <if test="province != null  and province != ''"> and province = #{province}</if>
-            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="city != null  and city != ''"> and city like concat('%', #{city}, '%')</if>
+            <if test="province != null  and province != ''"> and province like concat('%', #{province}, '%')</if>
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="newsURL != null  and newsURL != ''"> and newsURL = #{newsURL}</if>
             <if test="newsID != null "> and newsID = #{newsID}</if>
         </where>
     </select>

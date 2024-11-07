@@ -102,7 +102,7 @@ def parse_src():
 
 if __name__ == '__main__':
     user = 'root'
-    passwd = '123456'
+    passwd = '20020316'
     db = 'ry-vue'
     index = 2
     try:

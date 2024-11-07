@@ -20,6 +20,38 @@ import com.ruoyi.common.core.domain.AjaxResult;
 @RequestMapping("/system/fetch")
 public class FetchController extends BaseController{
     private final ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+    private ProcessBuilder getProcessBuilder(String type,String sPath,String wPath,long taskId){
+        // 替换为你的虚拟环境路径;
+        String virtualEnvPath="C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env";
+        String osName = System.getProperty("os.name").toLowerCase();
+        List<String> command = new ArrayList<>();
+        if("python".equals(type)){
+            String pythonExecutable;
+            if (osName.contains("win")) {
+                pythonExecutable = virtualEnvPath + "\\Scripts\\python.exe";
+            } else if (osName.contains("mac") || osName.contains("nix") || osName.contains("nux")) {
+                pythonExecutable = virtualEnvPath + "/bin/python3";
+            } else {
+                TaskManager.updateTaskStatus(taskId, "FAILED", "不支持的操作系统");
+                return null;
+            }
+            command.add(pythonExecutable);
+            command.add(sPath);
+            return new ProcessBuilder(command);
+        }
+        else{
+            if (!osName.contains("win")) {
+                TaskManager.updateTaskStatus(taskId, "FAILED", "不支持的操作系统");
+                return null;
+            }
+            command.add(sPath);
+            command.add(virtualEnvPath);
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            processBuilder.directory(new File(wPath)); // 设置工作目录
+            return processBuilder;
+        }
+    }
     @GetMapping("")
     protected AjaxResult fetch(@RequestParam(value = "name", required = false) String name)
     {
@@ -30,31 +62,32 @@ public class FetchController extends BaseController{
         long taskId = TaskManager.createTask();
         Runnable task = () -> {
             try {
-                String virtualEnvPath="C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径;
-                String scriptPath= "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";
-                String osName = System.getProperty("os.name").toLowerCase();
-                List<String> command = new ArrayList<>();
-                String pythonExecutable;
-                if (osName.contains("win")) {
-                    pythonExecutable = virtualEnvPath + "\\Scripts\\python.exe";
-                } else if (osName.contains("mac") || osName.contains("nix") || osName.contains("nux")) {
-                    pythonExecutable = virtualEnvPath + "/bin/python3";
-                } else {
-                    TaskManager.updateTaskStatus(taskId, "FAILED", "不支持的操作系统");
-                    return;
-                }
+                ProcessBuilder processBuilder = null;
                 if("travel".equals(name)){
-                    scriptPath = "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";// 替换为你的Python脚本路径
-                    command.add(pythonExecutable);
-                    command.add(scriptPath);
+                    processBuilder = getProcessBuilder(
+                        "python",
+                        "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py",
+                        "",
+                        taskId);
+                }
+                else if("food".equals(name)){
+                    processBuilder=getProcessBuilder(
+                        "python",
+                        "D:\\临时\\code\\pyscripts\\pys\\sfd_spider.py",
+                        "",
+                        taskId);
                 }
                 else if("visualChina".equals(name)){
-                    System.out.println("what");
-                    String batPath = "D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider\\run.bat";
-                    command.add(batPath);
-                    command.add(virtualEnvPath);
+                    processBuilder=getProcessBuilder(
+                        "bat",
+                        "D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider\\run.bat",
+                        "D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider",
+                        taskId);
                 }
-                ProcessBuilder processBuilder = new ProcessBuilder(command);
+                if(processBuilder==null){
+                    TaskManager.updateTaskStatus(taskId, "FAILED", "未知错误！");
+                    return;
+                }
                 processBuilder.directory(new File("D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider")); // 设置工作目录
 
                 Process proc = processBuilder.start();

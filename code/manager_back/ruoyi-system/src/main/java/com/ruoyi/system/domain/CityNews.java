@@ -24,12 +24,15 @@ public class CityNews extends BaseEntity
     private String province;
 
     /** 标题 */
+    @Excel(name = "标题")
     private String title;
 
     /** 链接 */
+    @Excel(name = "链接")
     private String newsURL;
 
     /** 主键 */
+    @Excel(name = "主键")
     private Long newsID;
 
     public void setCity(String city) 

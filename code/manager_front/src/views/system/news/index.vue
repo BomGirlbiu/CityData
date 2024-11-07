@@ -9,6 +9,14 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="链接" prop="newsURL">
+        <el-input
+          v-model="queryParams.newsURL"
+          placeholder="请输入链接"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="主键" prop="newsID">
         <el-input
           v-model="queryParams.newsID"
@@ -73,6 +81,8 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="城市" align="center" prop="city" />
       <el-table-column label="省份" align="center" prop="province" />
+      <el-table-column label="标题" align="center" prop="title" />
+      <el-table-column label="链接" align="center" prop="newsURL" />
       <el-table-column label="主键" align="center" prop="newsID" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -152,6 +162,7 @@ export default {
         city: null,
         province: null,
         title: null,
+        newsURL: null,
         newsID: null
       },
       // 表单参数
