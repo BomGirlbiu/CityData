@@ -136,10 +136,12 @@ public class BmsPost extends BaseEntity
         this.view = view;
     }
 
+    @Override
     public String getUpdateBy() {
         return updateBy;
     }
 
+    @Override
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }

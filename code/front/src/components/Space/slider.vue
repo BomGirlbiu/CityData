@@ -10,7 +10,7 @@
 	<li class="slider-li">
 		<a href="#"  class="slider-a">
 			<i class="el-icon-picture-outline"></i>
-			<span class="slider-span">图片</span>
+			<span class="slider-span">图片分析</span>
 		</a>
 	</li>	
 	<li class="slider-li">
@@ -33,7 +33,7 @@
 	<li class="slider-li">
 		<a href="#"  class="slider-a">
 			<i class="el-icon-coordinate"></i>
-			<span class="slider-span">游戏</span>
+			<span class="slider-span">视频解析</span>
 		</a>
 	</li>
 	<li class="slider-li">
@@ -86,7 +86,7 @@ export default {};
 
 <style lang="scss" scope>
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-@import url("https://unpkg.com/akar-icons-fonts");
+// @import url("https://unpkg.com/akar-icons-fonts");
 // *,
 // *:after,
 // *:before {
@@ -110,6 +110,7 @@ export default {};
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
+  // width:80px;
   flex-direction: column;
   align-items: baseline;
   justify-content: center;

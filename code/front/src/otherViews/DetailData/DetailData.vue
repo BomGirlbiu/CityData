@@ -139,9 +139,7 @@ export default {
     }
   },
   methods: {
-    generateReport() {
-
-    },
+    generateReport() {},
     handleCityFromChild(data) {
       if (data.slice(-2, -1) == "城" || data.slice(-2, -1) == "郊") {
         this.selectedCity = data.slice(0, -2);
@@ -305,6 +303,7 @@ export default {
   padding: 5px 10px;
   color: #ffffff; /* 白色文字 */
   transition: color 0.3s;
+  font-size: 15px;
 }
 
 .content {

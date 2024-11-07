@@ -6,6 +6,9 @@
         <option disabled value="">请选择二级影响因子...</option>
         <option v-for="item in influences" :key="item">{{ item }}</option>
       </select>
+      <el-button size="small" @click="GetFutureData_google" round type="primary"
+        >预测数据</el-button
+      >
     </div>
     <div
       v-if="isShowExplain"
@@ -85,6 +88,22 @@ export default {
     this.selected = "搜索量影响力";
   },
   methods: {
+    async GetFutureData_google(cityname) {
+      let params = new FormData();
+      params.append("cityname", "北京市");
+      // console.log("params:", params);
+      try {
+        const response = await axios({
+          url: "http://localhost:82/index/visual/search/googlefuture",
+          method: "post",
+          data: params,
+        });
+        // console.log(response.data); // 处理响应数据
+        this.initChart(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    },
     async googleSearch(cityname) {
       let params = new FormData();
       params.append("cityname", cityname);

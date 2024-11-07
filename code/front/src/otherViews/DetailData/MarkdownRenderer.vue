@@ -28,4 +28,8 @@ export default {
 
 <style scoped>
 /* 您可以根据需要添加样式来优化Markdown的渲染效果 */
+div {
+  font-size: 15px; /* 字体大小 */
+  line-height: 1.25em; /* 行间距 */
+}
 </style>
