@@ -50,7 +50,7 @@ CREATE TABLE city_images(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     city VARCHAR(255),
     province VARCHAR(255),
-    imagesURL VARCHAR(255)
+    imagesURL VARCHAR(255) UNIQUE
 )
 
 DROP TABLE IF EXISTS emotion_analysis;
@@ -67,4 +67,34 @@ CREATE TABLE emotion_analysis(
     bored_count INT,     -- 无聊感
     plateform VARCHAR(255),
     insert_time DATETIME
+)
+
+DROP TABLE IF EXISTS city_news;
+CREATE TABLE city_news(
+    newsID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),
+    province VARCHAR(255),
+    title VARCHAR(255),
+    newsURL VARCHAR(1024) ,
+    imgURL VARCHAR(512) UNIQUE
+)
+
+DROP TABLE IF EXISTS google_search;
+CREATE TABLE google_search(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),
+    date varchar(255),
+    count INT,
+    -- city 和 date 作为联合主键
+    UNIQUE KEY `city_date` (`city`, `date`)
+)
+
+DROP TABLE IF EXISTS youtube_search;
+CREATE TABLE youtube_search(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),
+    date varchar(255),
+    count INT,
+    -- city 和 date 作为联合主键
+    UNIQUE KEY `city_date` (`city`, `date`)
 )
