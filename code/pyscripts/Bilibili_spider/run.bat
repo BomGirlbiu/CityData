@@ -32,9 +32,10 @@ set scripts[3]=Get_comments.py
 set scripts[4]=combind.py 1
 set scripts[5]=Sentiment_analysis.py
 set scripts[6]=save_comments.py
+set scripts[7]=save_emotion.py
 
 REM 运行每个脚本
-for /L %%i in (1,1,6) do (
+for /L %%i in (1,1,7) do (
     python !scripts[%%i]!
     if errorlevel 1 (
         echo !scripts[%%i]! 执行失败。
