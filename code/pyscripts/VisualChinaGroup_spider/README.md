@@ -5,5 +5,7 @@
 #### 另一个说明 ####
 ``` bash
 cd VisualChinaGroup_spider
-run.bat [venvPath] #make sure province_city_dict.json exists
+run.bat -v venvPath -c "city1 city2..." 
+# city1 city2使用中文即可
+# usage run.bat -v "D:\venv\.venv" -c "天津市 北京市"
 ```

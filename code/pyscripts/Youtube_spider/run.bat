@@ -1,22 +1,10 @@
 @echo off
 setlocal
 
-REM 检查是否提供了虚拟环境地址
-if "%~1"=="" (
-    echo 请提供Python虚拟环境地址。
-    echo 用法: %~nx0 <虚拟环境地址>
-    exit /b 1
-)
-
-REM 设置虚拟环境地址
-set VENV_PATH=%~1
+set VENV_PATH=%1
 
 REM 激活虚拟环境
-call "%VENV_PATH%\Scripts\activate.bat"
-if errorlevel 1 (
-    echo 无法激活虚拟环境。
-    exit /b 1
-)
+call %VENV_PATH%\Scripts\activate
 
 REM 执行 Get_videos_links.py
 python Get_videos_links.py
