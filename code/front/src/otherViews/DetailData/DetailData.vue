@@ -140,24 +140,7 @@ export default {
   },
   methods: {
     generateReport() {
-      // 获取googlecity子组件的DOM元素
-      const googleCityElement = this.$refs.googlecityComponent.$el;
 
-      // 使用html2canvas捕获子组件的内容
-      html2canvas(googleCityElement)
-        .then((canvas) => {
-          const contentDataURL = canvas.toDataURL("image/png");
-          const pdf = new jsPDF("portrait", "mm", "a4");
-
-          // 将canvas添加到PDF中
-          pdf.addImage(contentDataURL, "PNG", 0, 0);
-
-          // 保存PDF文件
-          pdf.save("googlecity-report.pdf");
-        })
-        .catch((error) => {
-          console.error("Error capturing googlecity component:", error);
-        });
     },
     handleCityFromChild(data) {
       if (data.slice(-2, -1) == "城" || data.slice(-2, -1) == "郊") {
