@@ -1,32 +1,67 @@
 @echo off
 setlocal
 
-REM æ¥å—Pythonè™šæ‹Ÿç¯å¢ƒåœ°å€ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°
-set VENV_PATH=%1
+REM ½âÎö²ÎÊı
+set VENV_PATH=
+set C_PARAM=
 
-REM æ¿€æ´»è™šæ‹Ÿç¯å¢ƒ
+:parse_args
+if "%~1"=="" goto args_done
+if "%~1"=="-v" (
+    set VENV_PATH=%~2
+    shift
+    shift
+    goto parse_args
+)
+if "%~1"=="-c" (
+    set C_PARAM=%~2
+    shift
+    shift
+    goto parse_args
+)
+shift
+goto parse_args
+
+:args_done
+
+REM ¼ì²éÊÇ·ñÌá¹©ÁË-v²ÎÊı
+if "%VENV_PATH%"=="" (
+    echo ±ØĞëÌá¹©-v²ÎÊıÀ´Ö¸¶¨ĞéÄâ»·¾³Â·¾¶
+    exit /b 1
+)
+
+REM ¼¤»îĞéÄâ»·¾³
 call %VENV_PATH%\Scripts\activate
 
-REM æ‰§è¡ŒGet_city_img_url.py
+REM Èç¹ûÌá¹©ÁË-c²ÎÊı£¬ÏÈÖ´ĞĞ../generate_pcd.py
+if not "%C_PARAM%"=="" (
+    python ../generate_pcd.py %C_PARAM%
+    if %errorlevel% neq 0 (
+        echo ../generate_pcd.py Ö´ĞĞÊ§°Ü
+        exit /b %errorlevel%
+    )
+)
+
+REM Ö´ĞĞGet_city_img_url.py
 python Get_city_img_url.py
 if %errorlevel% neq 0 (
-    echo Get_city_img_url.py æ‰§è¡Œå¤±è´¥
+    echo Get_city_img_url.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-REM æ‰§è¡ŒCombine_city_img_url.py
+REM Ö´ĞĞCombine_city_img_url.py
 python Combine_city_img_url.py
 if %errorlevel% neq 0 (
-    echo Combine_city_img_url.py æ‰§è¡Œå¤±è´¥
+    echo Combine_city_img_url.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-REM æ‰§è¡Œæ‹¼éŸ³è½¬ä¸­æ–‡.py
-python æ‹¼éŸ³è½¬ä¸­æ–‡.py
+REM Ö´ĞĞÆ´Òô×ªÖĞÎÄ.py
+python Æ´Òô×ªÖĞÎÄ.py
 if %errorlevel% neq 0 (
-    echo æ‹¼éŸ³è½¬ä¸­æ–‡.py æ‰§è¡Œå¤±è´¥
+    echo Æ´Òô×ªÖĞÎÄ.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-echo æ‰€æœ‰è„šæœ¬æ‰§è¡ŒæˆåŠŸ
+echo ËùÓĞ½Å±¾Ö´ĞĞ³É¹¦
 endlocal

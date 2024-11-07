@@ -501,7 +501,7 @@ def fetch_img(city, province):
         print(f"An error occurred: {e}")
 
     # 等待一段时间，避免过于频繁的请求
-    time.sleep(random.uniform(10, 20))  # 等待 10 到 15 秒的随机时间
+    time.sleep(random.uniform(2, 5))  # 等待 10 到 15 秒的随机时间
 
 
 if __name__ == '__main__':

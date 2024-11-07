@@ -44,3 +44,27 @@ CREATE TABLE bilibili_comments(
     reply_time DATETIME,
     insert_time DATETIME
 )
+
+DROP TABLE IF EXISTS city_images;
+CREATE TABLE city_images(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),
+    province VARCHAR(255),
+    imagesURL VARCHAR(255)
+)
+
+DROP TABLE IF EXISTS emotion_analysis;
+CREATE TABLE emotion_analysis(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),   -- 城市
+    like_count INT,      -- 喜欢数
+    hate_count INT,      -- 讨厌数
+    belong_count INT,    -- 归属感
+    alien_count INT,     -- 疏离感
+    pride_count INT,     -- 自豪感
+    safe_count INT,      -- 安全感
+    appreciate_count INT,-- 感激感
+    bored_count INT,     -- 无聊感
+    plateform VARCHAR(255),
+    insert_time DATETIME
+)

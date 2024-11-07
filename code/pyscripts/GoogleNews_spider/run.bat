@@ -1,32 +1,32 @@
 @echo off
 setlocal
 
-REM æ¥å—Pythonè™šæ‹Ÿç¯å¢ƒåœ°å€ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°
+REM ½ÓÊÜPythonĞéÄâ»·¾³µØÖ·×÷ÎªµÚÒ»¸ö²ÎÊı
 set VENV_PATH=%1
 
-REM æ¿€æ´»è™šæ‹Ÿç¯å¢ƒ
+REM ¼¤»îĞéÄâ»·¾³
 call %VENV_PATH%\Scripts\activate
 
-REM æ‰§è¡ŒGet_city_news_url.py ./city_dict.json
+REM Ö´ĞĞGet_city_news_url.py ./city_dict.json
 python Get_city_news_url.py ./province_city_dict.json
 if %errorlevel% neq 0 (
-    echo Get_city_news_url.py æ‰§è¡Œå¤±è´¥
+    echo Get_city_news_url.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-REM æ‰§è¡ŒCombine_city_news.py
-python Combine_city_news.py
+REM Ö´ĞĞCombine_city_news.py
+python Combine_city_news_url.py
 if %errorlevel% neq 0 (
-    echo Combine_city_news.py æ‰§è¡Œå¤±è´¥
+    echo Combine_city_news.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-REM æ‰§è¡Œæ‹¼éŸ³è½¬ä¸­æ–‡.py
-python æ‹¼éŸ³è½¬ä¸­æ–‡.py
+REM Ö´ĞĞÆ´Òô×ªÖĞÎÄ.py
+python Æ´Òô×ªÖĞÎÄ.py
 if %errorlevel% neq 0 (
-    echo æ‹¼éŸ³è½¬ä¸­æ–‡.py æ‰§è¡Œå¤±è´¥
+    echo Æ´Òô×ªÖĞÎÄ.py Ö´ĞĞÊ§°Ü
     exit /b %errorlevel%
 )
 
-echo æ‰€æœ‰è„šæœ¬æ‰§è¡ŒæˆåŠŸ
+echo ËùÓĞ½Å±¾Ö´ĞĞ³É¹¦
 endlocal
