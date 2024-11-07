@@ -318,6 +318,8 @@ city_name={
   
 
 if __name__ == '__main__':
+    if os.path.exists('./temp') == False:
+        os.makedirs('./temp')
     # 从city_dict.json中导入数据
     try:
         with open('./city_dict.json', 'r', encoding='utf-8') as f:
@@ -334,8 +336,10 @@ if __name__ == '__main__':
         print('Google Processing city: ', city)
         keywords = [city]
         pytrends.build_payload(keywords, cat=0, timeframe='today 5-y', geo='', gprop='')
-        # save to mysql
         df = pytrends.interest_over_time()
+        # save to csv
+        df.to_csv(f'./temp/google_{city}_search.csv')
+        # save to mysql
         for index, row in df.iterrows():
             try:
                 sql = "INSERT INTO google_search (city, date, count) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE count=%s"
@@ -345,8 +349,10 @@ if __name__ == '__main__':
                 print(f"Error inserting row {index}: {e}")
         print('youtube Processing city: ', city)
         pytrends.build_payload(keywords, cat=0, timeframe='today 5-y', geo='', gprop='youtube')
-        # save to mysql
         df = pytrends.interest_over_time()
+        # save to csv
+        df.to_csv(f'./temp/youtube_{city}_search.csv')
+        # save to mysql
         for index, row in df.iterrows():
             try:
                 sql = "INSERT INTO youtube_search (city, date, count) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE count=%s"
