@@ -135,10 +135,21 @@
           </ul>
         </section>
       </section>
+
       <section class="et-slide5" id="tab-magic">
         <section class="c-section5">
-          <h1>联想空间</h1>
-          <h3>something about other</h3>
+          <h2 class="c-section4__title">
+            <span style="margin: 25px 30px">联想空间</span>
+          </h2>
+          <ul class="c-services">
+            <router-link :to="{ name: '联想空间' }">
+              <p>
+                We leverage the concept of mobile-first design. Through our
+                work, we focus on designing an experience that works across
+                different screen sizes.
+              </p>
+            </router-link>
+          </ul>
         </section>
       </section>
       <Footer />

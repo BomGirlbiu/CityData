@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.UmsUserMapper">
+
+    <resultMap type="UmsUser" id="UmsUserResult">
+        <id     property="id"       column="id"      />
+        <result property="username"     column="username"    />
+		<result property="alias"     column="alias"    />
+		<result property="password"     column="password"     />
+		<result property="avatar"       column="avatar"       />
+		<result property="email"        column="email"        />
+		<result property="mobile"  column="mobile"  />
+		<result property="score"     column="score"    />
+		<result property="token"          column="token"          />
+		<result property="bio"          column="bio"          />
+		<result property="active"          column="active"          />
+		<result property="status"       column="status"       />
+		<result property="roleId"       column="role_id"       />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateTime"   column="update_time"  />
+    </resultMap>
+
+	<!--查找所有用户实体-->
+	<sql id="selectUmsUserVo">
+		select *
+		<!--		select id,title, content, user_id, comments, collects, view,section_id,update_time,top, essence,createTime,modifyTime-->
+		from ums_user
+	</sql>
+
+	<select id="selectUmsUserList" parameterType="UmsUser" resultMap="UmsUserResult">
+		<include refid="selectUmsUserVo"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND id like concat('%', #{id}, '%')
+			</if>
+			<if test="username != null and username != ''">
+				<!--				AND user_id = #{userId}-->
+				AND user_id like concat('%', #{username}, '%')
+
+			</if>
+			<if test="status != null and status != ''">
+				<!--				AND title like concat('%', #{title}, '%')-->
+				AND status = #{status}
+			</if>
+		</where>
+	</select>
+
+	<!--查找所有用户实体-->
+	<select id="selectUmsUserAll" resultMap="UmsUserResult">
+		<include refid="selectUmsUserVo"/>
+	</select>
+
+	<select id="selectUmsUserById" parameterType="String" resultMap="UmsUserResult">
+		<include refid="selectUmsUserVo"/>
+		where id = #{id}
+	</select>
+
+	<update id="updateUmsUser" parameterType="UmsUser">
+		update ums_user
+		<set>
+			<if test="username != null and username != ''">username = #{username},</if>
+			email = #{email},
+			avatar = #{avatar},
+			mobile = #{mobile},
+			alias = #{alias},
+			score = #{score},
+			bio = #{bio},
+			active = #{active},
+			<if test="status != null">status = #{status},</if>
+			role_id = #{roleId},
+			update_time = sysdate()
+		</set>
+		where id = #{id}
+	</update>
+
+	<!--插入新用户-->
+	<insert id="insertUmsUser" parameterType="UmsUser" useGeneratedKeys="true" keyProperty="id">
+		insert into ums_user(
+		<if test="id != null and id != ''">id,</if>
+
+		<if test="username != null and username != ''">username,</if>
+		email,
+		avatar,
+		alias,
+		score,
+		bio,
+		<if test="mobile != null and mobile != ''">mobile,</if>
+		<if test="status != null and status != ''">status,</if>
+		<if test="active != null and active != ''">active,</if>
+		create_time
+		)values(
+		<if test="id != null and id != ''">#{id},</if>
+		<if test="username != null and username != ''">#{username},</if>
+		#{email},
+		#{avatar},
+		#{alias},
+		#{score},
+		#{bio},
+		<if test="mobile != null and mobile != ''">#{mobile},</if>
+		<if test="status != null and status != ''">#{status},</if>
+		<if test="active != null and active != ''">#{active},</if>
+		sysdate()
+		)
+	</insert>
+
+	<!--	根据作者编号查找作品   -->
+	<select id="selectUmsUsersById" resultType="com.ruoyi.system.domain.UmsUser">
+		select *
+		from ums_user p
+		where u.id = #{id}
+	</select>
+
+	<delete id="deleteUmsUserById" parameterType="String">
+		delete from ums_user where id = #{id}
+	</delete>
+
+	<delete id="deleteUmsUserByIds" parameterType="String">
+		delete from ums_user where id in
+		<foreach collection="array" item="ids" open="(" separator="," close=")">
+			#{ids}
+		</foreach>
+	</delete>
+</mapper> 

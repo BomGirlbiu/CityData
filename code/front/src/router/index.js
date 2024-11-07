@@ -1,3 +1,4 @@
+import { name } from "dayjs/locale/zh-cn";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -69,8 +70,21 @@ const routes = [
     //一级路由
     path: "/ImageHome",
     name: "联想空间",
+    redirect:"/ImageHome/ChatWin",
     //定义图标npm
     component: () => import("@/otherViews/ImageHome/ImageHome"),
+    children: [
+      {
+        name:"聊天",
+        path: "/ImageHome/ChatWin",
+        component: () => import("@/components/Space/ChatWin"),
+      },
+      {
+        name:"视频生成",
+        path: "/ImageHome/AiVideo",
+        component: () => import("@/components/Space/AiVideo"),
+      },
+    ],
   },
 
   // 个人中心

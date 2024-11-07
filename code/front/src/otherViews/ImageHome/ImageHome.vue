@@ -1,12 +1,24 @@
 <template>
-  <div
+  <div class="image-home">
+    <div class="Grid Grid--gutters Grid--1of6">
+      <div class="Grid-cell">
+        <div class="Demo content-1of6">
+          <slider />
+        </div>
+      </div>
+      <!-- <div class="Grid-cell"><div class="Demo"><AiVideo /></div></div> -->
+      <div class="Grid-cell">
+        <div class="Demo"><router-view></router-view></div>
+      </div>
+    </div>
+    <!-- <div
     style="
       background-color: #f5f5f5;
       color: #333;
       font-family: Arial, sans-serif;
     "
-  >
-    <div style="max-width: 800px; margin: 0 auto; padding: 20px">
+  > -->
+    <!-- <div style="max-width: 800px; margin: 0 auto; padding: 20px">
       <h1 style="color: #555">视频生成</h1>
       <textarea
         v-model="prompt"
@@ -67,99 +79,362 @@
       <div v-if="taskStatus === 'FAIL'" style="margin-top: 20px">
         <p style="color: #555">视频生成失败。</p>
       </div>
-    </div>
+    </div> -->
+    <!-- <slider />
+    <div class="ai-content">
+      
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import slider from "../../components/Space/slider.vue";
+import AiVideo from "../../components/Space/AiVideo.vue";
+import ChatWin from "../../components/Space/ChatWin11.vue";
 export default {
-  data() {
-    return {
-      prompt: "",
-      imageUrl: "",
-      videoUrl: "",
-      coverImageUrl: "",
-      taskId: "",
-      taskStatus: "",
-    };
-  },
-  methods: {
-    onFileChange(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.imageUrl = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    },
-    async generateVideo() {
-      const data = {
-        model: "cogvideox",
-        prompt: this.prompt,
-        image_url: this.imageUrl,
-      };
-
-      try {
-        const response = await axios.post(
-          "https://open.bigmodel.cn/api/paas/v4/videos/generations",
-          data,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization:
-                "be1802e7a021dd6a2bbaef64aceef73e.pJ71zWr33pxKumx7", // 请替换为您的API Key
-            },
-          }
-        );
-        this.taskId = response.data.id;
-        this.taskStatus = response.data.task_status;
-
-        if (this.taskStatus === "PROCESSING") {
-          this.pollForTaskStatus(this.taskId);
-        }
-      } catch (error) {
-        console.error("Error generating video:", error);
-      }
-    },
-    async pollForTaskStatus(taskId) {
-      const interval = setInterval(async () => {
-        try {
-          const response = await axios.get(
-            `https://open.bigmodel.cn/api/paas/v4/async-result/${taskId}`,
-            {
-              headers: {
-                Authorization:
-                  "be1802e7a021dd6a2bbaef64aceef73e.pJ71zWr33pxKumx7", // 请替换为您的API Key
-              },
-            }
-          );
-          this.taskStatus = response.data.task_status;
-          if (this.taskStatus !== "PROCESSING") {
-            clearInterval(interval);
-            if (this.taskStatus === "SUCCESS") {
-              this.videoUrl = response.data.video_result[0].url;
-              this.coverImageUrl =
-                response.data.video_result[0].cover_image_url;
-            }
-          }
-        } catch (error) {
-          console.error("Error polling for task status:", error);
-          clearInterval(interval);
-        }
-      }, 5000); // 每5秒轮询一次
-    },
+  components: {
+    slider,
+    AiVideo,
   },
 };
 </script>
 
-<style>
-textarea {
+<style lang="scss" scope>
+/* textarea {
   width: 100%;
   max-width: 600px;
   margin-bottom: 10px;
+} */
+
+//  @import "compass/css3";
+
+// VARIALBLES
+// Demo colors:
+$demoMain: rgba(51, 153, 204, 0.2);
+$demoMainDark: rgba(51, 153, 204, 0.6);
+$demoBorder: #33cccc;
+$demoHolly: rgba(102, 51, 255, 0.1);
+$demoHollyDark: rgba(102, 51, 255, 0.25);
+
+// body {
+//   color: #404040;
+//   font: 100 1em/150% "proxima-nova", Helvetica, sans-serif;
+// }
+
+.image-home {
+  max-width: 100%;
+  margin: auto;
+  height: 100vh;
+  //border: 1px solid red;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 900;
+  color: #333;
+  margin: 1.5em 0 0.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.8em;
+}
+h3 {
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 1.3em;
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $demoMain;
+}
+
+.img-placeholder {
+  background-image: url("http://placehold.it/200x100/CC99CC/ffffff&text=Feature");
+  background-size: cover;
+  min-height: 100px; // need to specify min-height and min-width
+  min-width: 100px;
+}
+
+/*Basic Grid Styles*/
+.Grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+.u-textCenter {
+  text-align: center;
+}
+.Grid-cell {
+  flex: 1;
+}
+
+.Demo {
+  padding: 0.8em 1em 0;
+  margin-bottom: 1em;
+  background: $demoMain;
+  transition: background-color 0.3s ease;
+  border: 1px solid $demoBorder;
+  border-radius: 3px;
+  &:after {
+    content: "";
+    display: block;
+    margin-top: 0.8em;
+    height: 1px;
+  }
+  &:hover {
+    background: $demoMainDark;
+  }
+}
+
+.Demo.Holly {
+  background: $demoHolly;
+  &:hover {
+    background: $demoHollyDark;
+  }
+}
+
+// Grid Style Modifiers
+
+/* With gutters*/
+$gutter: 1em;
+.Grid--gutters {
+  margin-left: -$gutter;
+  .Grid-cell {
+    padding-left: $gutter;
+  }
+  .Grid--nested {
+    .Grid-cell:first-of-type {
+      .Demo {
+        margin-right: 1em;
+      }
+    }
+  }
+}
+
+/* Justify per row*/
+.Grid--right {
+  justify-content: flex-end;
+}
+.Grid--center {
+  justify-content: center;
+}
+
+/* Alignment per row */
+.Grid--top {
+  align-items: flex-start;
+}
+.Grid--bottom {
+  align-items: flex-end;
+}
+.Grid--center {
+  align-items: center;
+}
+
+/* Alignment per cell */
+.Grid-cell--top {
+  align-self: flex-start;
+}
+.Grid-cell--bottom {
+  align-self: flex-end;
+}
+.Grid-cell--center {
+  align-self: center;
+}
+
+// // Menu
+// .navigation {
+//   list-style: none;
+//   /*background: deepskyblue;*/
+//   background: $demoHolly;
+//   margin: 0 0 1em;
+//   border: 1px solid $demoBorder;
+//   border-radius: 3px;
+
+//   display: flex;
+
+//   -webkit-flex-flow: row wrap;
+//   justify-content: flex-end;
+//     a {
+//       text-decoration: none;
+//       display: block;
+//       padding: 1em;
+//       color: #333;
+//       &:hover {
+//         background: darken($demoHolly, 10%);
+//         border-radius:3px;
+//       }
+//     }
+//   &:hover {
+//     background: $demoHollyDark;
+//   }
+// }
+
+// @media all and (max-width: 800px) {
+//   .navigation {
+//     justify-content: space-around;
+//   }
+// }
+
+// @media all and (max-width: 600px) {
+//   .navigation {
+//     -webkit-flex-flow: column wrap;
+//     flex-flow: column wrap;
+//     padding: 0;
+//     a {
+//       text-align: center;
+//       padding: 10px;
+//       border-top: 1px solid rgba(255,255,255,0.3);
+//       border-bottom: 1px solid rgba(0,0,0,0.1);
+//     }
+//     li:last-of-type a {
+//       border-bottom: none;
+//     }
+//   }
+// }
+
+/*===========================================*/
+/* Base classes for all media - Mobile first */
+.Grid--cols-2 > .Grid-cell {
+  flex: 0 0 100%;
+}
+
+.Grid--cols-3 > .Grid-cell {
+  flex: 0 0 100%;
+}
+
+.Grid--cols-4 > .Grid-cell {
+  flex: 0 0 100%;
+}
+
+.Grid--cols-6 > .Grid-cell {
+  flex: 0 0 calc(50% - #{$gutter});
+}
+
+.Grid--cols-12 > .Grid-cell {
+  flex: 0 0 calc(33.3333% - #{$gutter});
+}
+
+.Grid--holly-grail {
+  .aside,
+  .main {
+    flex: 1 100%;
+  }
+}
+
+/* One of -- columns*/
+.Grid--1of2 > .Grid-cell,
+.Grid--1of4 > .Grid-cell:first-of-type,
+.Grid--1of3 > .Grid-cell:first-of-type {
+  flex: 0 0 100%;
+}
+.Grid--1of6 > .Grid-cell:first-of-type {
+  flex: 0 0 50%;
+}
+
+.Grid--fit > .Grid-cell {
+  flex: 1;
+}
+.Grid--full > .Grid-cell {
+  flex: 0 0 100%;
+}
+
+/* Tablet (medium) screens */
+@media (min-width: 30em) {
+  .Grid--cols-4 > .Grid-cell {
+    flex: 0 0 calc(50% - #{$gutter});
+  }
+  .Grid--cols-6 > .Grid-cell {
+    flex: 0 0 calc(33.3333% - #{$gutter});
+  }
+  .Grid--cols-12 > .Grid-cell {
+    flex: 0 0 calc(16.6666% - #{$gutter});
+  }
+  .Grid--holly-grail {
+    .aside {
+      flex: 1 calc(25% - #{$gutter});
+    }
+  }
+  .Grid--1of2 > .Grid-cell {
+    flex: 0 0 50%;
+  }
+  .Grid--1of6 > .Grid-cell:first-of-type {
+    flex: 0 0 30%;
+  }
+  .Grid--1of4 > .Grid-cell:first-of-type {
+    flex: 0 0 50%;
+  }
+  .Grid--1of3 > .Grid-cell:first-of-type {
+    flex: 0 0 100%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 48em) {
+  .Grid--cols-2 > .Grid-cell,
+  .Grid--cols-3 > .Grid-cell,
+  .Grid--cols-4 > .Grid-cell,
+  .Grid--cols-6 > .Grid-cell,
+  .Grid--cols-12 > .Grid-cell {
+    flex: 1;
+  }
+  .Grid--holly-grail {
+    .main {
+      flex: 2;
+    }
+    .aside {
+      flex: 1;
+    }
+    .aside-1 {
+      order: 1;
+    }
+    .main {
+      order: 2;
+    }
+    .aside-2 {
+      order: 3;
+    }
+  }
+  .Grid--1of2 > .Grid-cell {
+    flex: 0 0 50%;
+  }
+  .Grid--1of6 > .Grid-cell:first-of-type {
+    flex: 0 0 16.6666%;
+  }
+  .Grid--1of4 > .Grid-cell:first-of-type {
+    flex: 0 0 25%;
+  }
+  .Grid--1of3 > .Grid-cell:first-of-type {
+    flex: 0 0 30%;
+  }
+  .Grid--gutters.Grid--nested {
+    .Grid-cell:first-of-type {
+      .Demo {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// Contents classes
+// .content-1of1::before { content: "1"; }
+// .content-1of2::before { content: "1/2"; }
+// .content-1of3::before { content: "1/3"; }
+// .content-1of4::before { content: "1/4"; }
+.content-1of6::before {
+  content: "1/6";
+}
+// .content-1of12::before { content: "1/12"; }
 </style>

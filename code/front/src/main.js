@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import * as echarts from "echarts";
 import VueParticles from 'vue-particles'
+
 // Buefy
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
