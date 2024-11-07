@@ -131,15 +131,55 @@ export function fetch(name) {
   return service.get(
     '/system/fetch',
     {
-      params : { name }, 
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      params: { name },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }
   ).then(response => {
+    const taskId = response.data;
+    pollTaskStatus(taskId);
+  }).catch(error => {
+    console.error('请求失败:', error);
     Message({
-      message: response.msg,
+      message: "请求失败，请稍后再试",
       duration: 2 * 1000
     })
   })
+}
+
+function pollTaskStatus(taskId) {
+  const intervalId = setInterval(() => {
+    console.log("taskId:"+taskId)
+    service.get('/system/fetch/status', {
+      params: { taskId },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }).then(response => {
+      const taskStatus = response.data;
+      if (taskStatus.status === 'COMPLETED') {
+        clearInterval(intervalId);
+        Message({
+          message: "爬取成功！\n" + taskStatus.result,
+          duration: 5 * 1000
+        })
+      } else if (taskStatus.status === 'FAILED') {
+        clearInterval(intervalId);
+        Message({
+          message: "爬取失败！\n" + taskStatus.result,
+          duration: 5 * 1000
+        })
+      } else if(taskStatus.status === 'PENDING'){
+        Message({
+          message: "还在爬，别急\n" + taskStatus.result,
+          duration: 5 * 1000
+        })
+      }
+    }).catch(error => {
+      clearInterval(intervalId);
+      Message({
+        message: "请求超时，请稍后再试",
+        duration: 2 * 1000
+      })
+    })
+  }, 5000); // 每5秒轮询一次
 }
 
 // 通用下载方法

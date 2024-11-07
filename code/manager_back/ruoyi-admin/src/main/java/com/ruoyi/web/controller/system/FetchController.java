@@ -1,7 +1,12 @@
 package com.ruoyi.web.controller.system;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +19,7 @@ import com.ruoyi.common.core.domain.AjaxResult;
 @RestController
 @RequestMapping("/system/fetch")
 public class FetchController extends BaseController{
+    private final ExecutorService executorService = Executors.newFixedThreadPool(5);
     @GetMapping("")
     protected AjaxResult fetch(@RequestParam(value = "name", required = false) String name)
     {
@@ -21,55 +27,82 @@ public class FetchController extends BaseController{
             return error("参数 name 不能为空");
         }
         System.out.println("开始执行Python爬虫");
-        String virtualEnvPath="C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径;
-        String scriptPath= "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";
-        String osName = System.getProperty("os.name").toLowerCase();
-        if("travel".equals(name)){
-            virtualEnvPath = "C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径
-            scriptPath = "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";// 替换为你的Python脚本路径
-        }
-        String pythonExecutable;
-        if (osName.contains("win")) {
-            pythonExecutable = virtualEnvPath + "\\Scripts\\python.exe";
-        } else if (osName.contains("mac") || osName.contains("nix") || osName.contains("nux")) {
-            pythonExecutable = virtualEnvPath + "/bin/python3";
-        } else {
-            return error("不支持的操作系统");
-        }
+        long taskId = TaskManager.createTask();
+        Runnable task = () -> {
+            try {
+                String virtualEnvPath="C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env"; // 替换为你的虚拟环境路径;
+                String scriptPath= "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";
+                String osName = System.getProperty("os.name").toLowerCase();
+                List<String> command = new ArrayList<>();
+                String pythonExecutable;
+                if (osName.contains("win")) {
+                    pythonExecutable = virtualEnvPath + "\\Scripts\\python.exe";
+                } else if (osName.contains("mac") || osName.contains("nix") || osName.contains("nux")) {
+                    pythonExecutable = virtualEnvPath + "/bin/python3";
+                } else {
+                    TaskManager.updateTaskStatus(taskId, "FAILED", "不支持的操作系统");
+                    return;
+                }
+                if("travel".equals(name)){
+                    scriptPath = "D:\\临时\\code\\pyscripts\\pys\\trvl_spider.py";// 替换为你的Python脚本路径
+                    command.add(pythonExecutable);
+                    command.add(scriptPath);
+                }
+                else if("visualChina".equals(name)){
+                    System.out.println("what");
+                    String batPath = "D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider\\run.bat";
+                    command.add(batPath);
+                    command.add(virtualEnvPath);
+                }
+                ProcessBuilder processBuilder = new ProcessBuilder(command);
+                processBuilder.directory(new File("D:\\临时\\code\\pyscripts\\VisualChinaGroup_spider")); // 设置工作目录
 
-        String[] args = { pythonExecutable, scriptPath };
+                Process proc = processBuilder.start();
+                //Process proc = Runtime.getRuntime().exec(command.toArray(new String[0]));
 
-        try {
-            Process proc = Runtime.getRuntime().exec(args);
+                // 获取Python脚本的标准输出
+                BufferedReader stdoutReader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+                BufferedReader stderrReader = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+                StringBuilder output = new StringBuilder();
+                StringBuilder errorOutput = new StringBuilder();
 
-            // 获取Python脚本的标准输出
-            BufferedReader stdoutReader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line;
-            StringBuilder output = new StringBuilder();
-            while ((line = stdoutReader.readLine()) != null) {
-                output.append(line).append("\n");
+                String line;
+                while ((line = stdoutReader.readLine()) != null) {
+                    System.out.println(line);
+                    output.append(line).append("\n");
+                }
+                while ((line = stderrReader.readLine()) != null) {
+                    System.out.println(line);
+                    errorOutput.append(line).append("\n");
+                }
+
+                int exitCode = proc.waitFor();
+                stdoutReader.close();
+                stderrReader.close();
+
+                if (exitCode == 0) {
+                    TaskManager.updateTaskStatus(taskId, "COMPLETED", output.toString());
+                } else {
+                    TaskManager.updateTaskStatus(taskId, "FAILED", errorOutput.toString());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                TaskManager.updateTaskStatus(taskId, "FAILED", "爬取失败！");
             }
-            System.out.println("Python脚本输出: " + output.toString());
+        };
+        executorService.submit(task);
 
-            // 获取Python脚本的标准错误输出
-            BufferedReader stderrReader = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-            StringBuilder errorOutput = new StringBuilder();
-            while ((line = stderrReader.readLine()) != null) {
-                errorOutput.append(line).append("\n");
-            }
-            System.out.println("Python脚本错误输出: " + errorOutput.toString());
+        return success(taskId);
+    }
 
-            int exitCode = proc.waitFor();
-            System.out.println("Python脚本退出码: " + exitCode);
-
-            // 关闭输入输出流
-            stdoutReader.close();
-            stderrReader.close();
-
-            return success("爬取成功！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return error("爬取失败！");
+    @GetMapping("/status")
+    protected AjaxResult getTaskStatus(@RequestParam long taskId) {
+        System.out.println("任务");
+        TaskManager.TaskStatus taskStatus = TaskManager.getTaskStatus(taskId);
+        if (taskStatus == null) {
+            return error("无效的任务ID");
         }
+
+        return success(taskStatus);
     }
 }
