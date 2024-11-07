@@ -140,49 +140,7 @@ export default {
   },
   methods: {
     generateReport() {
-      const sections = [
-        "section1",
-        "section2",
-        "section3",
-        "section4",
-        "section5",
-        "section6",
-      ];
-      const pdf = new jsPDF();
 
-      sections.forEach((sectionId) => {
-        const sectionElement = document.getElementById(sectionId);
-        if (!sectionElement) {
-          console.error(`Section with id ${sectionId} not found`);
-          return;
-        }
-        // 继续捕获和生成 PDF
-      });
-
-      const sectionPromises = sections.map((sectionId) => {
-        const sectionElement = document.getElementById(sectionId);
-        return html2canvas(sectionElement).then((canvas) => {
-          console.log(`Canvas for ${sectionId} generated`, canvas);
-          const contentDataURL = canvas.toDataURL("image/png");
-          const imgWidth = canvas.width;
-          const imgHeight = canvas.height;
-
-          // 创建一个新的页面，大小与当前 section 相同
-          pdf.addPage(imgWidth, imgHeight);
-
-          // 将图片添加到PDF中
-          pdf.addImage(contentDataURL, "PNG", 0, 0, imgWidth, imgHeight);
-        });
-      });
-
-      Promise.all(sectionPromises)
-        .then(() => {
-          // 保存PDF文件
-          pdf.save("report.pdf");
-        })
-        .catch((error) => {
-          console.error("Error capturing sections:", error);
-        });
     },
     handleCityFromChild(data) {
       if (data.slice(-2, -1) == "城" || data.slice(-2, -1) == "郊") {
