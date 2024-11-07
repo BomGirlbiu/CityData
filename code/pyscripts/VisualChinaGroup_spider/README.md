@@ -6,6 +6,6 @@
 ``` bash
 cd VisualChinaGroup_spider
 run.bat -v venvPath -c "city1 city2..." 
-# city1 city2使用中文即可
+# city1 city2使用中文即可 不用-c参数以爬取全部 默认数据库为 root 123456 ry-vue 如有需要请修改save_to_db.py
 # usage run.bat -v "D:\venv\.venv" -c "天津市 北京市"
 ```
