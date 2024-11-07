@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.CityNewsMapper">
+    
+    <resultMap type="CityNews" id="CityNewsResult">
+        <result property="city"    column="city"    />
+        <result property="province"    column="province"    />
+        <result property="title"    column="title"    />
+        <result property="newsURL"    column="newsURL"    />
+        <result property="newsID"    column="newsID"    />
+    </resultMap>
+
+    <sql id="selectCityNewsVo">
+        select city, province, title, newsURL, newsID from city_news
+    </sql>
+
+    <select id="selectCityNewsList" parameterType="CityNews" resultMap="CityNewsResult">
+        <include refid="selectCityNewsVo"/>
+        <where>  
+            <if test="city != null  and city != ''"> and city = #{city}</if>
+            <if test="province != null  and province != ''"> and province = #{province}</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="newsID != null "> and newsID = #{newsID}</if>
+        </where>
+    </select>
+    
+    <select id="selectCityNewsByNewsID" parameterType="Long" resultMap="CityNewsResult">
+        <include refid="selectCityNewsVo"/>
+        where newsID = #{newsID}
+    </select>
+
+    <insert id="insertCityNews" parameterType="CityNews" useGeneratedKeys="true" keyProperty="newsID">
+        insert into city_news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="city != null and city != ''">city,</if>
+            <if test="province != null and province != ''">province,</if>
+            <if test="title != null and title != ''">title,</if>
+            <if test="newsURL != null and newsURL != ''">newsURL,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="city != null and city != ''">#{city},</if>
+            <if test="province != null and province != ''">#{province},</if>
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="newsURL != null and newsURL != ''">#{newsURL},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCityNews" parameterType="CityNews">
+        update city_news
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="city != null and city != ''">city = #{city},</if>
+            <if test="province != null and province != ''">province = #{province},</if>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="newsURL != null and newsURL != ''">newsURL = #{newsURL},</if>
+        </trim>
+        where newsID = #{newsID}
+    </update>
+
+    <delete id="deleteCityNewsByNewsID" parameterType="Long">
+        delete from city_news where newsID = #{newsID}
+    </delete>
+
+    <delete id="deleteCityNewsByNewsIDs" parameterType="String">
+        delete from city_news where newsID in 
+        <foreach item="newsID" collection="array" open="(" separator="," close=")">
+            #{newsID}
+        </foreach>
+    </delete>
+</mapper>

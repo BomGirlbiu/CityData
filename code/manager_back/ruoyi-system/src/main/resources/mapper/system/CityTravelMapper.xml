@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.CityTravelMapper">
+    
+    <resultMap type="CityTravel" id="CityTravelResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+        <result property="city"    column="city"    />
+        <result property="province"    column="province"    />
+        <result property="src"    column="src"    />
+        <result property="img"    column="img"    />
+    </resultMap>
+
+    <sql id="selectCityTravelVo">
+        select id, title, content, city, province, src, img from city_travel
+    </sql>
+
+    <select id="selectCityTravelList" parameterType="CityTravel" resultMap="CityTravelResult">
+        <include refid="selectCityTravelVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title like concat('%', #{title}, '%')</if>
+            <if test="city != null  and city != ''"> and city like concat('%', #{city}, '%')</if>
+            <if test="province != null  and province != ''"> and province like concat('%', #{province}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectCityTravelById" parameterType="Long" resultMap="CityTravelResult">
+        <include refid="selectCityTravelVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertCityTravel" parameterType="CityTravel" useGeneratedKeys="true" keyProperty="id">
+        insert into city_travel
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">title,</if>
+            <if test="content != null and content != ''">content,</if>
+            <if test="city != null and city != ''">city,</if>
+            <if test="province != null and province != ''">province,</if>
+            <if test="src != null and src != ''">src,</if>
+            <if test="img != null and img != ''">img,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="content != null and content != ''">#{content},</if>
+            <if test="city != null and city != ''">#{city},</if>
+            <if test="province != null and province != ''">#{province},</if>
+            <if test="src != null and src != ''">#{src},</if>
+            <if test="img != null and img != ''">#{img},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCityTravel" parameterType="CityTravel">
+        update city_travel
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
+            <if test="city != null and city != ''">city = #{city},</if>
+            <if test="province != null and province != ''">province = #{province},</if>
+            <if test="src != null and src != ''">src = #{src},</if>
+            <if test="img != null and img != ''">img = #{img},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCityTravelById" parameterType="Long">
+        delete from city_travel where id = #{id}
+    </delete>
+
+    <delete id="deleteCityTravelByIds" parameterType="String">
+        delete from city_travel where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

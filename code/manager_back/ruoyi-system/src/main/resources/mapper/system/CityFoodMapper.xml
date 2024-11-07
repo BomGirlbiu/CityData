@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.CityFoodMapper">
+    
+    <resultMap type="CityFood" id="CityFoodResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="summary"    column="summary"    />
+        <result property="province"    column="province"    />
+        <result property="src"    column="src"    />
+        <result property="img"    column="img"    />
+    </resultMap>
+
+    <sql id="selectCityFoodVo">
+        select id, name, summary, province, src, img from city_food
+    </sql>
+
+    <select id="selectCityFoodList" parameterType="CityFood" resultMap="CityFoodResult">
+        <include refid="selectCityFoodVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="province != null  and province != ''"> and province like concat('%', #{province}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectCityFoodById" parameterType="Long" resultMap="CityFoodResult">
+        <include refid="selectCityFoodVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertCityFood" parameterType="CityFood" useGeneratedKeys="true" keyProperty="id">
+        insert into city_food
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="summary != null and summary != ''">summary,</if>
+            <if test="province != null and province != ''">province,</if>
+            <if test="src != null and src != ''">src,</if>
+            <if test="img != null and img != ''">img,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="summary != null and summary != ''">#{summary},</if>
+            <if test="province != null and province != ''">#{province},</if>
+            <if test="src != null and src != ''">#{src},</if>
+            <if test="img != null and img != ''">#{img},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCityFood" parameterType="CityFood">
+        update city_food
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="summary != null and summary != ''">summary = #{summary},</if>
+            <if test="province != null and province != ''">province = #{province},</if>
+            <if test="src != null and src != ''">src = #{src},</if>
+            <if test="img != null and img != ''">img = #{img},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCityFoodById" parameterType="Long">
+        delete from city_food where id = #{id}
+    </delete>
+
+    <delete id="deleteCityFoodByIds" parameterType="String">
+        delete from city_food where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
