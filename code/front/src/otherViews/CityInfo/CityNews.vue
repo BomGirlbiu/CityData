@@ -18,7 +18,7 @@
     <div class="news-body">
       <div class="middle">
         <div class="title">
-          <h1>{{this.currentCity}}</h1>
+          <h1>{{ this.currentCity }}</h1>
         </div>
         <el-row style="height: 100%">
           <el-col :span="16" class="leftcol" style="height: 650px">
@@ -243,7 +243,7 @@
 
 <script>
 import axios from "axios";
-import Header from '../../components/Layout/Header.vue'
+import Header from "../../components/Layout/Header.vue";
 // import NavItem from "../../components/Layout/NavItem.vue";
 export default {
   name: "CityNews",
@@ -277,7 +277,7 @@ export default {
           "http://localhost:82/CityNews/" + this.currentCity
         );
         console.log(response);
-        console.log( "http://localhost:82/CityNews/" + this.currentCity);
+        console.log("http://localhost:82/CityNews/" + this.currentCity);
 
         this.items = response.data.cityNewsList; // 假设后端返回的对象中有一个items数组
         this.videos = response.data.cityVideoList; // 假设后端返回的对象中有一个items数组
@@ -300,7 +300,7 @@ export default {
         this.buttonData = response.data;
         this.currentCity = this.buttonData[0];
         this.loadData();
-        console.log(this.currentCity)
+        console.log(this.currentCity);
       } catch (error) {
         console.error("Error loading data:", error);
       } finally {
@@ -316,7 +316,6 @@ export default {
 };
 </script>
 <style lang="scss" scope>
-
 // 背景颜色
 body {
   font-family: "Quicksand", serif;
@@ -324,14 +323,15 @@ body {
   font-weight: 400;
   letter-spacing: 0;
   // padding: 1rem;
-  background: linear-gradient(
-    to right,
-    rgb(173, 169, 150),
-    rgb(242, 242, 242),
-    rgb(219, 219, 219),
-    rgb(234, 234, 234)
-  );
-   box-sizing: border-box;
+  // background: linear-gradient(
+  //   to right,
+  //   rgb(173, 169, 150),
+  //   rgb(242, 242, 242),
+  //   rgb(219, 219, 219),
+  //   rgb(234, 234, 234)
+  // );
+  background: white;
+  box-sizing: border-box;
 }
 
 .city-news {
@@ -359,6 +359,10 @@ body {
   .channel {
     position: relative;
     margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap; /* 允许按钮换行 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
   }
 }
 .news-body {
@@ -400,8 +404,8 @@ body {
 }
 // 轮播图背景
 .leftcol {
-  background: linear-gradient(to bottom left, #8e9eab 40%, #eef2f3 100%);
-
+  // background: linear-gradient(to bottom left, #8e9eab 40%, #eef2f3 100%);
+background: #ffffff;
   padding: 1%;
   margin-left: 2%;
 }
@@ -600,8 +604,6 @@ a {
 // 网格布局
 /* Font */
 @import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
-
-
 
 .main {
   max-width: 1200px;
