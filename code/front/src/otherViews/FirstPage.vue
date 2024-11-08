@@ -2930,6 +2930,8 @@ svg {
 #space-ai-p {
   font-size: 20px;
   color: #3496d2;
+  text-align: left;
+  text-indent: 2em; 
 }
 
 .learn-more {
