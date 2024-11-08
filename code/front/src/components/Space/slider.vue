@@ -110,6 +110,7 @@ export default {};
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
+  // width:80px;
   flex-direction: column;
   align-items: baseline;
   justify-content: center;

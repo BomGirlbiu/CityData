@@ -375,7 +375,7 @@ def main():
 
         fg = True
 
-        for city_pinyin, city_name in other_cities.items():
+        for city_pinyin, city_name in province_capitals.items():
             print(f"Fetching videos for: {city_name} ({city_pinyin})")
 
             # 获取前 15 个视频链接及标题

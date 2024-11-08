@@ -40,6 +40,15 @@ if not "%C_PARAM%"=="" (
         echo ../generate_pcd.py 执行失败
         exit /b %errorlevel%
     )
+) else (
+    REM 删除./province_city_dict.json文件
+    if exist ./province_city_dict.json (
+        del ./province_city_dict.json
+        if %errorlevel% neq 0 (
+            echo 删除./province_city_dict.json失败
+            exit /b %errorlevel%
+        )
+    )
 )
 
 REM 执行Get_city_img_url.py
@@ -60,6 +69,12 @@ REM 执行拼音转中文.py
 python 拼音转中文.py
 if %errorlevel% neq 0 (
     echo 拼音转中文.py 执行失败
+    exit /b %errorlevel%
+)
+
+python save_to_db.py
+if %errorlevel% neq 0 (
+    echo save_to_db.py 执行失败
     exit /b %errorlevel%
 )
 

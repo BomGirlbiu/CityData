@@ -1,10 +1,13 @@
 <template>
   <div class="ai-video">
     <!-- -  <div
+  <div class="ai-video">
+    <!-- -  <div
     style="
       background-color: #f5f5f5;
       color: #333;
       font-family: Arial, sans-serif;
+      z-index: 20;
     "
   > -
   <div style="max-width: 800px; margin: 0 auto; padding: 20px">
@@ -77,6 +80,7 @@
 
 <script>
 import axios from "axios";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -106,7 +110,6 @@ export default {
         prompt: this.prompt,
         image_url: this.imageUrl,
       };
-
       try {
         const response = await axios.post(
           "https://open.bigmodel.cn/api/paas/v4/videos/generations",
@@ -167,4 +170,5 @@ export default {
   font-family: Arial, sans-serif;
   z-index: 20;
 }
+
 </style>

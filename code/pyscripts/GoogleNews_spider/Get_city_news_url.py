@@ -173,7 +173,8 @@ if __name__ == '__main__':
         # 读取 JSON 文件并加载字典
         with open(json_path, 'r', encoding='utf-8') as f:
             province_city_dict = json.load(f)
-    except IndexError:
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
         logging.error("missing json_path, use default")
 
     # 对每个城市执行搜索

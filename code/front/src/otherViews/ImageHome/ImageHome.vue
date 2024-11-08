@@ -1,14 +1,19 @@
 <template>
   <div class="image-home">
     <div class="Grid Grid--gutters Grid--1of6">
+      <!-- <div > -->
       <div class="Grid-cell">
+        <!-- <div> -->
         <div class="Demo content-1of6">
+          <!-- <div> -->
           <slider />
         </div>
       </div>
       <!-- <div class="Grid-cell"><div class="Demo"><AiVideo /></div></div> -->
-      <div class="Grid-cell">
-        <div class="Demo"><router-view></router-view></div>
+      <div>
+        <div class="Grid-cell">
+          <div class="Demo"><router-view></router-view></div>
+        </div>
       </div>
     </div>
     <div class="ai-content"></div>
@@ -55,6 +60,7 @@ $demoHollyDark: rgba(102, 51, 255, 0.25);
   height: 100%;
   overflow:auto;
   //border: 1px solid red;
+  overflow: auto;
 }
 
 h1,

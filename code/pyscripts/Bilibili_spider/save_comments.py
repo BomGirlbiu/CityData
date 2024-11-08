@@ -5,7 +5,7 @@ import sys
 def insert_data_to_db(db_name, user, password):
     try:
         # 读取Excel文件
-        df = pd.read_excel('./temp/target/combined_commnets.xlsx')
+        df = pd.read_excel('./temp/target/combined_comments.xlsx')
 
         # 连接到数据库
         connection = pymysql.connect(

@@ -139,9 +139,7 @@ export default {
     }
   },
   methods: {
-    generateReport() {
-
-    },
+    generateReport() {},
     handleCityFromChild(data) {
       if (data.slice(-2, -1) == "城" || data.slice(-2, -1) == "郊") {
         this.selectedCity = data.slice(0, -2);

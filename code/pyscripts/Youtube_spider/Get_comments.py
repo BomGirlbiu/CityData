@@ -436,7 +436,7 @@ def worker(cities_queue):
 
 if __name__ == "__main__":
     cities_queue = Queue()
-    for city_pinyin, city_name in other_cities.items():
+    for city_pinyin, city_name in province_capitals.items():
         cities_queue.put((city_pinyin, city_name))
 
     threads = []

@@ -6,6 +6,7 @@
 ```baseh
     cd GoogleNews_spider
     # make sure you have city_dict.json in this dir
-    run.bat venvPath
+    run.bat -v venvPath -c "city1 city2"
+    # 忽略-c参数以全部爬取 默认数据库为 root 123456 ry-vue 如有需要请修改save_to_db.py
     # output file will be in ./temp/target
 ```

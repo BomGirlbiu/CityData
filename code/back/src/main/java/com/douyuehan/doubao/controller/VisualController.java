@@ -1,5 +1,7 @@
 package com.douyuehan.doubao.controller;
-
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import com.douyuehan.doubao.model.entity.BigscreenEntity.*;
 import com.douyuehan.doubao.mapper.BigscreenMapper.*;
 import com.douyuehan.doubao.model.entity.BigscreenEntity.googlesearch;
@@ -34,6 +36,7 @@ public class VisualController {
         System.out.println(list);
         return list;
     }
+
     @PostMapping("/index/visual/social/fans")
     public List<Fans> findfansbyname(String cityname) {
         List<Fans> list = fansMapper.findfansbyname(cityname); // 注意：这里假设你的mapper方法只根据cityname查找
