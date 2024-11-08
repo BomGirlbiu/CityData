@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.CityattributesMapper">
+    
+    <resultMap type="Cityattributes" id="CityattributesResult">
+        <result property="cityID"    column="cityID"    />
+        <result property="cityName"    column="cityName"    />
+        <result property="searchin"    column="searchin"    />
+        <result property="network"    column="network"    />
+        <result property="mediatr"    column="mediatr"    />
+        <result property="tourism"    column="tourism"    />
+        <result property="social"    column="social"    />
+        <result property="totalrate"    column="totalrate"    />
+    </resultMap>
+
+    <sql id="selectCityattributesVo">
+        select cityID, cityName, searchin, network, mediatr, tourism, social, totalrate from cityattributes
+    </sql>
+
+    <select id="selectCityattributesList" parameterType="Cityattributes" resultMap="CityattributesResult">
+        <include refid="selectCityattributesVo"/>
+        <where>  
+            <if test="cityID != null "> and cityID = #{cityID}</if>
+            <if test="cityName != null  and cityName != ''"> and cityName like concat('%', #{cityName}, '%')</if>
+            <if test="searchin != null "> and searchin like concat('%', #{searchin}, '%')</if>
+            <if test="network != null "> and network like concat('%', #{network}, '%')</if>
+            <if test="mediatr != null "> and mediatr like concat('%', #{mediatr}, '%')</if>
+            <if test="tourism != null "> and tourism like concat('%', #{tourism}, '%')</if>
+            <if test="social != null "> and social like concat('%', #{social}, '%')</if>
+            <if test="totalrate != null "> and totalrate like concat('%', #{totalrate}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectCityattributesByCityID" parameterType="Integer" resultMap="CityattributesResult">
+        <include refid="selectCityattributesVo"/>
+        where cityID = #{cityID}
+    </select>
+
+    <insert id="insertCityattributes" parameterType="Cityattributes">
+        insert into cityattributes
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cityID != null">cityID,</if>
+            <if test="cityName != null and cityName != ''">cityName,</if>
+            <if test="searchin != null">searchin,</if>
+            <if test="network != null">network,</if>
+            <if test="mediatr != null">mediatr,</if>
+            <if test="tourism != null">tourism,</if>
+            <if test="social != null">social,</if>
+            <if test="totalrate != null">totalrate,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cityID != null">#{cityID},</if>
+            <if test="cityName != null and cityName != ''">#{cityName},</if>
+            <if test="searchin != null">#{searchin},</if>
+            <if test="network != null">#{network},</if>
+            <if test="mediatr != null">#{mediatr},</if>
+            <if test="tourism != null">#{tourism},</if>
+            <if test="social != null">#{social},</if>
+            <if test="totalrate != null">#{totalrate},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCityattributes" parameterType="Cityattributes">
+        update cityattributes
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cityName != null and cityName != ''">cityName = #{cityName},</if>
+            <if test="searchin != null">searchin = #{searchin},</if>
+            <if test="network != null">network = #{network},</if>
+            <if test="mediatr != null">mediatr = #{mediatr},</if>
+            <if test="tourism != null">tourism = #{tourism},</if>
+            <if test="social != null">social = #{social},</if>
+            <if test="totalrate != null">totalrate = #{totalrate},</if>
+        </trim>
+        where cityID = #{cityID}
+    </update>
+
+    <delete id="deleteCityattributesByCityID" parameterType="Integer">
+        delete from cityattributes where cityID = #{cityID}
+    </delete>
+
+    <delete id="deleteCityattributesByCityIDs" parameterType="String">
+        delete from cityattributes where cityID in 
+        <foreach item="cityID" collection="array" open="(" separator="," close=")">
+            #{cityID}
+        </foreach>
+    </delete>
+</mapper>

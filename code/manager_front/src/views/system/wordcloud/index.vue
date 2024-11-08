@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="${comment}" prop="value">
+      <el-form-item label="请输入" prop="value">
         <el-input
           v-model="queryParams.value"
-          placeholder="请输入${comment}"
+          placeholder="请输入"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -63,9 +63,9 @@
 
     <el-table v-loading="loading" :data="wordcloudList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="${comment}" align="center" prop="cityName" />
-      <el-table-column label="${comment}" align="center" prop="name" />
-      <el-table-column label="${comment}" align="center" prop="value" />
+      <el-table-column label="城市名" align="center" prop="cityName" />
+      <el-table-column label="词名" align="center" prop="name" />
+      <el-table-column label="次数" align="center" prop="value" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
