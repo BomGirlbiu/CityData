@@ -367,7 +367,7 @@ $gutter: 1em;
 // .content-1of3::before { content: "1/3"; }
 // .content-1of4::before { content: "1/4"; }
 .content-1of6::before {
-  content: "1/6";
+  content: "";
 }
 // .content-1of12::before { content: "1/12"; }
 </style>

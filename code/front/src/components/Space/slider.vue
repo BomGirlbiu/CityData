@@ -57,25 +57,28 @@
 </ul>
 
 <details>
-	<summary>How it works<i class="ai-question-fill"></i></summary>
+	<summary>如何写文本描述？<i class="ai-question-fill"></i></summary>
 	<div>
-			<p>Inside each <code>&lt;a&gt;</code> element there's a hidden (using transform and opacity) <code>&lt;span&gt;</code> containing the text. Like this: </p>
-		<p><pre><code>a span { 
-&nbsp;position: absolute;
-&nbsp;left: calc(100% + 1.5rem); //Moves it all the way to the right
-&nbsp;
-&nbsp;opacity: 0;
-&nbsp;transform: scale(0);
-&nbsp;transform-origin: center left;
-&nbsp;transition: .15s ease;
-}</code></pre> </p>
-<p>On hover or focus this span becomes visible through a transition of both transform and opacity. Like this:</p>
-<p><pre><code>a:hover span, a:focus span { 
-&nbsp;opacity: 1;
-&nbsp;transform: scale(1);
-}</code></pre> </p>
-	<p>The <code>&lt;span&gt;</code> also has a psuedo-element in the shape of a rectangle, but rotated 45 degrees to make it look like a triangle. See the code for more details.</p>
-	</div>
+			<p>以下是<strong>文生视频</strong>构建提示词的关键组成部分：
+
+<code>&lt;提示词 = (镜头语言 +景别角度+ 光影) + 主体 (主体描述) + 主体运动 +场景 (场景描述) + (氛围) &gt;</code> 
+ </p>
+		<p>
+      <pre>
+        <code><strong>镜头语言</strong>: 通过镜头的各种应用以及镜头之间的衔接和切换来传达故事或信息，并创造出特定的视觉效果和情感氛围。如镜头平移，推近、拉远、升降拍摄、摇摄、跟随拍摄、手持拍摄、无人机航拍等;
+景别角度：控制相机与被摄对象之间距离和角度，实现不同的视觉效果和情感表达。如大全景、中景、近景 、鸟瞰视角 、跟随视角、鱼眼效果等;
+<strong>光影</strong>: 光影是赋予摄影作品灵魂的关键元素，光影的运用可以使照片更具深度，更具情感，我们可以通过光影创造出富有层次感和情感表达力的作品。如自然光、丁达尔效应、柔和散射、硬光直射 、逆光剪影、三点布光等;
+<strong>主体</strong>: 主体是视频中的主要表现对象。如儿童、狮子、向日葵，汽车、城堡等;
+<strong>主体描述</strong>: 对主体外貌细节和肢体姿态等的描述，如人物的服饰、动物的毛色、植物的颜色、物体的状态和建筑的风格;
+<strong>主体运动</strong>: 对主体运动状态的描述，包括静止和运动等，运动状态不宜过于复杂，符合6s视频内可以展现的画面即可，
+<strong>场景</strong>: 场景是主体所处的环境，包括前景、背景等;
+<strong>场景描述</strong>: 对主体所处环境的细节描述。如都市环境、乡村风光、工业区等;
+<strong>氛围</strong>: 对预期视频画面的氛围描述。如喧嚣繁忙、悬疑惊悚、宁静舒适等;</code></pre> </p>
+<p>
+  <strong>图生视频</strong>提示词建议使用“主体（背景）+ 运动描述”的表达方式。
+
+</p>
+</div>
 </details>
 </div>
 </template>

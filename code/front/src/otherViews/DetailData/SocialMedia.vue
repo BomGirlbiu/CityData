@@ -95,7 +95,7 @@ export default {
         this.Question =
           "以下数据格式为" +
           this.selectedCity +
-          "{城市名，消极评论数，中立评论数，社交平台youtube，积极评论数}，具体解释为在该社交平台上，选取较为热门的帖子，其中的各种情绪的评论数，分析在该平台上对该城市的情感为什么是这种走向，并总结，不超过500字，清晰明了，不要加不确定的词汇";
+          "{快乐评论数，伤心评论数，生气评论数，害怕评论数，惊喜评论数，喜爱评论数，恐慌评论数}，具体解释为在youtube社交平台上，选取较为热门的帖子，其中的各种情绪的评论数，分析在该平台上对该城市的情感为什么是这种走向，并总结，不超过500字，清晰明了，不要加不确定的词汇，不要在回答中出现我们给的明确数据";
       }
       // console.log("selected changed:", newVal);
     },
@@ -106,7 +106,7 @@ export default {
   methods: {
     async socialyoutube(cityname) {
       let params = new FormData();
-      params.append("cityname", cityname);
+      params.append("cityname", cityname + "市");
 
       // console.log("params:", params);
       // console.log("cityname:", cityname);
@@ -116,9 +116,10 @@ export default {
           method: "post",
           data: params,
         });
-        // console.log(response.data); // 处理响应数据
+        console.log(response.data); // 处理响应数据
         this.analyzedata = response.data;
-        this.initChart2(response.data);
+
+        this.initChartyoutube(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -330,7 +331,6 @@ export default {
               labelLine: {
                 show: false,
               },
-
               data: [
                 {
                   value: tend[0],
@@ -355,7 +355,119 @@ export default {
       } else {
         this.chart.dispose();
         this.chart = null;
-        console.log("数据为空");
+        // console.log("数据为空");
+      }
+    },
+    initChartyoutube(datas) {
+      this.chart = echarts.init(this.$refs.chartDom);
+      if (datas != null && datas.length > 0) {
+        var tend = [];
+        // console.log(datas[0].positiveNum);
+        // console.log(datas);
+        tend[0] = datas[0].joyNum;
+        tend[1] = datas[0].sadnessNum;
+        tend[2] = datas[0].angerNum;
+        tend[3] = datas[0].fearNum;
+        tend[4] = datas[0].surpriseNum;
+        tend[5] = datas[0].loveNum;
+        tend[6] = datas[0].disgustNum;
+        // console.log(tend);
+        this.analyzedata = tend;
+        const option2 = {
+          tooltip: {
+            trigger: "item",
+          },
+          title: {
+            text: "情绪分析",
+            left: "center",
+            textStyle: {
+              fontSize: 13, //字体大小
+              color: "#fff", //字体颜色
+            },
+          },
+          legend: {
+            top: "5%",
+            left: "center",
+            textStyle: {
+              fontSize: 13, //字体大小
+              color: "#fff", //字体颜色
+            },
+          },
+          xAxis: { show: false },
+          yAxis: { show: false },
+          visualMap: { show: false },
+          series: [
+            {
+              name: "Access From",
+              type: "pie",
+              radius: ["40%", "70%"],
+              avoidLabelOverlap: true,
+              itemStyle: {
+                borderRadius: 10,
+                borderColor: "#fff",
+                borderWidth: 2,
+                color: "#000",
+              },
+              label: {
+                show: false,
+                position: "center",
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: 40,
+                  fontWeight: "bold",
+                },
+              },
+
+              labelLine: {
+                show: false,
+              },
+              data: [
+                {
+                  value: tend[0],
+                  name: "喜悦",
+                  itemStyle: { color: "#2f4554", fontSize: 10 },
+                },
+                {
+                  value: tend[1],
+                  name: "悲观",
+                  itemStyle: { color: "#61a0a8" },
+                },
+                {
+                  value: tend[2],
+                  name: "生气",
+                  // itemStyle: { color: "#d48265" },
+                },
+                {
+                  value: tend[3],
+                  name: "恐惧",
+                  // itemStyle: { color: "#d48265" },
+                },
+                {
+                  value: tend[4],
+                  name: "惊喜",
+                  // itemStyle: { color: "#d48265" },
+                },
+                {
+                  value: tend[5],
+                  name: "喜爱",
+                  // itemStyle: { color: "#d48265" },
+                },
+                {
+                  value: tend[6],
+                  name: "恐慌",
+                  itemStyle: { color: "#d48265" },
+                },
+              ],
+            },
+          ],
+        };
+        this.chart.setOption(option2);
+      } else {
+        this.chart.dispose();
+        this.chart = null;
+        // console.log("数据为空");
       }
     },
   },
