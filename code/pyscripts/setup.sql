@@ -45,6 +45,16 @@ CREATE TABLE bilibili_comments(
     insert_time DATETIME
 )
 
+DROP TABLE IF EXISTS youtube_comments;
+CREATE TABLE youtube_comments(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    city VARCHAR(255),
+    comment VARCHAR(8192),
+    time_published DATETIME,
+    likes INT,
+    insert_time DATETIME
+)
+
 DROP TABLE IF EXISTS city_images;
 CREATE TABLE city_images(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -59,7 +69,30 @@ CREATE TABLE emotion_bili(
     positiveNum INT,
     negativeNum INT,
     neutralNum INT,
-    platform VARCHAR(255)
+    platform VARCHAR(255),
+    insert_time DATETIME
+)
+
+DROP TABLE IF EXISTS emotion_youtube;
+CREATE TABLE emotion_youtube(
+    cityName VARCHAR(255),
+    joyNum INT,
+    sadnessNum INT,
+    angerNum INT,
+    fearNum INT,
+    surpriseNum INT,
+    loveNum INT,
+    disgustNum INT,
+    travelNum INT,
+    foodNum INT,
+    sportsNum INT,
+    technologyNum INT,
+    healthNum INT,
+    educationNum INT,
+    entertainmentNum INT,
+    politicsNum INT,
+    platform VARCHAR(255),
+    insert_time DATETIME
 )
 
 DROP TABLE IF EXISTS city_news;
