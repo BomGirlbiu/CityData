@@ -8,8 +8,31 @@
       z-index: 20;
     "
   > -->
+    <!-- <el-select v-model="PhotoLanguage" filterable placeholder="镜头语言">
+      <el-option
+        v-for="item in PhotoLanguages"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      >
+      </el-option>
+    </el-select>
+    <el-select v-model="ScenesValue" filterable placeholder="景别角度">
+      <el-option
+        v-for="item in Scenes"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      >
+      </el-option>
+    </el-select> -->
     <div style="max-width: 800px; margin: 0 auto; padding: 20px">
-      <h3 style="color: #555">视频生成</h3>
+      <h3 style="color: #555">城市宣传视频生成</h3>
+      <h6>
+        文生视频：用户输入的文本描述，可以生成6秒左右的动态视频。<br />
+        图生视频：可以将用户提供的静态图像转化为6秒的动态视频。为达到最佳效果，推荐上传比例为3:2的图片，并且文件格式为
+        PNG 或 JPEG，文件大小不超过5MB。
+      </h6>
       <textarea
         v-model="prompt"
         placeholder="请输入视频的文本描述"
@@ -84,6 +107,70 @@ export default {
       coverImageUrl: "",
       taskId: "",
       taskStatus: "",
+      // 镜头平移，推近、拉远、升降拍摄、摇摄、跟随拍摄、手持拍摄、无人机航拍
+      PhotoLanguages: [
+        {
+          value: "镜头平移",
+          label: "镜头平移",
+        },
+        {
+          value: "推近",
+          label: "推近",
+        },
+        {
+          value: "拉远",
+          label: "拉远",
+        },
+        {
+          value: "升降拍摄",
+          label: "升降拍摄",
+        },
+        {
+          value: "摇摄",
+          label: "摇摄",
+        },
+        {
+          value: "跟随拍摄",
+          label: "跟随拍摄",
+        },
+        {
+          value: "手持拍摄",
+          label: "手持拍摄",
+        },
+        {
+          value: "无人机航拍",
+          label: "无人机航拍",
+        },
+      ],
+      PhotoLanguage: "",
+      // 大全景、中景、近景 、鸟瞰视角 、跟随视角、鱼眼效果
+      Scenes: [
+        {
+          value: "大全景",
+          label: "大全景",
+        },
+        {
+          value: "中景",
+          label: "中景",
+        },
+        {
+          value: "近景",
+          label: "近景",
+        },
+        {
+          value: "鸟瞰视角",
+          label: "鸟瞰视角",
+        },
+        {
+          value: "跟随视角",
+          label: "跟随视角",
+        },
+        {
+          value: "鱼眼效果",
+          label: "鱼眼效果",
+        },
+      ],
+      ScenesValue: "",
     };
   },
 

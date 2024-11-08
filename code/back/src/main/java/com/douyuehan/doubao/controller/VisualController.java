@@ -48,8 +48,8 @@ public class VisualController {
         return list;
     }
     @PostMapping("/index/visual/social/youtube")
-    public List<Emotion> findyoutube(String cityname) {
-        List<Emotion> list = emotionMapper.findyoutube(cityname); // 注意：这里假设你的mapper方法只根据cityname查找
+    public List<YoutubeEmotion> findyoutube(String cityname) {
+        List<YoutubeEmotion> list = emotionMapper.findyoutube(cityname); // 注意：这里假设你的mapper方法只根据cityname查找
         System.out.println(list);
         return list;
     }
