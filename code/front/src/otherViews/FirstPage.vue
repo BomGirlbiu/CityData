@@ -615,7 +615,8 @@ a {
     }
   }
   .et-hero-tab {
-    font-size: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
   }
 }
 
