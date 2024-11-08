@@ -22,15 +22,25 @@
 
 <script>
 export default {
-    name:'CityNav'
-}
+  name: "CityNav",
+  data: {
+    // 假设这是从后端获取的数据
+    navItems: [
+      { text: "长沙", href: "#item1" },
+      { text: "湘潭", href: "#item2" },
+      { text: "Nav Item 3", href: "#item3" },
+      { text: "Nav Item 4", href: "#item4" },
+      { text: "Nav Item 5", href: "#item5" },
+    ],
+  },
+};
 </script>
 
 <style lang="scss" scope>
 /* All */
 .food-nav {
   margin-bottom: 5px;
-  width:auto;
+  width: auto;
 }
 .food-nav ul {
   *zoom: 1;

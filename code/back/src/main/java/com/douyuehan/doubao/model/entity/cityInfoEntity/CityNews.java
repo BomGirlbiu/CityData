@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Data
 @Builder
 @Accessors(chain = true)
-@TableName("citynews")
+@TableName("city_news")
 @NoArgsConstructor
 @AllArgsConstructor
 public class CityNews {

@@ -62,7 +62,7 @@ const routes = [
   {
     //一级路由
     path: "/Evaluate",
-    name: "数据对比",
+    name: "城市对比",
     //定义图标npm
     component: () => import("@/otherViews/Evaluate/Evaluate"),
   },
@@ -70,7 +70,7 @@ const routes = [
     //一级路由
     path: "/ImageHome",
     name: "联想空间",
-    redirect:"/ImageHome/ChatWin",
+    redirect:"/ImageHome/AiVideo",
     //定义图标npm
     component: () => import("@/otherViews/ImageHome/ImageHome"),
     children: [
