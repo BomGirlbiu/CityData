@@ -8,7 +8,6 @@ from datetime import datetime
 # 检查是否提供了输入文件
 if len(sys.argv) != 2:
     print("Usage: python mood-analysis_en.py <city_name>")
-    sys.exit(1)
 
 # 获取城市中文名
 city_name = sys.argv[1]

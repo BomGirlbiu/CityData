@@ -30,7 +30,7 @@ CREATE TABLE newyork_counts(
     end_date DATE,
     insert_date DATE,
     count INT
-)
+);
 
 DROP TABLE IF EXISTS bilibili_comments;
 CREATE TABLE bilibili_comments(
@@ -43,7 +43,7 @@ CREATE TABLE bilibili_comments(
     nice_count INT,
     reply_time DATETIME,
     insert_time DATETIME
-)
+);
 
 DROP TABLE IF EXISTS youtube_comments;
 CREATE TABLE youtube_comments(
@@ -53,7 +53,7 @@ CREATE TABLE youtube_comments(
     time_published DATETIME,
     likes INT,
     insert_time DATETIME
-)
+);
 
 DROP TABLE IF EXISTS city_images;
 CREATE TABLE city_images(
@@ -61,7 +61,7 @@ CREATE TABLE city_images(
     city VARCHAR(255),
     province VARCHAR(255),
     imagesURL VARCHAR(255) UNIQUE
-)
+);
 
 DROP TABLE IF EXISTS emotion_bili;
 CREATE TABLE emotion_bili(
@@ -71,7 +71,7 @@ CREATE TABLE emotion_bili(
     neutralNum INT,
     platform VARCHAR(255),
     insert_time DATETIME
-)
+);
 
 DROP TABLE IF EXISTS emotion_youtube;
 CREATE TABLE emotion_youtube(
@@ -93,7 +93,7 @@ CREATE TABLE emotion_youtube(
     politicsNum INT,
     platform VARCHAR(255),
     insert_time DATETIME
-)
+);
 
 DROP TABLE IF EXISTS city_news;
 CREATE TABLE city_news(
@@ -103,7 +103,7 @@ CREATE TABLE city_news(
     title VARCHAR(255),
     newsURL VARCHAR(1024) ,
     imgURL VARCHAR(512) UNIQUE
-)
+);
 
 DROP TABLE IF EXISTS google_search;
 CREATE TABLE google_search(
@@ -113,7 +113,7 @@ CREATE TABLE google_search(
     count INT,
     -- city 和 date 作为联合主键
     UNIQUE KEY `city_date` (`city`, `date`)
-)
+);
 
 DROP TABLE IF EXISTS youtube_search;
 CREATE TABLE youtube_search(
@@ -123,4 +123,4 @@ CREATE TABLE youtube_search(
     count INT,
     -- city 和 date 作为联合主键
     UNIQUE KEY `city_date` (`city`, `date`)
-)
+);

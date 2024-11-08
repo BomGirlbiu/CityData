@@ -27,6 +27,18 @@ if errorlevel 1 (
     exit /b 1
 )
 
+python merge_comments.py
+if errorlevel 1 (
+    echo merge_comments.py 执行失败。
+    exit /b 1
+)
+
+python save_comments.py
+if errorlevel 1 (
+    echo save_comments.py 执行失败。
+    exit /b 1
+)
+
 REM 关闭虚拟环境
 deactivate
 
