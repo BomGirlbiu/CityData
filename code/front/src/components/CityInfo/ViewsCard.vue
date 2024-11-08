@@ -6,7 +6,7 @@
         :src="item.img"
         alt=""
       />
-      <p class="views-title">card title</p>
+      <p class="views-title">scene</p>
       <div class="views-overlay"></div>
       <div class="views-button"><a href="item.url"> BUTTON </a></div>
     </div>
@@ -19,25 +19,20 @@ export default {
   data() {
     return {
       viewsList:[
-        {
-            img:"http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/09da45332823f014429b94e55fa96c5d.jpg?width=2048&height=1365&top=0&color=#928f52",
-            title:"北京小长假周末必玩榜",
-            url:"https://travel.qunar.com/smartlist/7589216"
+      {
+          URL: "https://travel.qunar.com/p-cs300064-zhangjiajie",
+          title: "烟雨张家界，有“自然的迷宫”武陵源，有“天门吐雾”的罕见奇观。 这里的每一座山峰都是大自然的鬼斧神工。",
+          img: "https://img1.qunarzz.com/travel/poi/1806/95/cc9542a3d8722d37.png_r_720x400x95_53eabde3.png",
         },
         {
-            img:"http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/09da45332823f014429b94e55fa96c5d.jpg?width=2048&height=1365&top=0&color=#928f52",
-            title:"北京小长假周末必玩榜",
-            url:"https://travel.qunar.com/smartlist/7589216"
+          URL: "https://travel.qunar.com/p-cs300022-changsha",
+          title: "长沙，一座充火辣直爽的城市。它是芙蓉国里的一抹灿烂的朝晖，是湘水之畔的灵韵所在。",
+          img: "https://img1.qunarzz.com/travel/poi/1806/46/a1bc3ab1228d6437.png_r_720x400x95_8c0fa956.png",
         },
         {
-            img:"http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/09da45332823f014429b94e55fa96c5d.jpg?width=2048&height=1365&top=0&color=#928f52",
-            title:"北京小长假周末必玩榜",
-            url:"https://travel.qunar.com/smartlist/7589216"
-        },
-        {
-            img:"http://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/09da45332823f014429b94e55fa96c5d.jpg?width=2048&height=1365&top=0&color=#928f52",
-            title:"北京小长假周末必玩榜",
-            url:"https://travel.qunar.com/smartlist/7589216"
+          URL: "https://travel.qunar.com/p-cs300061-yueyang",
+          title: "昔闻洞庭之水，今登岳阳楼上，漫步汨罗江畔，追忆屈子离骚，感叹世事无常，走进文人墨客笔下的岳阳。",
+          img: "https://img1.qunarzz.com/travel/poi/201405/26/997b59e2ed4f0d11ddb12cfb.jpg_r_720x400x95_fd74827f.jpg",
         },
       ]
     };

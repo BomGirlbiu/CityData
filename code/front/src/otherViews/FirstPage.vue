@@ -104,7 +104,7 @@
             <span style="margin: 25px 30px">城市对比</span>
           </h2>
           <ul class="c-services">
-            <router-link :to="{ name: '城市对比' }">
+            <router-link :to="{ name: '数据对比' }">
               <li class="c-services__item">
                 <h3>Responsive Web Design</h3>
                 <p>

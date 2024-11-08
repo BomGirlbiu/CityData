@@ -2,19 +2,19 @@
         <nav class="food-nav">
         <ul>
           <li>
-            <a href="#">Nav Item</a>
+            <a href="#">长沙</a>
           </li>
           <li>
-            <a href="#">Nav Item</a>
+            <a href="#">湘潭</a>
           </li>
           <li>
-            <a href="#">Nav Item</a>
+            <a href="#">株洲</a>
           </li>
           <li>
-            <a href="#">Nav Item</a>
+            <a href="#">益阳</a>
           </li>
           <li>
-            <a href="#">Nav Item</a>
+            <a href="#">萍乡</a>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,6 @@
 <template>
-  <div
+  <div class="ai-video">
+    <!-- -  <div
     style="
       background-color: #f5f5f5;
       color: #333;
@@ -8,6 +9,9 @@
   > -
   <div style="max-width: 800px; margin: 0 auto; padding: 20px">
       <h1 style="color: #555">视频生成</h1>
+      > -->
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px">
+      <h3 style="color: #555">视频生成</h3>
       <textarea
         v-model="prompt"
         placeholder="请输入视频的文本描述"
@@ -72,6 +76,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -155,6 +160,11 @@ export default {
 };
 </script>
 
-<style lang>
-
+<style lang="scss" scope>
+.ai-video {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: Arial, sans-serif;
+  z-index: 20;
+}
 </style>

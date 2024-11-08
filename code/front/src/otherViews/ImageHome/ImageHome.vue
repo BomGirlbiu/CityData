@@ -11,84 +11,11 @@
         <div class="Demo"><router-view></router-view></div>
       </div>
     </div>
-    <!-- <div
-    style="
-      background-color: #f5f5f5;
-      color: #333;
-      font-family: Arial, sans-serif;
-    "
-  > -->
-    <!-- <div style="max-width: 800px; margin: 0 auto; padding: 20px">
-      <h1 style="color: #555">视频生成</h1>
-      <textarea
-        v-model="prompt"
-        placeholder="请输入视频的文本描述"
-        rows="10"
-        cols="50"
-        style="
-          width: 100%;
-          max-width: 100%;
-          background-color: #eee;
-          border: 1px solid #ccc;
-          color: #666;
-        "
-      ></textarea>
-      <br /><br />
-      <label
-        for="fileInput"
-        style="display: block; color: #555; margin-bottom: 10px"
-        >选择封面图片:</label
-      >
-      <input
-        id="fileInput"
-        type="file"
-        @change="onFileChange"
-        accept="image/png, image/jpeg, image/jpg"
-        style="background-color: #eee; border: 1px solid #ccc; color: #666"
-      />
-      <br /><br />
-      <button
-        @click="generateVideo"
-        style="
-          background-color: #ddd;
-          border: none;
-          color: #333;
-          padding: 10px 20px;
-          cursor: pointer;
-        "
-      >
-        生成视频
-      </button>
-      <br /><br />
-      <div v-if="videoUrl" style="margin-top: 20px">
-        <h2 style="color: #555">生成的视频</h2>
-        <video controls style="width: 100%; max-width: 100%">
-          <source :src="videoUrl" type="video/mp4" />
-          您的浏览器不支持 video 标签。
-        </video>
-        <br /><br />
-        <img
-          :src="coverImageUrl"
-          alt="视频封面"
-          style="width: 100%; max-width: 100%; margin-top: 10px"
-        />
-      </div>
-      <div v-if="taskStatus === 'PROCESSING'" style="margin-top: 20px">
-        <p style="color: #555">视频正在生成中...</p>
-      </div>
-      <div v-if="taskStatus === 'FAIL'" style="margin-top: 20px">
-        <p style="color: #555">视频生成失败。</p>
-      </div>
-    </div> -->
-    <!-- <slider />
-    <div class="ai-content">
-      
-    </div> -->
+    <div class="ai-content"></div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import slider from "../../components/Space/slider.vue";
 import AiVideo from "../../components/Space/AiVideo.vue";
 import ChatWin from "../../components/Space/ChatWin11.vue";
@@ -125,7 +52,8 @@ $demoHollyDark: rgba(102, 51, 255, 0.25);
 .image-home {
   max-width: 100%;
   margin: auto;
-  height: 100vh;
+  height: 100%;
+  overflow:auto;
   //border: 1px solid red;
 }
 

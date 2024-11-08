@@ -23,7 +23,7 @@
           {{ item.content }}
         </p>
         <p class="read-more">
-          <a href="#">Read More</a>
+          <a :href="item.URL">Read More</a>
         </p>
       </div>
     </div>
