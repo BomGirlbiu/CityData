@@ -88,9 +88,9 @@ export default {
     this.selected = "搜索量影响力";
   },
   methods: {
-    async GetFutureData_google(cityname) {
+    async GetFutureData_google() {
       let params = new FormData();
-      params.append("cityname", "北京市");
+      params.append("cityname", this.selectedCity + "市");
       // console.log("params:", params);
       try {
         const response = await axios({
