@@ -115,15 +115,20 @@
             <span style="margin: 25px 30px">城市对比</span>
           </h2>
           <ul class="c-services">
-            <router-link :to="{ name: '数据对比' }">
-              <li class="c-services__item">
-                <h3>Responsive Web Design</h3>
-                <p>
-                  We leverage the concept of mobile-first design. Through our
-                  work, we focus on designing an experience that works across
-                  different screen sizes.
-                </p>
-              </li>
+            <router-link
+              :to="{ name: '城市对比' }"
+              style="
+                display: flex;
+                font-weight: 800;
+                font-size: xx-large;
+                color: gray;
+                margin-left: 50px;
+              "
+            >
+              <!-- <li class="c-services__item">
+                <h3>Responsive Web Design</h3> -->
+              <p>了解更多</p>
+              <!-- </li> -->
             </router-link>
           </ul>
         </section>
@@ -610,7 +615,8 @@ a {
     }
   }
   .et-hero-tab {
-    font-size: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
   }
 }
 
@@ -2924,6 +2930,8 @@ svg {
 #space-ai-p {
   font-size: 20px;
   color: #3496d2;
+  text-align: left;
+  text-indent: 2em; 
 }
 
 .learn-more {
