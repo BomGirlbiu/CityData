@@ -130,7 +130,7 @@ class Forecast {
     public static List<ForecastResult> getForecast(String cityName) throws IOException, InterruptedException {
         // 执行Python脚本
         System.out.println(cityName);
-        ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\Childd\\OneDrive\\文档\\WeChat Files\\wxid_363gjm3h5v3y22\\FileStorage\\File\\2024-11\\Project_SoftwareTraining\\env\\Scripts\\python.exe", "D:\\临时\\code\\pyscripts\\Gtrends_forecast\\forecast.py","google", cityName);
+        ProcessBuilder processBuilder = new ProcessBuilder("python", "D:\\临时\\code\\pyscripts\\Gtrends_forecast\\forecast.py","google", cityName);
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
 //        process.waitFor();
