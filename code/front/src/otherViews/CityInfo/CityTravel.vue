@@ -26,14 +26,8 @@
         <Videos />
 
         <p>
-          Attack your ankles puking chase the red dot lay down in your way,
-          knock over the lamp sunbathe eat the grass sleep on your keyboard jump
-          sleep in the sink shed everywhere. Jump on the table sleep on your
-          keyboard jump on the table scratched sunbathe judging you, give me
-          fish climb the curtains sleep on your face sleep in the sink bat
-          sniff. Knock over the lamp jump sleep in the sink tail flick, sleep in
-          the sink I don't like that food sleep on your face rip the couch bat
-          sleep on your keyboard toss the mousie.
+          灿若星河的文化之旅，三湘四水的芙蓉国度，惟楚有才，于斯为盛，
+          湖南人民在湖湘大地上谱写了一曲深邃而悠远的传奇。
         </p>
       </article>
     </div>
@@ -78,33 +72,29 @@ export default {
       videos: [],
       dataList: [
         {
-          URL: "https://culture-travel.cctv.com/2024/09/19/ARTIwTB6ZFevuMbzGrjdIi0U240919.shtml?spm=C30123.PdSpIAXhl6Iy.EqQGKgG2jQOS.1",
-          title: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
-          img: "https://p5.img.cctvpic.com/photoworkspace/2024/09/19/2024091910130313801.jpg",
-          content: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
+          URL: "https://travel.qunar.com/p-cs300064-zhangjiajie",
+          title: "烟雨张家界，有“自然的迷宫”武陵源，有“天门吐雾”的罕见奇观。 这里的每一座山峰都是大自然的鬼斧神工。",
+          img: "https://img1.qunarzz.com/travel/poi/1806/95/cc9542a3d8722d37.png_r_720x400x95_53eabde3.png",
         },
         {
-          URL: "https://culture-travel.cctv.com/2024/09/19/ARTIwTB6ZFevuMbzGrjdIi0U240919.shtml?spm=C30123.PdSpIAXhl6Iy.EqQGKgG2jQOS.1",
-          title: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
-          img: "https://p5.img.cctvpic.com/photoworkspace/2024/09/19/2024091910130313801.jpg",
+          URL: "https://travel.qunar.com/p-cs300022-changsha",
+          title: "长沙，一座充火辣直爽的城市。它是芙蓉国里的一抹灿烂的朝晖，是湘水之畔的灵韵所在。",
+          img: "https://img1.qunarzz.com/travel/poi/1806/46/a1bc3ab1228d6437.png_r_720x400x95_8c0fa956.png",
         },
         {
-          URL: "https://culture-travel.cctv.com/2024/09/19/ARTIwTB6ZFevuMbzGrjdIi0U240919.shtml?spm=C30123.PdSpIAXhl6Iy.EqQGKgG2jQOS.1",
-          title: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
-          img: "https://p5.img.cctvpic.com/photoworkspace/2024/09/19/2024091910130313801.jpg",
-          content: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
+          URL: "https://travel.qunar.com/p-cs300061-yueyang",
+          title: "昔闻洞庭之水，今登岳阳楼上，漫步汨罗江畔，追忆屈子离骚，感叹世事无常，走进文人墨客笔下的岳阳。",
+          img: "https://img1.qunarzz.com/travel/poi/201405/26/997b59e2ed4f0d11ddb12cfb.jpg_r_720x400x95_fd74827f.jpg",
         },
         {
-          URL: "https://culture-travel.cctv.com/2024/09/19/ARTIwTB6ZFevuMbzGrjdIi0U240919.shtml?spm=C30123.PdSpIAXhl6Iy.EqQGKgG2jQOS.1",
-          title: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
-          img: "https://p5.img.cctvpic.com/photoworkspace/2024/09/19/2024091910130313801.jpg",
-          content: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
+          URL: "https://travel.qunar.com/p-cs300068-xiangxi",
+          title: "剪一段旧时光，容我岁月静好，透过凤凰烟雨，寻找100多年前的地图上的古镇风貌。",
+          img: "https://img1.qunarzz.com/travel/poi/1412/ac/acba8be6f59496c1cdb.jpg_r_720x400x95_3d475a85.jpg",
         },
         {
-          URL: "https://culture-travel.cctv.com/2024/09/19/ARTIwTB6ZFevuMbzGrjdIi0U240919.shtml?spm=C30123.PdSpIAXhl6Iy.EqQGKgG2jQOS.1",
-          title: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
-          img: "https://p5.img.cctvpic.com/photoworkspace/2024/09/19/2024091910130313801.jpg",
-          content: "新文旅“广东范儿”：让你给“味蕾游”留出最多预算",
+          URL: "https://travel.qunar.com/p-cs300063-huaihua",
+          title: "怀化市区（鹤城区）位于湖南省西南部，雪峰山脉和武陵山脉之间。面积773平方公里，人口30.69万。人口密度为每平方公里…",
+          img: "https://img1.qunarzz.com/travel/poi/201403/26/6a0ebcaf6f73fb27ddb12cfb.jpg_r_720x400x95_fd277633.jpg",
         },
       ],
       currentPage: 1, //当前页数

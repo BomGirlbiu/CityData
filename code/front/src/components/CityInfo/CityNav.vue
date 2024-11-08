@@ -1,11 +1,23 @@
 <template>
-  <nav class="food-nav">
-    <ul>
-      <li v-for="(item, index) in navItems" :key="index">
-        <a :href="item.href">{{ item.text }}</a>
-      </li>
-    </ul>
-  </nav>
+        <nav class="food-nav">
+        <ul>
+          <li>
+            <a href="#">长沙</a>
+          </li>
+          <li>
+            <a href="#">湘潭</a>
+          </li>
+          <li>
+            <a href="#">株洲</a>
+          </li>
+          <li>
+            <a href="#">益阳</a>
+          </li>
+          <li>
+            <a href="#">萍乡</a>
+          </li>
+        </ul>
+      </nav>
 </template>
 
 <script>

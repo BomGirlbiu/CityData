@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.NewyorkCountsMapper">
+    
+    <resultMap type="NewyorkCounts" id="NewyorkCountsResult">
+        <result property="cityname"    column="cityname"    />
+        <result property="starttime"    column="starttime"    />
+        <result property="endtime"    column="endtime"    />
+        <result property="counts"    column="counts"    />
+    </resultMap>
+
+    <sql id="selectNewyorkCountsVo">
+        select cityname, starttime, endtime, counts from newyork_counts
+    </sql>
+
+    <select id="selectNewyorkCountsList" parameterType="NewyorkCounts" resultMap="NewyorkCountsResult">
+        <include refid="selectNewyorkCountsVo"/>
+        <where>  
+            <if test="endtime != null  and endtime != ''"> and endtime = #{endtime}</if>
+            <if test="counts != null "> and counts = #{counts}</if>
+        </where>
+    </select>
+    
+    <select id="selectNewyorkCountsByCityname" parameterType="String" resultMap="NewyorkCountsResult">
+        <include refid="selectNewyorkCountsVo"/>
+        where cityname = #{cityname}
+    </select>
+
+    <insert id="insertNewyorkCounts" parameterType="NewyorkCounts">
+        insert into newyork_counts
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cityname != null">cityname,</if>
+            <if test="starttime != null">starttime,</if>
+            <if test="endtime != null">endtime,</if>
+            <if test="counts != null">counts,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cityname != null">#{cityname},</if>
+            <if test="starttime != null">#{starttime},</if>
+            <if test="endtime != null">#{endtime},</if>
+            <if test="counts != null">#{counts},</if>
+         </trim>
+    </insert>
+
+    <update id="updateNewyorkCounts" parameterType="NewyorkCounts">
+        update newyork_counts
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="starttime != null">starttime = #{starttime},</if>
+            <if test="endtime != null">endtime = #{endtime},</if>
+            <if test="counts != null">counts = #{counts},</if>
+        </trim>
+        where cityname = #{cityname}
+    </update>
+
+    <delete id="deleteNewyorkCountsByCityname" parameterType="String">
+        delete from newyork_counts where cityname = #{cityname}
+    </delete>
+
+    <delete id="deleteNewyorkCountsByCitynames" parameterType="String">
+        delete from newyork_counts where cityname in 
+        <foreach item="cityname" collection="array" open="(" separator="," close=")">
+            #{cityname}
+        </foreach>
+    </delete>
+</mapper>

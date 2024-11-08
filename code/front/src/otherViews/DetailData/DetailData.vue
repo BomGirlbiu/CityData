@@ -305,6 +305,7 @@ export default {
   padding: 5px 10px;
   color: #ffffff; /* 白色文字 */
   transition: color 0.3s;
+  font-size: 15px;
 }
 
 .content {

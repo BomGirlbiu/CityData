@@ -86,7 +86,7 @@
 <script>
 // import * as echarts from 'echarts';
 import axios from "axios";
-import "echarts/theme/idea";
+import "echarts/theme/cool";
 import * as echarts from "echarts";
 export default {
   name: "CityInfluenceChart",
@@ -155,7 +155,7 @@ export default {
       this.currentPage = 1;
 
       if (!this.cityList || this.cityList.length === 0) return;
-      this.chart = echarts.init(this.$refs.chartDom, "idea");
+      this.chart = echarts.init(this.$refs.chartDom, "cool");
 
       const option = {
         backgroundColor: "rgba(255, 255, 255, 0.1)",
