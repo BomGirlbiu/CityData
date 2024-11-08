@@ -61,8 +61,8 @@
     <main class="et-main">
       <section class="et-slide" id="tab-es6">
         <div class="first">
-          <h1>首页</h1>
-          <h3>something about es6</h3>
+          <h1 style="font-size:60px;">关于我们</h1>
+          <h3 style="font-size:30px;padding:20px;text-indent:2em;text-align:left">讲好中国故事，传播好中国声音，展现可信、可爱、可敬的中国形象，是加强我国国际传播能力建设的重要任务。中国城市国际传播是中国国际传播的重要组成部分和实现路径。对中国城市国际传播影响力进行科学评估，有利于我们准确把握中国城市国际 传播的现状和问题，为加强国际传播能力建设，全面提升国际传播效能，形成同我国综合国力和国际地位相匹配的国际话语权提供政策参考。本系统下设五个模块，分别提供了不同的功能</h3>
         </div>
       </section>
       <section class="et-slide1" id="tab-flexbox">
@@ -70,15 +70,20 @@
           <h2 class="c-section1__title">
             <span style="margin: 25px 30px">城市信息</span>
           </h2>
-          <ul class="c-services">
-            <router-link :to="{ name: '城市信息' }">
-              <p>
-                We leverage the concept of mobile-first design. Through our
-                work, we focus on designing an experience that works across
-                different screen sizes.
-              </p>
-            </router-link>
-          </ul>
+          <!-- <ul class="c-services"> -->
+          <router-link
+            :to="{ name: '城市信息' }"
+            style="
+              display: flex;
+              font-weight: 800;
+              font-size: xx-large;
+              color: #9AB0BC;
+              margin-left: 50px;
+            "
+          >
+            <p>了解更多</p>
+          </router-link>
+          <!-- </ul> -->
         </section>
       </section>
       <section class="et-slide2" id="tab-react">
@@ -86,15 +91,21 @@
           <h2 class="c-section2__title">
             <span style="margin: 25px 30px; color: #425863">数据跟踪</span>
           </h2>
-          <ul class="c-services" style="color: #425863">
-            <router-link :to="{ name: '数据跟踪' }">
-              <p>
-                We leverage the concept of mobile-first design. Through our
-                work, we focus on designing an experience that works across
-                different screen sizes.
-              </p>
-            </router-link>
-          </ul>
+          <router-link
+            :to="{ name: '数据跟踪' }"
+            style="
+              display: flex;
+              font-weight: 800;
+              font-size: xx-large;
+              color: #E4EDE8;
+              margin-left: 50px;
+            "
+          >
+            <p>了解更多</p>
+          </router-link>
+          <!-- <ul class="c-services" style="color: #425863">
+
+          </ul> -->
         </section>
       </section>
 
@@ -104,15 +115,20 @@
             <span style="margin: 25px 30px">城市对比</span>
           </h2>
           <ul class="c-services">
-            <router-link :to="{ name: '城市对比' }">
-              <li class="c-services__item">
-                <h3>Responsive Web Design</h3>
-                <p>
-                  We leverage the concept of mobile-first design. Through our
-                  work, we focus on designing an experience that works across
-                  different screen sizes.
-                </p>
-              </li>
+            <router-link
+              :to="{ name: '城市对比' }"
+              style="
+                display: flex;
+                font-weight: 800;
+                font-size: xx-large;
+                color: gray;
+                margin-left: 50px;
+              "
+            >
+              <!-- <li class="c-services__item">
+                <h3>Responsive Web Design</h3> -->
+              <p>了解更多</p>
+              <!-- </li> -->
             </router-link>
           </ul>
         </section>
@@ -122,22 +138,27 @@
         <!-- <h3>something about other</h3> -->
         <section class="c-section4">
           <h2 class="c-section4__title">
-            <span style="margin: 25px 30px">社区服务</span>
+            <span style="margin: 25px 30px;color:#808080;">社区服务</span>
           </h2>
           <ul class="c-services">
-            <router-link :to="{ name: '城市频道' }">
-              <p>
-                We leverage the concept of mobile-first design. Through our
-                work, we focus on designing an experience that works across
-                different screen sizes.
-              </p>
+            <router-link
+              :to="{ name: '城市频道' }"
+              style="
+                display: flex;
+                font-weight: 800;
+                font-size: xx-large;
+                color: gray;
+                margin-left: 50px;
+              "
+            >
+              <p>了解更多</p>
             </router-link>
           </ul>
         </section>
       </section>
 
       <section class="et-slide5" id="tab-magic">
-        <section class="c-section5">
+        <!-- <section class="c-section5">
           <h2 class="c-section4__title">
             <span style="margin: 25px 30px">联想空间</span>
           </h2>
@@ -150,6 +171,91 @@
               </p>
             </router-link>
           </ul>
+        </section> -->
+        <section class="animations">
+          <div class="animations-container">
+            <div class="ani ani-1">
+              <div class="ani-cube">
+                <div class="cube-face face_front"></div>
+                <div class="cube-face face_right"></div>
+                <div class="cube-face face_left"></div>
+                <div class="cube-face face_top"></div>
+                <div class="cube-face face_bottom"></div>
+                <div class="cube-face face_back"></div>
+              </div>
+            </div>
+            <div class="ani ani-2">
+              <div class="ani-cube ani-cube-2">
+                <div class="cube-face face_front"></div>
+                <div class="cube-face face_right"></div>
+                <div class="cube-face face_left"></div>
+                <div class="cube-face face_top"></div>
+                <div class="cube-face face_bottom"></div>
+                <div class="cube-face face_back"></div>
+              </div>
+            </div>
+            <div class="ani ani-3">
+              <div class="ani-cube ani-cube-3">
+                <div class="cube-face face_front"></div>
+                <div class="cube-face face_right"></div>
+                <div class="cube-face face_left"></div>
+                <div class="cube-face face_top"></div>
+                <div class="cube-face face_bottom"></div>
+                <div class="cube-face face_back"></div>
+              </div>
+            </div>
+            <div class="ani ani-4">
+              <div class="ani-hamburger">
+                <div class="hamburger-line hamburger-line_top"></div>
+                <div class="hamburger-line hamburger-line_middle"></div>
+                <div class="hamburger-line hamburger-line_bottom"></div>
+              </div>
+            </div>
+            <div class="ani ani-5">
+              <div class="moving-square-frame"></div>
+              <div class="ani-moving-square"></div>
+            </div>
+            <div class="ani ani-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 1024 1024"
+              >
+                <path
+                  id="followPath"
+                  d="M394.1-214.9c-49.7,89.4,114.4,192.8,175.5,475.1c13,60.1,85.4,424-98.1,552.6 c-95.7,67-267.2,74.5-346.3-22.1c-70.8-86.5-49-233.9,19.2-305.2c102.4-107,353.9-89.1,593.2,96.5c139.6,107,294.1,258.4,415,468.6 c19.2,33.5,36.6,66.6,52.3,99.3c13,8.6,34,19.5,53.3,13.2c148-48.6,165.1-1094.5-338.5-1374.8C723.7-320.8,449-313.8,394.1-214.9z"
+                ></path>
+                <path
+                  id="dashedPath"
+                  d="M394.1-214.9c-49.7,89.4,114.4,192.8,175.5,475.1c13,60.1,85.4,424-98.1,552.6 c-95.7,67-267.2,74.5-346.3-22.1c-70.8-86.5-49-233.9,19.2-305.2c102.4-107,353.9-89.1,593.2,96.5c139.6,107,294.1,258.4,415,468.6 c19.2,33.5,36.6,66.6,52.3,99.3c13,8.6,34,19.5,53.3,13.2c148-48.6,165.1-1094.5-338.5-1374.8C723.7-320.8,449-313.8,394.1-214.9z"
+                ></path>
+                <path id="airplain" d="M8.04 84L92 48 8.04 12 8 40l60 8-60 8z">
+                  <animateMotion
+                    xlink:href="#airplain"
+                    dur="6s"
+                    fill="freeze"
+                    repeatCount="indefinite"
+                    rotate="auto"
+                  >
+                    <mpath xlink:href="#followPath"></mpath>
+                  </animateMotion>
+                </path>
+              </svg>
+            </div>
+          </div>
+          <div class="container">
+            <div class="small-container">
+              <h1 id="space-ai-h2">联想空间</h1>
+              <router-link :to="{ name: '联想空间' }">
+                <p id="space-ai-p">
+                  联想空间模块，邀请您与AI大模型展开对话，激发创意火花。在这里，您可以轻松地与智能体“小诚”互动，它不仅能够理解您的意图，还能主动感知、自我认知，并进行任务规划与分解
+                  。借助“小诚”的智能，您可以生成个性化的视频和图片，将您的创意构想快速转化为现实。
+                </p>
+              </router-link>
+            </div>
+          </div>
         </section>
       </section>
       <Footer />
@@ -159,9 +265,11 @@
 
 <script>
 import Footer from "../components/Layout/Footer.vue";
+import IndexTry from "./IndexTry.vue";
 export default {
   components: {
     Footer,
+    IndexTry
   },
   data() {
     return {
@@ -419,7 +527,7 @@ a {
   align-items: center;
   height: 100vh;
   position: relative;
-  background: #425863;
+  background: #ffffff;
   text-align: center;
   // padding: 0 2em;
   h1 {
@@ -538,11 +646,11 @@ a {
 :root {
   // COLORS
   --color-brand-primary: #3f5a68;
-  --color-brand-primary0: #3da6b0;
-  --color-brand-primary1: #3da6b0;
+  --color-brand-primary0: #9ab0bc;
+  --color-brand-primary1: #9ab0bc;
   --color-brand-primary2: #e4ede8;
   --color-brand-primary3: #425863;
-  --color-brand-primary4: #dc5037ac;
+  --color-brand-primary4: #dbe0eb;
   --color-brand-primary5: #e5e7e7;
   --color-brand-primary-h: 251;
   --color-brand-primary-s: 43%;
@@ -685,7 +793,7 @@ ul {
     }
 
     &:after {
-      content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae accusamus eaque necessitatibus modi facilis aspernatur ut natus saepe!";
+      content: "城市频道是一个充满活力的互动平台，它不仅为游客提供了丰富的城市信息浏览体验，还赋予注册用户上传城市风光照片和视频的特权，让他们在分享中参与到城市的数字化建设中。用户们可以在这里相互点评，共同评价，为优质内容打分，同时享受平台提供的激励机制，从而促进信息的交流与社区的活跃，共同绘制城市的精彩画卷。";
       display: block;
       font-size: 1.4rem;
       @include bp-sm {
@@ -772,7 +880,7 @@ ul {
     }
 
     &:after {
-      content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae accusamus eaque necessitatibus modi facilis aspernatur ut natus saepe!";
+      content: "我们的城市信息模块精心汇集了丰富的旅游亮点、地道美食推荐以及最新新闻资讯，旨在为用户提供一站式的浏览和查询体验，让您轻松掌握每个城市的独特风采。";
       display: block;
       font-size: 1.4rem;
       @include bp-sm {
@@ -856,7 +964,7 @@ ul {
     }
 
     &:after {
-      content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae accusamus eaque necessitatibus modi facilis aspernatur ut natus saepe!";
+      content: "数据跟踪专注于纵向挖掘每个城市的独特魅力，并量化其国际传播影响力。该模块通过五个核心一级指标来衡量和分析城市的表现，这些指标不仅全面覆盖了城市的多个关键领域，而且通过精细的权重分配，确保了评估结果的科学性和准确性。";
       display: block;
       font-size: 1.4rem;
       @include bp-sm {
@@ -865,7 +973,7 @@ ul {
       position: absolute;
       font-weight: 350;
       padding: 0 var(--s3);
-      color: hsla(0, 0%, 100%, 0.85);
+      color: #425863;
       left: 9px;
       @include bp-sm {
         width: 47ch;
@@ -940,7 +1048,7 @@ ul {
     }
 
     &:after {
-      content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae accusamus eaque necessitatibus modi facilis aspernatur ut natus saepe!";
+      content: "城市对比模块为您提供了一个直观而强大的工具，让您能够轻松地横向比较不同城市的关键数据和统计信息。";
       display: block;
       font-size: 1.4rem;
       @include bp-sm {
@@ -1023,7 +1131,7 @@ ul {
     }
 
     &:after {
-      content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae accusamus eaque necessitatibus modi facilis aspernatur ut natus saepe!";
+      content: "城市社区交互平台，不仅是一个信息交流的集散地，更是一个充满活力的社交枢纽。这个平台致力于构建一个立体化、多维度的社区信息网络，它通过整合线上线下资源，跨越虚拟与实体空间的界限，促进居民之间的互动与交流。在这里，居民可以分享生活点滴，参与社区活动，共同营造一个温馨和谐的邻里环境";
       display: block;
       font-size: 1.4rem;
       @include bp-sm {
@@ -1032,7 +1140,7 @@ ul {
       position: absolute;
       font-weight: 350;
       padding: 0 var(--s3);
-      color: hsla(0, 0%, 100%, 0.85);
+      color: #808080;
       left: 9px;
       @include bp-sm {
         width: 47ch;
@@ -2381,4 +2489,456 @@ ul {
 .c-section__title4 {
   margin-top: 72px;
 }
+//
+//
+// *, *:after, *:before {
+// 	margin: 0;
+// 	padding: 0;
+// 	box-sizing: border-box;
+// }
+html {
+  background: #f4f4f4;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  color: #0093dd;
+}
+
+section {
+  position: relative;
+  padding: 60px 0;
+}
+.container {
+  position: relative;
+  margin: auto;
+  padding: 0 30px;
+  width: 100%;
+  max-width: 1170px;
+}
+.small-container {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 870px;
+}
+//
+
+.animations {
+  display: table;
+  background: #ffffff;
+  padding: 200px 0;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+  .animations-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .container {
+    display: table-cell;
+    vertical-align: middle;
+    .small-container {
+      max-width: 480px;
+    }
+  }
+}
+.ani {
+  position: absolute;
+  &.ani-1 {
+    left: 30px;
+    top: 30px;
+    transform: scale(0.8);
+  }
+  &.ani-2 {
+    right: 25%;
+    top: 50px;
+    transform: scale(0.6);
+  }
+  &.ani-3 {
+    right: 100px;
+    bottom: 100px;
+    transform: translate(50%, 50%) scale(0.8);
+  }
+  &.ani-4 {
+    bottom: 98px;
+    left: 15%;
+  }
+  &.ani-5 {
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &.ani-6 {
+    height: 320px;
+    width: 320px;
+    right: 0;
+    top: 0;
+  }
+}
+.ani-cube {
+  perspective: 20000px;
+  height: 100px;
+  width: 100px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg) rotateY(40deg) rotateZ(360deg);
+  animation: ani-cube-1 20s linear infinite;
+  .cube-face {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    &.face_front {
+      background-color: #3496d2;
+      transform: translate3d(0px, 0px, 50px);
+      z-index: 10;
+    }
+    &.face_right {
+      background-color: #6fb9e8;
+      transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg)
+        translate3d(0px, 0px, 50px);
+      z-index: 8;
+    }
+    &.face_left {
+      background-color: #6fb9e8;
+      transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg)
+        translate3d(0px, 0px, 50px);
+      z-index: 9;
+    }
+    &.face_top {
+      background-color: #4cace8;
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg)
+        translate3d(0px, 0px, 50px);
+      z-index: 11;
+    }
+    &.face_bottom {
+      background-color: #4cace8;
+      transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg)
+        translate3d(0px, 0px, 50px);
+      z-index: 5;
+    }
+    &.face_back {
+      background-color: #3496d2;
+      transform: translate3d(0px, 0px, -50px);
+      z-index: 1;
+    }
+  }
+  &.ani-cube-2 {
+    height: 40px;
+    transform: rotateX(143deg) rotateY(50deg) rotateZ(360deg);
+    animation: ani-cube-2 10s linear infinite;
+    .cube-face.face_front {
+      height: 40px;
+      transform: translate3d(0px, 0px, 100px);
+    }
+    .cube-face.face_right {
+      width: 200px;
+      height: 40px;
+      transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg)
+        translate3d(0px, 0px, 0);
+    }
+    .cube-face.face_left {
+      width: 200px;
+      height: 40px;
+      transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg)
+        translate3d(0px, 0px, 100px);
+    }
+    .cube-face.face_top {
+      height: 200px;
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg)
+        translate3d(0px, 0px, 60px);
+    }
+    .cube-face.face_bottom {
+      height: 200px;
+      transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg)
+        translate3d(0px, 0px, -100px);
+    }
+    .cube-face.face_back {
+      height: 40px;
+      transform: translate3d(0px, 0px, -100px);
+    }
+  }
+  &.ani-cube-3 {
+    transform: scale(0.6) rotateX(-63deg) rotateY(13deg) rotateZ(47deg);
+    animation: ani-cube-3 20s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+    .cube-face {
+      &.face_front,
+      &.face_right,
+      &.face_left,
+      &.face_top,
+      &.face_bottom,
+      &.face_back {
+        border: 2px solid #3496d2;
+        border-radius: 2px;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 2px #3496d2, 0 0 0 2px #3496d2;
+      }
+    }
+  }
+}
+.ani-hamburger {
+  height: 19px;
+  width: 30px;
+  animation: rotate90 4s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+  .hamburger-line {
+    position: absolute;
+    background-color: #3496d2;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    transform-origin: center;
+    &.hamburger-line_top {
+      top: 0;
+      animation: hamburger-line_top 4s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+    }
+    &.hamburger-line_middle {
+      top: 50%;
+      animation: hamburger-line_middle 4s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+    }
+    &.hamburger-line_bottom {
+      top: 100%;
+      animation: hamburger-line_bottom 4s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+    }
+  }
+}
+.moving-square-frame {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 10px;
+  left: 10px;
+  opacity: 0.1;
+  border: 1px solid #000;
+}
+.ani-moving-square {
+  background: #3496d2;
+  height: 20px;
+  width: 20px;
+  animation: ani-moving-square 6s cubic-bezier(0.7, 0, 0.7, 1) infinite;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+  #followPath {
+    fill: none;
+    stroke: #3496d2;
+    stroke-width: 8;
+    stroke-dasharray: 2870px;
+    stroke-dashoffset: 2870px;
+    animation: drawPath 6s linear infinite;
+  }
+  #dashedPath {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 14;
+    stroke-dasharray: 50px;
+  }
+  #airplain {
+    fill: #3496d2;
+    transform: translate(-10px, -45px);
+  }
+}
+
+@keyframes ani-cube-1 {
+  to {
+    transform: rotateX(-30deg) rotateY(40deg) rotateZ(0);
+  }
+}
+@keyframes ani-cube-2 {
+  to {
+    transform: rotateX(143deg) rotateY(50deg) rotateZ(0);
+  }
+}
+@keyframes ani-cube-3 {
+  0% {
+    transform: scale(0.6) rotateX(-63deg) rotateY(13deg) rotateZ(47deg);
+  }
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55%,
+  65%,
+  75%,
+  85%,
+  95% {
+    transform: scale(0.8) rotateX(-63deg) rotateY(-23deg) rotateZ(47deg);
+  }
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90% {
+    transform: scale(0.6) rotateX(-63deg) rotateY(13deg) rotateZ(47deg);
+  }
+  100% {
+    transform: scale(0.6) rotateX(-63deg) rotateY(13deg) rotateZ(407deg);
+  }
+}
+@keyframes rotate90 {
+  0% {
+    transform: rotate(0);
+  }
+  5%,
+  50% {
+    transform: rotate(-90deg);
+  }
+  55%,
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes hamburger-line_top {
+  0% {
+    top: 0;
+    transform: rotate(0);
+  }
+  5%,
+  50% {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+  55%,
+  100% {
+    top: 0;
+    transform: rotate(0);
+  }
+}
+@keyframes hamburger-line_middle {
+  0% {
+    opacity: 1;
+  }
+  5%,
+  50% {
+    opacity: 0;
+  }
+  55%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hamburger-line_bottom {
+  0% {
+    top: 100%;
+    transform: rotate(0);
+  }
+  5%,
+  50% {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+  55%,
+  100% {
+    top: 100%;
+    transform: rotate(0);
+  }
+}
+@keyframes ani-moving-square {
+  0%,
+  2.5% {
+    transform: translate(0, 0);
+  }
+  10%,
+  15% {
+    transform: translate(20px, 0);
+  }
+  22.5%,
+  27.5% {
+    transform: translate(20px, 20px);
+  }
+  35%,
+  40% {
+    transform: translate(0, 20px);
+  }
+  47.5%,
+  52.5% {
+    transform: translate(0, 0);
+  }
+  60%,
+  65% {
+    transform: translate(0, 20px);
+  }
+  72.5%,
+  77.5% {
+    transform: translate(20px, 20px);
+  }
+  85%,
+  90% {
+    transform: translate(20px, 0);
+  }
+  97.5%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes drawPath {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 2870px;
+  }
+  53% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  78% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .ani.ani-1 {
+    transform: scale(0.5);
+  }
+  .ani.ani-2 {
+    top: 120px;
+    transform: scale(0.3);
+  }
+  .ani.ani-5 {
+    top: 80%;
+  }
+  .ani.ani-6 {
+    max-height: 30vw;
+    max-width: 30vw;
+    max-height: 140px;
+    max-width: 140px;
+  }
+}
+#space-ai-h2 {
+  font-size: 60px;
+}
+#space-ai-p {
+  font-size: 20px;
+  color: #3496d2;
+}
+
+.learn-more {
+  display: flex;
+}
+
+
+.first{
+  color:black;
+}
+
+
 </style>

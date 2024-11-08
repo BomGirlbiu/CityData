@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import * as echarts from "echarts";
 import VueParticles from 'vue-particles'
-
+import * as createjs from 'createjs-module';
 // Buefy
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
@@ -22,7 +22,7 @@ import "primevue/resources/themes/bootstrap4-light-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
 // Vue.component('Dialog', Dialog);
-
+Vue.use(createjs)
 import Video from "video.js";
 import "video.js/dist/video-js.css";
 Vue.prototype.$video = Video;

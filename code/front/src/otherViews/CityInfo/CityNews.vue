@@ -274,10 +274,10 @@ export default {
     async loadData() {
       try {
         const response = await axios.post(
-          "http://localhost:8081/CityNews/" + this.currentCity
+          "http://localhost:82/CityNews/" + this.currentCity
         );
         console.log(response);
-        console.log( "http://localhost:8081/CityNews/" + this.currentCity);
+        console.log( "http://localhost:82/CityNews/" + this.currentCity);
 
         this.items = response.data.cityNewsList; // 假设后端返回的对象中有一个items数组
         this.videos = response.data.cityVideoList; // 假设后端返回的对象中有一个items数组
@@ -295,7 +295,7 @@ export default {
     async loadButton() {
       try {
         const response = await axios.get(
-          "http://localhost:8081/CityNews/" + this.$store.state.currentProvince
+          "http://localhost:82/CityNews/" + this.$store.state.currentProvince
         );
         this.buttonData = response.data;
         this.currentCity = this.buttonData[0];
